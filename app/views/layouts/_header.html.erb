@@ -1,0 +1,20 @@
+<div class="header">
+	<div class="wrapper">
+		<div class="logo">
+			<h3><%= link_to 'Ayush', root_path, class: 'brand_logo' %> </h3>
+			
+		</div>
+		<div class="right_buttons">
+			<% if user_signed_in? %>
+				<%= link_to 'Home', dashboard_path(current_user.id), class: "btn btn-primary" %>
+				<%= link_to 'Notifications', "#", class: "btn btn-primary" %>
+				<%= link_to 'Messages', "#", class: "btn btn-primary" %>
+				<%= link_to 'Log Out', destroy_user_session_path, method: "delete", class: "btn btn-primary" %>
+			<% else %>
+				<%# link_to 'Log In', new_user_session_path, class: "btn btn-primary" %>
+				<%= link_to 'Log In', new_user_session_path, class: "btn btn-primary", data: { toggle: "modal", target: "#myModal-2", remote: true } %>
+			<% end %>
+		</div>
+	</div>
+</div>
+<%= render 'devise/sessions/form' %>

@@ -1,0 +1,22 @@
+<div class="image_homepage">
+	<div class="text-wrap">
+		<h1>Welcome to Ayush</h1>
+		
+		<% if !user_signed_in? %>
+			<h3>Create your free account</h3>
+			<%= link_to 'Create your account', new_user_registration_path, data:{ toggle: "modal", target: "#myModal-1", remote: true }, class: "btn btn-primary"  %>
+			<%= render 'devise/registrations/form' %>
+		<% end %>
+	</div>
+</div>
+<nav class="navbar navbar-default" role="navigation" data-spy="affix" data-offset-top="500">
+	<ul class="nav navbar-nav">
+		<li><%= link_to "Everyday Moments", "#" %></li>
+		<li><%= link_to "The Wearable", "#" %></li>
+		<li><%= link_to "Experience the app", "#" %></li>
+		<li><%= link_to "More", "#" %></li>
+	</ul>
+</nav>
+<div class="something"></div>
+
+<%= render 'welcome/footer' %>

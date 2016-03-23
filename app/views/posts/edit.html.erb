@@ -1,6 +1,12 @@
-<h1>Editing Post</h1>
+<div class="dashboard">
+	<%= render 'dashboard/left_section' %>
+	<div class="right-section">
 
-<%= render 'form' %>
 
-<%= link_to 'Show', @post %> |
-<%= link_to 'Back', posts_path %>
+		<h1>Editing Post</h1>
+
+		<%= render 'form' %>
+
+		<%= link_to 'Back', @post %>
+	</div>
+</div>

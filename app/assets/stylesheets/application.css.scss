@@ -1,0 +1,256 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+
+body {
+    background-color: #D6D3D3;
+ }
+
+ .modal {
+    h4 {
+        color: #222222;
+        text-align: center;
+    }
+    form {
+        width: 100%;
+        #user_first_name, #user_last_name {
+            width: 280px;
+            float: left;
+        }
+        #user_first_name {
+            margin-right: 6px;
+        }
+        .btn-primary {
+            width: 100%;
+            height: 55px;
+            border-radius: 1px;
+            background-color: #3DB3B3;
+            border: none;
+        }
+    }
+}
+
+ .header {
+	height: 63px;
+    z-index: 10;
+    background-color: rgb(49, 49, 49);
+    display: block;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    .wrapper {
+		position: relative;
+		top: 0;
+		left: 0;
+		width: 92%;
+		height: 100%;
+		margin: auto;
+		z-index: 30;
+		.logo {
+			float: left;
+			.brand_logo {
+				text-decoration: none;
+    			color: white;
+			}
+            .brand_logo:hover {
+                background-color: #313131;
+            }
+		}
+		.right_buttons {
+			float: right;
+			/* margin-top: 15px; */
+			.btn-primary {
+				margin: 0px 0px;
+				min-width: 123px;
+				padding-top: 21px;
+				border-radius: 0;
+				height: 63px;
+				background-color: transparent;
+				color: white;
+				font-weight: 600;
+				border-color: transparent;
+			}
+			.btn-primary:hover {
+				background-color: rgba(0, 255, 255, 0.53);
+			}
+            .btn-activity {
+                background-color: #A2A1A1;
+                height: 35px;
+                color: white;
+                font-weight: bolder;
+                border-radius: 4px;
+            }
+            .btn-activity:hover {
+                background-color: #BFBEBE;
+            }
+		}
+	}
+}
+
+.navbar {
+	border-radius: 0;
+}
+.navbar-nav {	
+	margin: auto;
+	text-align: center;
+	max-width: 1200px;
+	float: none;
+
+	li {
+		display: inline-block;
+		margin: 0px 30px;
+		float: none;
+	}
+}
+
+.navbar-nav > li > a {
+	color: #5D5D5D;
+	text-transform: uppercase;
+	font-size: 15px;
+	font-weight: 700;
+}
+
+.image_homepage {
+	background: url(medicine.jpg);
+	width: 100%;
+    position: relative;
+    height: 563px;
+    /* top: 63px; */
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: table;
+    background-position: center;
+    min-height: 350px;
+    .text-wrap {
+    	padding: 25vh 10px;
+    	text-align: center;
+    	color: white;
+    	margin-bottom: 20px;
+    	font-size: 48px;
+    	p {
+    		font-size: 20px;
+    	}
+    	h3 {
+    		font-size: 22px;
+    	}
+    	.btn-primary {
+    		color: #fff;
+    		font-size: 22px;
+    		min-width: 240px;
+    		background-color: #3DB3B3;
+    		font-weight: 600;
+    		border: none;
+    	}
+    	.btn-primary:hover {
+    		background-color: #3BD8D8;
+    	}
+    }
+}
+
+.something {
+	height: 1000px;
+}
+
+.affix {
+	top: 63px;
+	width: 100%;
+}
+
+.btn-doctor {
+	color: #fff;
+    background-color: #B37373;
+    border-color: #2e6da4;
+}
+
+.btn-patient {
+	color: #fff;
+    background-color: #598E8B;
+    border-color: #2e6da4;
+}
+.footer {
+	background-color: #383636;
+    height: 200px;
+    width: 100%;
+    padding-top: 30px;
+    border: 2px solid #131111;
+    .container {
+    	width: 900px;
+    	h5 {
+    		text-transform: uppercase;
+    		color: #909192;
+    	}
+    	ul {
+    		padding-left: 0px;
+    		list-style: none;
+    		.social {
+    			padding-left: 30px;
+    			background-position: 0;
+    			display: block;
+    			line-height: 180%;
+    			margin-bottom: 15px;
+    			background-size: 20px 20px;
+    		}
+    		.social-facebook {
+    			background-repeat: no-repeat;
+    			background-image: url(social-facebook.png);
+    		}
+    		.social-google {
+    			background-repeat: no-repeat;
+    			background-image: url(social-google.png);
+    		}
+    		.social-twitter {
+    			background-repeat: no-repeat;
+    			background-image: url(social-twitter.png);
+    		}
+	    	a {
+	    		color: #909192;
+	    	}
+    	}
+    }
+}
+
+.pagination {
+  background: white;
+  cursor: default;
+  height: 22px;
+    a, span, em {
+        padding: 0.2em 0.5em;
+        display: block;
+        float: left;
+        margin-right: 1px; 
+    }
+    .disabled {
+        display: none;
+    }
+    .current {
+        font-style: normal;
+        font-weight: bold;
+        background: #2e6ab1;
+        color: white;
+        /* border: 1px solid #2e6ab1; */
+    }
+    a {
+        text-decoration: none;
+        color: #105cb6;
+        /* border: 1px solid #9aafe5; */
+        &:hover, &:focus {
+          color: #000033;
+          border-color: #000033; 
+        }
+    }
+}

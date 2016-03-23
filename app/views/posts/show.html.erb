@@ -1,14 +1,27 @@
-<p id="notice"><%= notice %></p>
+<div class="dashboard">
+	<%= render 'dashboard/left_section' %>
+	<div class="right-section">
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @post.content %>
-</p>
-
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+		<div class="show_posts">
+			<div class="btn-group pull-right">
+				<% if @post.user == current_user %>
+					<%= link_to @post, method: :delete do %>
+						<small><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></small>
+					<% end %>
+				<% end %>
+			</div>
+			<div class="show_post_author ">
+				<%# link_to "#{post.user.first_name} #{post.user.last_name}", profile_path(post.patient) %>
+			</div>
+			<div class="show_post_created_at">
+				<p class="text-muted"><small><%= time_ago_in_words(@post.created_at) %> ago</small></p>
+			</div>
+			<div class="show_post_description">
+				<%= @post.content %>
+			</div>
+			<div>
+				<%= link_to 'Edit', edit_post_path(@post), class: "btn btn-primary" %>
+			</div>
+		</div>
+	</div>
+</div>
