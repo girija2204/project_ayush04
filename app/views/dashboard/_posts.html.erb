@@ -9,7 +9,7 @@
 				<% end %>
 			</div>
 			<div class="show_post_author ">
-				<%# link_to "#{post.user.first_name} #{post.user.last_name}", profile_path(post.patient) %>
+				<%= link_to post.user.first_name, profile_path(post.user) %>
 			</div>
 			<div class="show_post_created_at">
 				<p class="text-muted"><small><%= time_ago_in_words(post.created_at) %> ago</small></p>

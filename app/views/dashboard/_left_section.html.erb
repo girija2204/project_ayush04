@@ -9,6 +9,9 @@
 			</div>
 		</div>
 	</div>
+	<div>
+		<%= render 'shared/stats' %>
+	</div>
 	<% if params[:action] == "show" && params[:controller] == "dashboard" %>
 		<div class="create_post">
 			<%= render 'posts/form' %>

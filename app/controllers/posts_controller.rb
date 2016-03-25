@@ -25,7 +25,9 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params)
+    @user = User.find_by(:id => current_user.id)
+    @post = @user.posts.build(post_params)
+    @post.user = current_user
 
     respond_to do |format|
       if @post.save

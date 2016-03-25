@@ -1,3 +1,93 @@
-// Place all the styles related to the profile controller here.
+// Place all the styles related to the dashboard controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.profile {
+    margin-top: 63px;
+    margin-left: 75px;
+    .left-section {
+        float: left;
+        width: 350px;
+        position: fixed;
+        height: 100%;
+        border: 1px solid;
+        border-color: #FBF0F0;
+        background-color: #FFFFFF;
+        .sub-header {
+            text-align: center;
+        }
+        .sub-navigation {
+            margin-top: 75px;
+            li {
+                display: block;
+                height: 70px;
+                border-top: 1px rgba(138, 125, 125, 0.06) solid;
+                border-bottom: 1px rgba(138, 125, 125, 0.06) solid;
+                margin-bottom: 2px;
+                text-align: center;
+                a {
+                    background-color: #FFFFFF;
+                }
+            }
+        }
+        .btn {
+            display: block;
+            min-height: 70px;
+            padding-top: 20px;
+            font-family: sans-serif;
+            border: none;
+            font-size: x-large;
+            border-radius: 0;
+        }
+        .btn-default {
+            background-color: #FBFAFA;
+            color: #848484;
+        }
+        .btn-default:hover {
+            background-color: #e6e6e6;
+        }
+        .view_profile a:hover {
+        	background-color: #FFF;
+        }
+        .btn-post {
+        	width: 100%;
+        	font-size: large;
+        	padding-top: 10px;
+        	border-radius: 2px;
+        	background-color: #337ab7;
+        	color: #FFF;
+        	&:hover {
+        		background-color: #2e6da4;
+        	}
+        }
+    }
+    .right-section {
+        margin-left: 430px;
+        width: 700px;
+        /* background: #FFF; */
+        padding-top: 50px;
+        height: 1500px;
+        
+        
+        .show_posts {
+            /* border-top: 1px solid #D4D2D2; */
+            /* border-bottom: 1px solid #D4D2D2; */
+            width: 97%;
+            padding-top: 11px;
+            padding-bottom: 20px;
+            padding-left: 25px;
+            padding-right: 10px;
+            background: #FFF;
+            margin-left: 10px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            .show_post_description {
+                margin-bottom: 15px;
+            }
+        }
+        .list_patients {
+            background: #FFF;
+            padding: 15px;
+        }
+    }
+}
