@@ -1,7 +1,5 @@
 <div class="dashboard">
-	<%= render 'dashboard/left_section' %>
 	<div class="right-section">
-
 		<div class="show_posts">
 			<div class="btn-group pull-right">
 				<% if @post.user == current_user %>
@@ -10,17 +8,47 @@
 					<% end %>
 				<% end %>
 			</div>
-			<div class="show_post_author ">
-				<%# link_to "#{post.user.first_name} #{post.user.last_name}", profile_path(post.patient) %>
+			<div class="show_post_title">
+				<%= @post.title %>
 			</div>
 			<div class="show_post_created_at">
-				<p class="text-muted"><small><%= time_ago_in_words(@post.created_at) %> ago</small></p>
+				<p class="text-muted"><small><%= time_ago_in_words(@post.created_at) %> ago by <%= link_to "#{@post.user.first_name.titleize} #{@post.user.last_name.titleize}", profile_path(@post.user)%></small></p>
 			</div>
 			<div class="show_post_description">
 				<%= @post.content %>
 			</div>
-			<div>
-				<%= link_to 'Edit', edit_post_path(@post), class: "btn btn-primary" %>
+			<div class="comment_section">
+				<div class="count_comments">
+					<% if @post.comments.any? %>
+						<p><%= @post.comments.count %> Comments</p>
+					<% end %>
+				</div>
+				<div class="show_comments">
+					<% if @post.comments.any? %>
+						<div class="show_comments">
+							<% @post.comments.each do |comment| %>
+								<div class="comment">
+									<div class="comment_content">
+										<%= comment.content %>
+									</div>
+									<div class="comment_author">
+										<small>written by <%= "#{comment.user.first_name.titleize} #{time_ago_in_words(comment.created_at)}" %> ago</small>
+									</div>
+								</div>
+							<% end %>
+						</div>
+					<% end %>
+				</div>
+				<div class="add_comment">
+					<%= form_for([@post, @post.comments.build]) do |f| %>
+						<div class="form-group">
+							<%= f.text_field :content, placeholder: "Add a Comment", class: "form-control" %>
+						</div>
+						<div class="form-group">
+							<%= f.submit "Comment", class: "btn btn-primary" %>
+						</div>
+					<% end %>
+				</div>
 			</div>
 		</div>
 	</div>

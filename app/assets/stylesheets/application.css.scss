@@ -256,6 +256,7 @@ body {
 }
 
 .stats  {
+        margin-left: 109px;
         overflow:   auto;
         margin-top: 0;
         padding:    0;
@@ -270,10 +271,84 @@ body {
                 }
                 &:hover {
                         text-decoration:    none;
-                        color:  blue;
+                        color:  #4A4A4A;
                 }
         }
         strong  {
                 display:    block;
+                text-align: center;
         }
 }
+
+.left-section {
+        float: left;
+        width: 350px;
+        position: fixed;
+        height: 100%;
+        border: 1px solid;
+        border-color: #FBF0F0;
+        background-color: #FFFFFF;
+        .sub-header {
+            text-align: center;
+            .dashboard_image {
+                height: 100px;
+            }
+        }
+        .sub-navigation {
+            margin-top: 50px;
+            li {
+                display: block;
+                height: 60px;
+                border-top: 1px rgba(138, 125, 125, 0.06) solid;
+                border-bottom: 1px rgba(138, 125, 125, 0.06) solid;
+                margin-bottom: 2px;
+                text-align: center;
+                a {
+                    background-color: #FFFFFF;
+                }
+            }
+        }
+        .btn {
+            display: block;
+            min-height: 60px;
+            padding-top: 22px;
+            font-family: sans-serif;
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 0;
+            &:hover {
+                color: #4A4A4A;
+            }
+        }
+        .btn-default {
+            background-color: #FBFAFA;
+            color: #848484;
+        }
+        .btn-default:hover {
+            background-color: #e6e6e6;
+        }
+        .view_profile a:hover {
+            background-color: #FFF;
+        }
+        .btn-post {
+            width: 100%;
+            font-size: large;
+            padding-top: 10px;
+            border-radius: 2px;
+            background-color: #337ab7;
+            color: #FFF;
+            &:hover {
+                background-color: #2e6da4;
+            }
+        }
+        #follow_form {
+            .btn {
+                width: 100%;
+                padding-top: 10px;
+            }
+        }
+        .stats {
+             margin-bottom: 20px;
+        }
+    }

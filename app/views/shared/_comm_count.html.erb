@@ -1,0 +1,4 @@
+<% @user ||= current_user %>
+<div class="comm_count">
+	<%= link_to 'Communities', {:controller => 'communities', :action => 'show_comms'}, class: "btn btn-default" %>
+</div>

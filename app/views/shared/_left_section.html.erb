@@ -1,0 +1,49 @@
+<% if(@comm) %>
+	<div class="left-section">
+		<div class="sub-header">
+			<h3><%= @comm.c_name.titleize %></h3>
+		</div>
+		<div class="sub-navigation">
+			<li><%= link_to "Discussion Board", "#", class: "btn btn-default" %></li>
+			<li><%= link_to "Members (#{@comm.members.count})", members_path, class: "btn btn-default" %></li>
+		</div>
+	</div>
+<% else %>
+
+<% @user ||= current_user %>
+
+<div class="left-section">
+	<div class="sub-header">
+		<div class="details">
+			<div class="dashboard_image"></div>
+			<div class="dashboard_info">
+				<%= "#{@user.first_name.titleize} #{@user.last_name.titleize}" %>
+				<p class="view_profile">
+					<% if params[:action] == 'show' && params[:controller] == 'dashboard' %>
+						<small><%= link_to 'View My Profile', "#" %></small>
+					<% end %>
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="stats">
+		<%= render 'shared/stats' %>
+	</div>
+
+	<% if params[:action] == "show" && params[:controller] == "profiles" %>
+		<%= render 'shared/follow_form' if signed_in? %>
+	<% end %>
+	
+	<div class="sub-navigation">
+		<%# if params[:action] == "show" && params[:controller] == "dashboard" %>
+		<% if (@user == current_user) #&& !(params[:action] == "show" && params[:controller] == "profiles") %>
+			<li><strong><%= link_to 'Activity Logger', "#", class: "btn btn-default" %></li>
+			<li><%= link_to 'Create a Community', new_community_path, class: "btn btn-default" %></li>
+			<%# render 'communities/comm_form' %>
+		<% end %>
+		<li><%= render 'shared/comm_count' %></li>
+	</div>
+</div>
+
+
+<% end %>

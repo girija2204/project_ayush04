@@ -5,62 +5,7 @@
 .profile {
     margin-top: 63px;
     margin-left: 75px;
-    .left-section {
-        float: left;
-        width: 350px;
-        position: fixed;
-        height: 100%;
-        border: 1px solid;
-        border-color: #FBF0F0;
-        background-color: #FFFFFF;
-        .sub-header {
-            text-align: center;
-        }
-        .sub-navigation {
-            margin-top: 75px;
-            li {
-                display: block;
-                height: 70px;
-                border-top: 1px rgba(138, 125, 125, 0.06) solid;
-                border-bottom: 1px rgba(138, 125, 125, 0.06) solid;
-                margin-bottom: 2px;
-                text-align: center;
-                a {
-                    background-color: #FFFFFF;
-                }
-            }
-        }
-        .btn {
-            display: block;
-            min-height: 70px;
-            padding-top: 20px;
-            font-family: sans-serif;
-            border: none;
-            font-size: x-large;
-            border-radius: 0;
-        }
-        .btn-default {
-            background-color: #FBFAFA;
-            color: #848484;
-        }
-        .btn-default:hover {
-            background-color: #e6e6e6;
-        }
-        .view_profile a:hover {
-        	background-color: #FFF;
-        }
-        .btn-post {
-        	width: 100%;
-        	font-size: large;
-        	padding-top: 10px;
-        	border-radius: 2px;
-        	background-color: #337ab7;
-        	color: #FFF;
-        	&:hover {
-        		background-color: #2e6da4;
-        	}
-        }
-    }
+    
     .right-section {
         margin-left: 430px;
         width: 700px;

@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160325043000) do
+ActiveRecord::Schema.define(version: 20160325142754) do
+
+  create_table "comm_memberships", force: :cascade do |t|
+    t.integer  "comm_id"
+    t.integer  "member_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "comm_memberships", ["comm_id", "member_id"], name: "index_comm_memberships_on_comm_id_and_member_id"
+  add_index "comm_memberships", ["comm_id"], name: "index_comm_memberships_on_comm_id"
+  add_index "comm_memberships", ["member_id"], name: "index_comm_memberships_on_member_id"
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -20,6 +31,15 @@ ActiveRecord::Schema.define(version: 20160325043000) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "communities", force: :cascade do |t|
+    t.string   "c_name"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "communities", ["user_id"], name: "index_communities_on_user_id"
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"

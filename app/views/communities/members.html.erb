@@ -1,0 +1,14 @@
+<div class="dashboard">
+	<%= render 'shared/left_section' %>
+	<div class="right-section">
+		<div>
+			<% provide(:title, @title) %>
+			<div>
+				<h3><%= @title %></h3>
+				<% @members.each do |member| %>
+					<p><%= link_to "#{member.first_name.titleize} #{member.last_name.titleize}", "#" %></p>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

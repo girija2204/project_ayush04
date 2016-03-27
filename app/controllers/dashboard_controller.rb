@@ -1,19 +1,15 @@
 class DashboardController < ApplicationController
 	def show
 		@user = User.find(params[:id])
-		@post = @user.posts.new
 		@posts = Post.all
-		@comment = @post.comments.new
-		@comments = @post.comments
 	end
-	def following
-		@title = "Following"
+	def show_comms
+		@title = "Communities"
 		@user = User.find(params[:id])
-		@users = @user.followed_users
-	end
-	def followers
-		@title = "Followers"
-		@user = User.find(params[:id])
-		@users = @user.followers
-	end
+		@comms = @user.comms
+  	end
+	def members
+  		@comm = Community.find(params[:id])
+  		@members = @comm.members
+  	end
 end

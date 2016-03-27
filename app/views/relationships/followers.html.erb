@@ -1,0 +1,17 @@
+<div class="dashboard">
+	<%= render 'shared/left_section' %>
+	<div class="right-section">
+
+		<div>
+			<% provide(:title, @title) %>
+			<div>
+				<h3><%= @title %></h3>
+				<% if @users.any? %>
+					<% @users.each do |user| %>
+						<%= user.first_name %>
+					<% end %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

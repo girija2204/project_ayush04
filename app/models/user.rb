@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
+  has_many :communities
 	has_many :posts, dependent: :destroy
-	has_many :comments
+	has_many :comments, dependent: :destroy
 	has_many :relationships, foreign_key: "follower_id",
 							 dependent: :destroy
 
@@ -11,6 +12,12 @@ class User < ActiveRecord::Base
 									 dependent: :destroy
 
 	has_many :followers, through: :passive_relationships
+
+  has_many :reverse_memberships, class_name: 'CommMembership',
+                                 foreign_key: "member_id",
+                                 dependent: :destroy
+  
+  has_many :comms, through: :reverse_memberships
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

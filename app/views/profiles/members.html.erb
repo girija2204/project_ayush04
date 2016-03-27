@@ -1,0 +1,8 @@
+<div class="dashboard">
+	<%= render 'left_section' %>
+	<div class="right-section">
+		<% @members.each do |member| %>
+			<%= link_to "#{member.first_name} #{member.last_name}", "#" %>
+		<% end %>
+	</div>
+</div>

@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'communities/create'
+
   get 'dashboard/:id' => 'dashboard#show', as: :dashboard
 
   resources :posts do
@@ -8,17 +10,27 @@ Rails.application.routes.draw do
 
   resources :welcome
   devise_for :users, controllers: { registrations: "registrations"}
-  resources :dashboard do
-    member do
-      get :following, :followers
-    end
-  end
+  
+  #resources :dashboard do
+  #  member do
+  #    get :following, :followers
+  #  end
+  #end
+  
+  get ':id/following' => 'relationships#following', as: :following
+  get ':id/followers' => 'relationships#followers', as: :followers
+  
+  get ':id/communities' => 'communities#show_comms'
 
+  get 'community/:id/members' => 'communities#members', as: :members
+  get 'community/:id' => 'communities#show', as: :comm
+  
   get 'profile/:id' => 'profiles#show', as: :profile
   
   root 'welcome#index'
 
   resources :relationships, only: [:create, :destroy]
+  resources :communities
 
 
   # The priority is based upon order of creation: first created -> highest priority.
