@@ -26,8 +26,21 @@
             margin-left: 10px;
             border-radius: 15px;
             margin-bottom: 30px;
+            .show_post_created_at {
+                font-weight: 100;
+            }
             .show_post_description {
                 margin-bottom: 15px;
+                font-weight: 100;
+            }
+            .comments_section {
+                font-weight: 100;
+                .separator {
+                    border: 1px solid #F5F5F5;
+                }
+            }
+            .count_comments {
+                font-weight: bold;
             }
         }
         .list_patients {

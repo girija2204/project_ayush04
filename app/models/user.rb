@@ -1,7 +1,12 @@
 class User < ActiveRecord::Base
   has_many :communities
-	has_many :posts, dependent: :destroy
+	
+  has_many :posts, dependent: :destroy
 	has_many :comments, dependent: :destroy
+  
+  has_many :discussions, dependent: :destroy
+  has_many :d_comments, dependent: :destroy
+
 	has_many :relationships, foreign_key: "follower_id",
 							 dependent: :destroy
 

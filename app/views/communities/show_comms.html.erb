@@ -6,7 +6,7 @@
 			<div>
 				<h3><%= @title %></h3>
 				<% @comms.each do |comm| %>
-					<p><strong><%= link_to comm.c_name, comm_path(comm.id) %></strong></p>
+					<p><strong><%= link_to comm.c_name, disc_board_path(comm.id) %></strong></p>
 				<% end %>
 			</div>
 		</div>

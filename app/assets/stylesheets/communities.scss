@@ -1,3 +1,43 @@
 // Place all the styles related to the communities controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.dashboard {
+    margin-top: 63px;
+    margin-left: 75px;
+    
+    .right-section {
+        margin-left: 430px;
+        width: 700px;
+        /* background: #FFF; */
+        padding-top: 50px;
+        height: 1500px;
+        
+        
+        .show_discs {
+            /* border-top: 1px solid #D4D2D2; */
+            /* border-bottom: 1px solid #D4D2D2; */
+            width: 97%;
+            padding-top: 11px;
+            padding-bottom: 20px;
+            padding-left: 25px;
+            padding-right: 10px;
+            background: #FFF;
+            margin-left: 10px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            .show_disc_created_at {
+                font-weight: 100;
+            }
+            .comments_section {
+                font-weight: 100;
+                .separator {
+                    border: 1px solid #F5F5F5;
+                }
+            }
+            .count_comments {
+                font-weight: bold;
+            }
+        }
+    }
+}

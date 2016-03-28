@@ -15,6 +15,10 @@ class CommunitiesController < ApplicationController
   end
   def show
   	@comm = Community.find(params[:id])
+  	@discs = Discussion.all
+  end
+  def discussion_form
+  	@comm = Community.find(params[:id])
   end
   def show_comms
 	@title = "Communities"
@@ -25,8 +29,7 @@ class CommunitiesController < ApplicationController
   	@title = "Members"
   	@comm = Community.find(params[:id])
   	@members = @comm.members
-  end
-	 	
+  end	 	
 
   private
   def comm_params

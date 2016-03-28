@@ -4,7 +4,8 @@
 			<h3><%= @comm.c_name.titleize %></h3>
 		</div>
 		<div class="sub-navigation">
-			<li><%= link_to "Discussion Board", "#", class: "btn btn-default" %></li>
+			<li><%= link_to "Discussion Board", disc_board_path, class: "btn btn-default" %></li>
+			<li><%= link_to 'Start a Discussion', comm_path, class: "btn btn-default" %></li>
 			<li><%= link_to "Members (#{@comm.members.count})", members_path, class: "btn btn-default" %></li>
 		</div>
 	</div>

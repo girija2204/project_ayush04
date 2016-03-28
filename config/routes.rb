@@ -8,6 +8,15 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  #get ':id/discussion/new' => 'discussions#new'
+  #post ':id/discussion/new' => 'discussions#create'
+
+  resources :discussions do
+    resources :d_comments
+  end
+
+  get 'community/:id/discussions' => 'communities#show', as: :disc_board
+
   resources :welcome
   devise_for :users, controllers: { registrations: "registrations"}
   
@@ -23,7 +32,7 @@ Rails.application.routes.draw do
   get ':id/communities' => 'communities#show_comms'
 
   get 'community/:id/members' => 'communities#members', as: :members
-  get 'community/:id' => 'communities#show', as: :comm
+  get 'community/:id' => 'communities#discussion_form', as: :comm
   
   get 'profile/:id' => 'profiles#show', as: :profile
   

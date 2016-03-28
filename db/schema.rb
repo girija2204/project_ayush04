@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160325142754) do
+ActiveRecord::Schema.define(version: 20160327060115) do
 
   create_table "comm_memberships", force: :cascade do |t|
     t.integer  "comm_id"
@@ -40,6 +40,30 @@ ActiveRecord::Schema.define(version: 20160325142754) do
   end
 
   add_index "communities", ["user_id"], name: "index_communities_on_user_id"
+
+  create_table "d_comments", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "discussion_id"
+    t.integer  "community_id"
+    t.integer  "user_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "d_comments", ["community_id"], name: "index_d_comments_on_community_id"
+  add_index "d_comments", ["discussion_id"], name: "index_d_comments_on_discussion_id"
+  add_index "d_comments", ["user_id"], name: "index_d_comments_on_user_id"
+
+  create_table "discussions", force: :cascade do |t|
+    t.text     "content"
+    t.integer  "community_id"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "discussions", ["community_id"], name: "index_discussions_on_community_id"
+  add_index "discussions", ["user_id"], name: "index_discussions_on_user_id"
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"
