@@ -15,17 +15,27 @@ Rails.application.routes.draw do
     resources :d_comments
   end
 
+  #resources :users
+
   get 'community/:id/discussions' => 'communities#show', as: :disc_board
 
   resources :welcome
   devise_for :users, controllers: { registrations: "registrations"}
-  
+
   #resources :dashboard do
   #  member do
   #    get :following, :followers
   #  end
   #end
   
+  post 'profile/:id' => 'profiles#update', as: :profile_update
+  
+  get 'profile/:id/first' => 'profiles#first_step', as: :first_step
+  post 'profile/:id/first' => 'profiles#save_attributes'
+  
+  get 'profile/:id/second' => 'profiles#second_step', as: :second_step
+  post 'profile/:id/second' => 'profiles#final_save_attributes'
+
   get ':id/following' => 'relationships#following', as: :following
   get ':id/followers' => 'relationships#followers', as: :followers
   

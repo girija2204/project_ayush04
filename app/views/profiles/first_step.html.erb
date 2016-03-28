@@ -1,0 +1,29 @@
+<div class="signup_steps">
+  <%= form_for(:profile, :url => {:controller => :profiles, :action => :save_attributes}) do |f| %>
+    <%= devise_error_messages! %>
+
+    <h2>Personal Details</h2>
+
+    <div class="form-group" id="user_first_name">
+       <%= f.text_field :first_name, autofocus: true, class: "form-control", placeholder: "First Name" %>
+    </div>
+
+    <div class="form-group" id="user_last_name">
+       <%= f.text_field :last_name, autofocus: true, class: "form-control", placeholder: "Last Name" %>
+    </div>
+
+    <div class="form-group" id="user_gender">
+       <%= f.select(:gender, ['Male', 'Female'], { :include_blank => "Gender" }, { :class => "form-control" }) %>
+    </div>
+
+    <% if false %>
+    <div class="form-group" id="user_date_of_birth">
+       <%= f.text_field :dob, autofocus: true, class: "form-control", placeholder: "Last Name" %>
+    </div>
+    <% end %>
+    
+    <div class="form-group">
+       <%= f.submit "Submit", class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160327060115) do
+ActiveRecord::Schema.define(version: 20160328150022) do
 
   create_table "comm_memberships", force: :cascade do |t|
     t.integer  "comm_id"
@@ -102,6 +102,13 @@ ActiveRecord::Schema.define(version: 20160327060115) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.date     "dob"
+    t.string   "gender"
+    t.string   "education_status"
+    t.string   "work_status"
+    t.string   "smoking"
+    t.string   "drinking"
+    t.string   "diabetes_status"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

@@ -352,3 +352,16 @@ body {
              margin-bottom: 20px;
         }
     }
+
+.signup_steps {
+    margin-top: 150px;
+    width: 700px;
+    margin-left: 306px;
+    padding: 33px;
+    text-align: center;
+    background-color: #FFF;
+    border-radius: 10px;
+    .btn-primary {
+        width: 100%;
+    }
+}

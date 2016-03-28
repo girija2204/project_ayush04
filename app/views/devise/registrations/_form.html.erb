@@ -15,14 +15,6 @@
             <%= f.select(:user_type, ['Doctor', 'Patient'], { :include_blank => "Category" }, { :class => "form-control" }) %>
           </div>
 
-          <div class="form-group" id="user_first_name">
-            <%= f.text_field :first_name, autofocus: true, class: "form-control", placeholder: "First Name" %>
-          </div>
-
-          <div class="form-group" id="user_last_name">
-            <%= f.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
-          </div>
-
           <div class="form-group">
             <%= f.email_field :email, class: "form-control", placeholder: "Email ID" %>
           </div>

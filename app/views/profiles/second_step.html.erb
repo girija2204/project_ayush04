@@ -1,0 +1,31 @@
+<div class="signup_steps">
+  <%= form_for(:profile, url: {:controller => :profiles, :action => :final_save_attributes}) do |f| %>
+	  <%= devise_error_messages! %>
+
+	  <h2>Other Neccessary Details</h2>
+
+	  <div class="form-group">
+	  	<%= f.select(:education_status, ['> High School', 'High School', '< High School'], { :include_blank => "Education Status" }, { :class => "form-control" }) %>
+	  </div>
+
+	  <div class="form-group">
+	  	<%= f.select(:work_status, ['Employed', 'Unemployed'], { :include_blank => "Work Status" }, { :class => "form-control" }) %>
+	  </div>
+
+	  <div class="form-group">
+	  	<%= f.select(:smoking, ['Never', 'Former', 'Current'], { :include_blank => "Do you Smoke" }, { :class => "form-control" }) %>
+	  </div>
+
+	  <div class="form-group">
+	  	<%= f.select(:drinking, ['Never', 'Former', 'Current'], { :include_blank => "Do you Drink" }, { :class => "form-control" }) %>
+	  </div>
+
+	  <div class="form-group">
+	  	<%= f.select(:diabetes_status, ['High Glucose Level', 'High A1C', 'Ever a doctor told you that you have diabetes'], { :include_blank => "Do you have Diabetes" }, { :class => "form-control" }) %>
+	  </div>
+
+	  <div class="form-group">
+	     <%= f.submit "Submit", class: "btn btn-primary" %>
+	  </div>
+	<% end %>
+</div>
