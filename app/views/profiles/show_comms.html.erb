@@ -5,8 +5,8 @@
 			<% provide(:title, @title) %>
 			<div>
 				<h3><%= @title %></h3>
-				<% @members.each do |member| %>
-					<p><%= link_to "#{member.first_name.titleize} #{member.last_name.titleize}", profile_path(member) %></p>
+				<% @comms.each do |comm| %>
+					<p><strong><%= link_to comm.c_name, disc_board_path(comm.id) %></strong></p>
 				<% end %>
 			</div>
 		</div>

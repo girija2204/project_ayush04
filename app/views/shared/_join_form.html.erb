@@ -1,0 +1,7 @@
+<div id="join_form">
+	<% if @comm.member?(current_user) %>
+		<%= render 'shared/leave' %>
+	<% else %>
+		<%= render 'shared/join' %>
+	<% end %>
+</div>

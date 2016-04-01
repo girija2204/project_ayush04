@@ -1,0 +1,4 @@
+<%= form_for(current_user.reverse_memberships.build(:comm_id => @comm.id)) do |f| %>
+	<div><%= f.hidden_field :comm_id %></div>
+	<%= f.submit "Join the Community", class: "btn btn-primary" %>
+<% end %>

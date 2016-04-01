@@ -1,7 +1,7 @@
 <div class="profile">
 	<%= render 'shared/left_section' %>
 	<div class="right-section">
-		
-	<%# render 'posts' %>
+		<%= "#{@user.first_name.titleize} #{@user.last_name.titleize}" %>
+		<%= "#{@user.gender}" %>
 	</div>
 </div>

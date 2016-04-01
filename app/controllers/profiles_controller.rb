@@ -25,10 +25,22 @@ class ProfilesController < ApplicationController
 			redirect_to dashboard_path(@user.id)
 		end
 	end
+	def about_me
+		@user = User.find(params[:id])
+	end
+	def all_posts
+		@user = User.find(params[:id])
+	end
+	def edu_details
+		@user = User.find(params[:id])
+	end
+	def emp_details
+		@user = User.find(params[:id])
+	end
 
 	private
 	def save_attr_params
-		params.require(:profile).permit(:first_name, :last_name, :gender)
+		params.require(:profile).permit(:first_name, :last_name, :gender, :bio)
 	end
 	def final_save_attr_params
 		params.require(:profile).permit(:education_status, :work_status, :smoking, :drinking, :diabetes_status)

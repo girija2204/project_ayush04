@@ -1,55 +1,57 @@
 Rails.application.routes.draw do
 
-  get 'communities/create'
+  get 'comm_memberships/create'
 
-  get 'dashboard/:id' => 'dashboard#show', as: :dashboard
+  get 'comm_memberships/destroy'
 
   resources :posts do
     resources :comments
   end
 
-  #get ':id/discussion/new' => 'discussions#new'
-  #post ':id/discussion/new' => 'discussions#create'
-
   resources :discussions do
     resources :d_comments
   end
 
-  #resources :users
+  resources :welcome
+  resources :relationships, only: [:create, :destroy]
+  resources :comm_memberships, only: [:create, :destroy]
+  resources :communities
+
+  root 'welcome#index'
+
+  get 'communities/create'
+
+  get 'dashboard/:id' => 'dashboard#show', as: :dashboard
 
   get 'community/:id/discussions' => 'communities#show', as: :disc_board
 
-  resources :welcome
   devise_for :users, controllers: { registrations: "registrations"}
+  
+  get 'profile/:id/all_posts' => 'profiles#all_posts', as: :all_posts
+  get 'profile/:id/educational' => 'profiles#edu_details', as: :edu_details
+  get 'profile/:id/employment' => 'profiles#emp_details', as: :emp_details
+  #post 'profile/:id' => 'profiles#update', as: :profile_update
+  get 'profile/:id/first' => 'profiles#first_step', as: :first_step
+  post 'profile/:id/first' => 'profiles#save_attributes'
+  get 'profile/:id/second' => 'profiles#second_step', as: :second_step
+  post 'profile/:id/second' => 'profiles#final_save_attributes'
+  get 'profile/:id' => 'profiles#about_me', as: :profile
+
+  get ':id/following' => 'relationships#following', as: :following
+  get ':id/followers' => 'relationships#followers', as: :followers
+  
+  get ':id/communities' => 'profiles#show_comms', as: :prof_comms
+  get 'dashboard/:id/communities' => 'dashboard#show_comms', as: :dash_comms
+  get 'community/:id/members' => 'communities#members', as: :members
+  get 'community/:id' => 'communities#discussion_form', as: :comm
+  
+  
 
   #resources :dashboard do
   #  member do
   #    get :following, :followers
   #  end
   #end
-  
-  post 'profile/:id' => 'profiles#update', as: :profile_update
-  
-  get 'profile/:id/first' => 'profiles#first_step', as: :first_step
-  post 'profile/:id/first' => 'profiles#save_attributes'
-  
-  get 'profile/:id/second' => 'profiles#second_step', as: :second_step
-  post 'profile/:id/second' => 'profiles#final_save_attributes'
-
-  get ':id/following' => 'relationships#following', as: :following
-  get ':id/followers' => 'relationships#followers', as: :followers
-  
-  get ':id/communities' => 'communities#show_comms'
-
-  get 'community/:id/members' => 'communities#members', as: :members
-  get 'community/:id' => 'communities#discussion_form', as: :comm
-  
-  get 'profile/:id' => 'profiles#show', as: :profile
-  
-  root 'welcome#index'
-
-  resources :relationships, only: [:create, :destroy]
-  resources :communities
 
 
   # The priority is based upon order of creation: first created -> highest priority.

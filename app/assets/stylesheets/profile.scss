@@ -2,37 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.profile {
-    margin-top: 63px;
-    margin-left: 75px;
-    
-    .right-section {
-        margin-left: 430px;
-        width: 700px;
-        /* background: #FFF; */
-        padding-top: 50px;
-        height: 1500px;
-        
-        
-        .show_posts {
-            /* border-top: 1px solid #D4D2D2; */
-            /* border-bottom: 1px solid #D4D2D2; */
-            width: 97%;
-            padding-top: 11px;
-            padding-bottom: 20px;
-            padding-left: 25px;
-            padding-right: 10px;
-            background: #FFF;
-            margin-left: 10px;
-            border-radius: 15px;
-            margin-bottom: 30px;
-            .show_post_description {
-                margin-bottom: 15px;
-            }
-        }
-        .list_patients {
-            background: #FFF;
-            padding: 15px;
+.all_tabs {
+    background-color: white;
+    padding: 30px;
+    border-radius: 4px;
+
+    .details_section {
+        padding: 10px;
+        h4 {
+            border-bottom: 1px solid rgba(171, 171, 171, 0.23);
+            padding-bottom: 5px;
         }
     }
 }

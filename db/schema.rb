@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160328150022) do
+ActiveRecord::Schema.define(version: 20160329172917) do
 
   create_table "comm_memberships", force: :cascade do |t|
     t.integer  "comm_id"
@@ -109,6 +109,7 @@ ActiveRecord::Schema.define(version: 20160328150022) do
     t.string   "smoking"
     t.string   "drinking"
     t.string   "diabetes_status"
+    t.text     "bio"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

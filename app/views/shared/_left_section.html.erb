@@ -4,6 +4,8 @@
 			<h3><%= @comm.c_name.titleize %></h3>
 		</div>
 		<div class="sub-navigation">
+			<%= puts @comm.id %>
+			<li><%= render 'shared/join_form' if signed_in? %></li>
 			<li><%= link_to "Discussion Board", disc_board_path, class: "btn btn-default" %></li>
 			<li><%= link_to 'Start a Discussion', comm_path, class: "btn btn-default" %></li>
 			<li><%= link_to "Members (#{@comm.members.count})", members_path, class: "btn btn-default" %></li>
@@ -20,8 +22,8 @@
 			<div class="dashboard_info">
 				<%= "#{@user.first_name.titleize} #{@user.last_name.titleize}" %>
 				<p class="view_profile">
-					<% if params[:action] == 'show' && params[:controller] == 'dashboard' %>
-						<small><%= link_to 'View My Profile', "#" %></small>
+					<% if (params[:action] == 'show' || params[:action] == 'show_comms') && params[:controller] == 'dashboard' %>
+						<small><%= link_to 'View My Profile', profile_path(@user) %></small>
 					<% end %>
 				</p>
 			</div>
@@ -31,18 +33,22 @@
 		<%= render 'shared/stats' %>
 	</div>
 
-	<% if params[:action] == "show" && params[:controller] == "profiles" %>
-		<%= render 'shared/follow_form' if signed_in? %>
-	<% end %>
-	
 	<div class="sub-navigation">
-		<%# if params[:action] == "show" && params[:controller] == "dashboard" %>
-		<% if (@user == current_user) #&& !(params[:action] == "show" && params[:controller] == "profiles") %>
-			<li><strong><%= link_to 'Activity Logger', "#", class: "btn btn-default" %></li>
-			<li><%= link_to 'Create a Community', new_community_path, class: "btn btn-default" %></li>
-			<%# render 'communities/comm_form' %>
+	
+		<% if (params[:action] == "about_me" || params[:action] == "all_posts" || params[:action] == "edu_details" || params[:action] == "emp_details" || params[:action] == "show_comms") && params[:controller] == "profiles" %>
+			<%= render 'shared/follow_form' if signed_in? %>
+			<li><%= link_to 'About Me', profile_path(@user), class: "btn btn-default" %></li>
+			<li><%= link_to 'Posts', all_posts_path(@user), class: "btn btn-default" %></li>
+			<li><%= link_to 'Educational', edu_details_path(@user), class: "btn btn-default" %></li>
+			<li><%= link_to 'Employment', emp_details_path(@user), class: "btn btn-default" %></li>
+			<li><%= link_to 'Communities', prof_comms_path, class: "btn btn-default" %></li>
 		<% end %>
-		<li><%= render 'shared/comm_count' %></li>
+	
+		<% if (params[:action] == 'show' || params[:action] == 'show_comms') && params[:controller] == 'dashboard' %>
+			<li><%= link_to 'Activity Logger', "#", class: "btn btn-default", id: "park" %></li>
+			<li><%= link_to 'Create a Community', new_community_path, class: "btn btn-default" %></li>
+			<li><%= link_to 'Communities', dash_comms_path, class: "btn btn-default" %></li>
+		<% end %>
 	</div>
 </div>
 

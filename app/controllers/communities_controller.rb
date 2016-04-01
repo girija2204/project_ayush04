@@ -13,6 +13,18 @@ class CommunitiesController < ApplicationController
   		render 'new'
   	end
   end
+  def user_join
+    @comm = Community.find(params[:id])
+    @user = current_user
+    if @comm.memberships.build(@user)
+      redirect_to @comm
+    end
+  end
+  def user_leave
+    @comm = Community.find(params[:id])
+    @user = current_user
+    @comm.memberships.find_by(@user).destroy
+  end
   def show
   	@comm = Community.find(params[:id])
   	@discs = Discussion.all

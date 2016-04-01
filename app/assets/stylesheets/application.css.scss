@@ -295,23 +295,25 @@ body {
             }
         }
         .sub-navigation {
-            margin-top: 50px;
+            margin-top: 20px;
             li {
                 display: block;
-                height: 60px;
-                border-top: 1px rgba(138, 125, 125, 0.06) solid;
+                /* height: 60px; */
+                /* border-top: 1px rgba(138, 125, 125, 0.06) solid; */
                 border-bottom: 1px rgba(138, 125, 125, 0.06) solid;
-                margin-bottom: 2px;
+                /* margin-bottom: 2px; */
                 text-align: center;
                 a {
-                    background-color: #FFFFFF;
+                    /* background-color: #FFFFFF; */
+                    height: 50px;
                 }
             }
         }
         .btn {
             display: block;
-            min-height: 60px;
-            padding-top: 22px;
+            /* min-height: 60px; */
+            padding-top: 16px;
+            padding-bottom: 16px;
             font-family: sans-serif;
             border: none;
             font-size: 16px;
@@ -322,7 +324,7 @@ body {
             }
         }
         .btn-default {
-            background-color: #FBFAFA;
+            background-color: #FFFFFF;
             color: #848484;
         }
         .btn-default:hover {
@@ -342,10 +344,10 @@ body {
                 background-color: #2e6da4;
             }
         }
-        #follow_form {
+        #follow_form, #join_form {
             .btn {
                 width: 100%;
-                padding-top: 10px;
+                /* padding-top: 10px; */
             }
         }
         .stats {
@@ -363,5 +365,53 @@ body {
     border-radius: 10px;
     .btn-primary {
         width: 100%;
+    }
+}
+
+.dashboard, .profile {
+    margin-top: 63px;
+    margin-left: 50px;
+    
+    .right-section {
+        margin-left: 430px;
+        width: 700px;
+        /* background: #FFF; */
+        padding-top: 50px;
+        height: 1500px;
+        
+        
+        .show_posts {
+            /* border-top: 1px solid #D4D2D2; */
+            /* border-bottom: 1px solid #D4D2D2; */
+            width: 97%;
+            padding-top: 11px;
+            padding-bottom: 20px;
+            padding-left: 25px;
+            padding-right: 10px;
+            background: #FFF;
+            margin-left: 10px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            .show_post_created_at {
+                font-weight: 100;
+            }
+            .show_post_description {
+                margin-bottom: 15px;
+                font-weight: 100;
+            }
+            .comments_section {
+                font-weight: 100;
+                .separator {
+                    border: 1px solid #F5F5F5;
+                }
+            }
+            .count_comments {
+                font-weight: bold;
+            }
+        }
+        .list_patients {
+            background: #FFF;
+            padding: 15px;
+        }
     }
 }

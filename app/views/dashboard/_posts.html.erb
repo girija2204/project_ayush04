@@ -17,12 +17,12 @@
 			<div class="show_post_description">
 				<%= post.content %>
 			</div>
+			<div id="count_comments">
+				<% if post.comments.any? %>
+					<p><%= post.comments.count %> Comments</p>
+				<% end %>
+			</div>
 			<div class="comments_section">
-				<div class="count_comments">
-					<% if post.comments.any? %>
-						<p><%= post.comments.count %> Comments</p>
-					<% end %>
-				</div>
 				<div class="show_comments">
 					<% if post.comments.any? %>
 						<% post.comments.each do |comment| %>

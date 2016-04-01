@@ -37,4 +37,7 @@ class User < ActiveRecord::Base
     def followed_users?(other_user)
     	followed_users.include?(other_user)
     end
+    def comms?(community)
+      comms.include?(community)
+    end
 end

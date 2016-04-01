@@ -15,6 +15,6 @@ class Community < ActiveRecord::Base
   	memberships.find_by(member_id: member.id).destroy
   end
   def member?(member)
-  	memberships.include?(member.id)
+  	members.include?(member)
   end
 end
