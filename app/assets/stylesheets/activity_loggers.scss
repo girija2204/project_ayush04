@@ -1,0 +1,20 @@
+// Place all the styles related to the activity_loggers controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.btn-physical, .btn-food {
+	width: 200px;
+    height: 160px;
+    float: left;
+    border: 2px;
+    background-color: aqua;
+    margin-top: 130px;
+    font-size: 35px;
+    padding-top: 50px;
+}
+.btn-physical {
+	margin-left: 300px;
+}
+.btn-food {
+	margin-left: 100px;
+}

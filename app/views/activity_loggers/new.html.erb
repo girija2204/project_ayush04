@@ -1,0 +1,12 @@
+<div class="physical">
+	<%= link_to "Physical", physical_logger_path, class: "btn btn-physical", data: { toggle: "modal", target: "#myModal-10", remote: true } %>
+</div>
+<div class="food">
+	<%= link_to "Food", food_logger_path, class: "btn btn-food" %>
+</div>
+<%= render 'new_physical' %>
+<%= form_for(current_user.activity_loggers.new) do |f| %>
+	<div class="form-group">
+
+	</div>
+<% end %>

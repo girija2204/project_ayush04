@@ -45,7 +45,7 @@
 		<% end %>
 	
 		<% if (params[:action] == 'show' || params[:action] == 'show_comms') && params[:controller] == 'dashboard' %>
-			<li><%= link_to 'Activity Logger', "#", class: "btn btn-default", id: "park" %></li>
+			<li><%= link_to 'Activity Logger', logger_path, class: "btn btn-default", id: "park" %></li>
 			<li><%= link_to 'Create a Community', new_community_path, class: "btn btn-default" %></li>
 			<li><%= link_to 'Communities', dash_comms_path, class: "btn btn-default" %></li>
 		<% end %>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  activity_date: 2016-04-02
+  user_id: 
+  activity_type: MyString
+  activity_description: MyText
+  time: 1
+  distance: 1
+
+two:
+  activity_date: 2016-04-02
+  user_id: 
+  activity_type: MyString
+  activity_description: MyText
+  time: 1
+  distance: 1

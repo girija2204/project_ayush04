@@ -16,9 +16,3 @@
 //= require turbolinks
 //= require_tree .
 
-//$(document).ready(function(){
-//	$(".comments_section").hide();
-//	$(".btn-primary").click(function(){
-//		$(".comments_section").toggle();
-//	});
-//});

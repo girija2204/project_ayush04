@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy]
   resources :comm_memberships, only: [:create, :destroy]
   resources :communities
+  resources :activity_loggers
 
   root 'welcome#index'
 
@@ -45,7 +46,13 @@ Rails.application.routes.draw do
   get 'community/:id/members' => 'communities#members', as: :members
   get 'community/:id' => 'communities#discussion_form', as: :comm
   
-  
+  get 'dashboard/:id/activity_logger' => 'activity_loggers#new', as: :logger
+  get 'dashboard/:id/activity_logger/new_physical' => 'activity_loggers#new_physical', as: :physical_logger
+  post 'dashboard/:id/activity_logger/new_physical' => 'activity_loggers#create'
+
+  get 'dashboard/:id/activity_logger/new_food' => 'activity_loggers#new_food', as: :food_logger
+  post 'dashboard/:id/activity_logger/new_food' => 'activity_loggers#food_create'
+
 
   #resources :dashboard do
   #  member do

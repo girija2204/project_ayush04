@@ -1,0 +1,128 @@
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('#form-running').hide();
+    $('#form-exercise').hide();
+    $('#walking_btn').addClass("active");
+    $('#walking_btn').click(function(){
+      $('#form-walking').show();
+      $('#walking_btn').addClass("active");
+      $('#form-running').hide();
+      $('#running_btn').removeClass("active");
+      $('#form-exercise').hide();
+      $('#exercise_btn').removeClass("active");
+    });
+    $('#running_btn').click(function(){
+      $('#form-running').show();
+      $('#running_btn').addClass("active");
+      $('#form-walking').hide();
+      $('#walking_btn').removeClass("active");
+      $('#form-exercise').hide();
+      $('#exercise_btn').removeClass("active");
+    });
+    $('#exercise_btn').click(function(){
+      $('#form-exercise').show();
+      $('#exercise_btn').addClass("active");
+      $('#form-running').hide();
+      $('#running_btn').removeClass("active");
+      $('#form-walking').hide();
+      $('#walking_btn').removeClass("active");
+    });
+  });
+</script>
+
+<div class="modal fade" id="myModal-10" tabindex="-1" role="dialog" 
+      aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;
+        </button>
+        <ul class="nav nav-tabs">
+        	<li id="walking_btn"><%= link_to "Walking", "#form-walking" %></li>
+        	<li id="running_btn"><%= link_to "Running", "#form-running" %></li>
+        	<li id="exercise_btn"><%= link_to "Exercise", "#form-exercise" %></li>
+        </ul>
+      </div>
+      <div class="modal-body">
+      	<div id="form-walking">
+          <%= form_for(current_user.activity_loggers.new) do |f| %>
+            <div>
+              <%= f.text_field :activity_description, class: "form-control", placeholder: "Activity Description" %>  
+            </div>
+
+            <div class="form-group">
+              <%= f.date_field :activity_date, class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.hidden_field :activity_type, value: "walking" %>
+            </div>
+
+            <div>
+              <%= f.number_field :distance, class: "form-control", placeholder: "00" %>km
+            </div>          
+            
+
+            <div class="form-group">
+              <%= f.submit "Submit", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+      	</div>
+      
+        <div id="form-running">
+          <%= form_for(current_user.activity_loggers.new) do |f| %>
+            <div>
+              <%= f.text_field :activity_description, class: "form-control", placeholder: "Activity Description" %>  
+            </div>
+
+            <div class="form-group">
+              <%= f.date_field :activity_date, class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.hidden_field :activity_type, value: "running" %>
+            </div>
+
+            <div>
+              <%= f.number_field :distance, class: "form-control", placeholder: "00" %>km
+            </div>          
+            
+
+            <div class="form-group">
+              <%= f.submit "Submit", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+    
+        <div id="form-exercise">
+          <%= form_for(current_user.activity_loggers.new) do |f| %>
+            <div>
+              <%= f.text_field :activity_description, class: "form-control", placeholder: "Activity Description" %>  
+            </div>
+
+            <div class="form-group">
+              <%= f.date_field :activity_date, class: "form-control" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.hidden_field :activity_type, value: "exercise" %>
+            </div>
+
+            <div>
+              <%= f.number_field :hours, class: "form-control", placeholder: "00" %>hours
+            </div>
+            <div>
+              <%= f.number_field :min, class: "form-control", placeholder: "00" %>min
+            </div>          
+            
+
+            <div class="form-group">
+              <%= f.submit "Submit", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

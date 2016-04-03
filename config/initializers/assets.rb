@@ -4,7 +4,8 @@
 Rails.application.config.assets.version = '1.0'
 
 Rails.application.config.assets.precompile += %w( jquery-1.4.2.min.js )
-Rails.application.config.assets.precompile += %w( dashboard.js )
+Rails.application.config.assets.precompile += %w( posts.js )
+Rails.application.config.assets.precompile += %w( activity_loggers.js )
 
 # Add additional assets to the asset load path
 # Rails.application.config.assets.paths << Emoji.images_path

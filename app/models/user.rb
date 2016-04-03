@@ -23,11 +23,14 @@ class User < ActiveRecord::Base
                                  dependent: :destroy
   
   has_many :comms, through: :reverse_memberships
+
+  has_many :activity_loggers
+
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-
     def follow(other_user)
     	relationships.create(followed_id: other_user.id)
     end
