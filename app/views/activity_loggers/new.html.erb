@@ -1,12 +1,19 @@
-<div class="physical">
-	<%= link_to "Physical", physical_logger_path, class: "btn btn-physical", data: { toggle: "modal", target: "#myModal-10", remote: true } %>
-</div>
-<div class="food">
-	<%= link_to "Food", food_logger_path, class: "btn btn-food" %>
+<div class="activity-forms">
+	<div class="back_link"><%= link_to "Show Activities", show_logger_path, class: "btn btn-default" %></div>
+	<h2 style="margin-left: 517px; margin-bottom: 40px; font-weight: bold;">
+		Add your activities
+	</h2>
+	<div class="physical">
+		<%= link_to "Physical", physical_logger_path, class: "btn-physical", data: { toggle: "modal", target: "#myModal-10", remote: true } %>
+		
+	</div>
+	<div class="food">
+		<%= link_to "Food", food_logger_path, class: "btn-food", data: { toggle: "modal", target: "#myModal-11", remote: true } %>
+	</div>
+	<div class="other">
+		<h2>Other Details...</h2>
+		<%= render 'other_activities' %>
+	</div>
 </div>
 <%= render 'new_physical' %>
-<%= form_for(current_user.activity_loggers.new) do |f| %>
-	<div class="form-group">
-
-	</div>
-<% end %>
+<%= render 'new_food' %>

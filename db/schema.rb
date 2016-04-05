@@ -11,18 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160402151220) do
+ActiveRecord::Schema.define(version: 20160403102750) do
 
   create_table "activity_loggers", force: :cascade do |t|
     t.date     "activity_date"
     t.integer  "user_id"
     t.string   "activity_type"
-    t.text     "activity_description"
-    t.integer  "distance"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.integer  "hours"
     t.integer  "min"
+    t.string   "activity_measures"
+    t.integer  "quantities"
   end
 
   add_index "activity_loggers", ["activity_date", "user_id"], name: "index_activity_loggers_on_activity_date_and_user_id"
@@ -80,6 +80,20 @@ ActiveRecord::Schema.define(version: 20160402151220) do
 
   add_index "discussions", ["community_id"], name: "index_discussions_on_community_id"
   add_index "discussions", ["user_id"], name: "index_discussions_on_user_id"
+
+  create_table "other_activities", force: :cascade do |t|
+    t.date     "activity_date"
+    t.integer  "user_id"
+    t.string   "activity_type"
+    t.string   "activity_measures"
+    t.integer  "quantity"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "other_activities", ["activity_date", "user_id"], name: "index_other_activities_on_activity_date_and_user_id"
+  add_index "other_activities", ["user_id", "activity_type"], name: "index_other_activities_on_user_id_and_activity_type"
+  add_index "other_activities", ["user_id"], name: "index_other_activities_on_user_id"
 
   create_table "posts", force: :cascade do |t|
     t.string   "title"

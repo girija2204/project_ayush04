@@ -46,7 +46,8 @@ Rails.application.routes.draw do
   get 'community/:id/members' => 'communities#members', as: :members
   get 'community/:id' => 'communities#discussion_form', as: :comm
   
-  get 'dashboard/:id/activity_logger' => 'activity_loggers#new', as: :logger
+  get 'dashboard/:id/activity_logger' => 'activity_loggers#show', as: :show_logger
+  get 'dashboard/:id/activity_logger/add' => 'activity_loggers#new', as: :add_logger
   get 'dashboard/:id/activity_logger/new_physical' => 'activity_loggers#new_physical', as: :physical_logger
   post 'dashboard/:id/activity_logger/new_physical' => 'activity_loggers#create'
 

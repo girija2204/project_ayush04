@@ -1,0 +1,17 @@
+<div class="show_activities">
+	<div class="activities_count">
+		<% if @activities.count == 0 %>
+			<p>You have no activities to display..</p>
+			<%# link_to "Add an activity", add_logger_path %>
+		<% end %>
+	</div>
+	<div class="all_activity">
+		<%= link_to 'Add your Activities', add_logger_path, class: "btn btn-default", id: "park" %>
+		<% @activities.each do |activity| %>
+			<div class="activity_display">
+				<p class="part-first"><%= activity.activity_date %></p> 
+				<p class="part-second"><%= "#{activity.activity_type} of #{activity.quantities} #{activity.activity_measures}" %></p>
+			</div>
+		<% end %>
+	</div>
+</div>

@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
   has_many :comms, through: :reverse_memberships
 
   has_many :activity_loggers
+  has_many :other_activities
 
 
   # Include default devise modules. Others available are:
