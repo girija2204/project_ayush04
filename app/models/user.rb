@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_many :communities
-	
+  has_many :educational_details
+	has_many :employment_details
+  
   has_many :posts, dependent: :destroy
 	has_many :comments, dependent: :destroy
   

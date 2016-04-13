@@ -38,6 +38,12 @@ Rails.application.routes.draw do
   post 'profile/:id/second' => 'profiles#final_save_attributes'
   get 'profile/:id' => 'profiles#about_me', as: :profile
 
+  post 'profile/:id/educational' => 'edu_emp_details#create_edu'
+  post 'profile/:id/employment' => 'edu_emp_details#create_emp'
+
+  resources :educational_details
+  resources :employment_details
+
   get ':id/following' => 'relationships#following', as: :following
   get ':id/followers' => 'relationships#followers', as: :followers
   

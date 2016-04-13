@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160403102750) do
+ActiveRecord::Schema.define(version: 20160412105205) do
 
   create_table "activity_loggers", force: :cascade do |t|
     t.date     "activity_date"
@@ -80,6 +80,31 @@ ActiveRecord::Schema.define(version: 20160403102750) do
 
   add_index "discussions", ["community_id"], name: "index_discussions_on_community_id"
   add_index "discussions", ["user_id"], name: "index_discussions_on_user_id"
+
+  create_table "educational_details", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "school"
+    t.string   "degree"
+    t.string   "field_of_study"
+    t.string   "grade"
+    t.text     "description"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "educational_details", ["user_id"], name: "index_educational_details_on_user_id"
+
+  create_table "employment_details", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "organisation"
+    t.string   "position_held"
+    t.string   "location"
+    t.text     "description"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "employment_details", ["user_id"], name: "index_employment_details_on_user_id"
 
   create_table "other_activities", force: :cascade do |t|
     t.date     "activity_date"
