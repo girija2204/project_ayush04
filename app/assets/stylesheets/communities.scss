@@ -12,7 +12,34 @@
         /* background: #FFF; */
         padding-top: 50px;
         height: 1500px;
+
+        .btn-default {
+            float: left;
+            width: 25%;
+            margin-top: 20px;
+            margin-right: 175px;
+            margin-bottom: 20px;
+            width: 170px;
+            height: 100px;
+            padding: 38px;
+        }
+        .btn-default:hover {
+            background-color: rgba(255, 255, 255, 0.82);
+        }
         
+        .about_comm {
+            border: 1px solid rgba(175, 175, 175, 0.72);
+            border-radius: 3px;
+            padding: 15px;
+            background-color: cornsilk;
+            h3 {
+                margin-top: 0px;
+                margin-bottom: 0px;
+            }
+            p {
+                padding-top: 10px;
+            }
+        }
         
         .show_discs {
             /* border-top: 1px solid #D4D2D2; */
@@ -40,4 +67,8 @@
             }
         }
     }
+}
+
+.rocky {
+    background-color: #8E5B5B;
 }

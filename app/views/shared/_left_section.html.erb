@@ -6,6 +6,7 @@
 		<div class="sub-navigation">
 			<%= puts @comm.id %>
 			<li><%= render 'shared/join_form' if signed_in? %></li>
+			<li><%= link_to "About the Community", about_comm_path, class: "btn btn-default" %></li>
 			<li><%= link_to "Discussion Board", disc_board_path, class: "btn btn-default" %></li>
 			<li><%= link_to 'Start a Discussion', comm_path, class: "btn btn-default" %></li>
 			<li><%= link_to "Members (#{@comm.members.count})", members_path, class: "btn btn-default" %></li>

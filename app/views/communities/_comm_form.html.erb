@@ -2,7 +2,12 @@
 	<div class="comm_form">
 		<%= form_for(@comm) do |f| %>
 			<div class="form-group">
-				<%= f.text_field :c_name, placeholder: "Enter a Name for your community..", class: "form-control" %>
+				<%= f.label :c_name, "Enter a Name for your community" %>
+				<%= f.text_field :c_name, class: "form-control" %>
+			</div>
+			<div class="form-group">
+				<%= f.label :description, "What is this community about" %>
+				<%= f.text_area :description, class: "form-control" %>
 			</div>
 			<div class="form-group">
 				<%= f.submit "Submit", class: "btn btn-primary" %>

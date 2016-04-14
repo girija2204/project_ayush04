@@ -1,3 +1,12 @@
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.comments_link').click(function(e){
+			e.preventDefault();
+			$(this).next('.comments_section').slideToggle("slow");
+		});
+	});
+</script>
+
 <% if @posts.any? %>
 	<% @posts.each do |post| %>
 		<div class="show_posts">
@@ -17,25 +26,15 @@
 			<div class="show_post_description">
 				<%= post.content %>
 			</div>
-			<div id="count_comments">
+			<div class="comments_link">
 				<% if post.comments.any? %>
-					<p><%= post.comments.count %> Comments</p>
+					<p><%= link_to "#{post.comments.count} #{ 'Comments'}", "#" %></p>
 				<% end %>
 			</div>
 			<div class="comments_section">
 				<div class="show_comments">
 					<% if post.comments.any? %>
 						<% post.comments.each do |comment| %>
-
-						<% if false %>
-						<table class="table table-hover">
-							<tbody>
-								<tr>
-									<td><%= comment.content %></td>
-								</tr>
-							</tbody>
-						</table>
-						<% end %>
 							<div class="comment">
 								<div class="comment_content">
 									<%= comment.content %>
@@ -45,7 +44,7 @@
 								</div>
 							</div>
 							<div class="separator"></div>
-					<% end %>
+						<% end %>
 					<% end %>
 				</div>
 				<div class="add_comment">

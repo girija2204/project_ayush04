@@ -24,8 +24,6 @@ Rails.application.routes.draw do
 
   get 'dashboard/:id' => 'dashboard#show', as: :dashboard
 
-  get 'community/:id/discussions' => 'communities#show', as: :disc_board
-
   devise_for :users, controllers: { registrations: "registrations"}
   
   get 'profile/:id/all_posts' => 'profiles#all_posts', as: :all_posts
@@ -51,6 +49,8 @@ Rails.application.routes.draw do
   get 'dashboard/:id/communities' => 'dashboard#show_comms', as: :dash_comms
   get 'community/:id/members' => 'communities#members', as: :members
   get 'community/:id' => 'communities#discussion_form', as: :comm
+  get 'community/:id/discussions' => 'communities#show', as: :disc_board
+  get 'community/:id/about_comm' => 'communities#about_comm', as: :about_comm
   
   get 'dashboard/:id/activity_logger' => 'activity_loggers#show', as: :show_logger
   get 'dashboard/:id/activity_logger/add' => 'activity_loggers#new', as: :add_logger

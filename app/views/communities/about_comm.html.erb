@@ -1,0 +1,14 @@
+<div class="dashboard">
+	<%= render 'shared/left_section' %>
+	<div class="right-section">
+		<div>
+			<% provide(:title, @title) %>
+			<div class="about_comm">
+				<h3><%= @title %></h3>
+				<% if @comm.description %>
+					<p><%= @comm.description %></p>
+				<% end %>
+			</div>
+		</div>
+	</div>
+</div>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160412105205) do
+ActiveRecord::Schema.define(version: 20160413102911) do
 
   create_table "activity_loggers", force: :cascade do |t|
     t.date     "activity_date"
@@ -51,8 +51,9 @@ ActiveRecord::Schema.define(version: 20160412105205) do
   create_table "communities", force: :cascade do |t|
     t.string   "c_name"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.text     "description"
   end
 
   add_index "communities", ["user_id"], name: "index_communities_on_user_id"

@@ -33,18 +33,22 @@ class CommunitiesController < ApplicationController
   	@comm = Community.find(params[:id])
   end
   def show_comms
-	@title = "Communities"
-	@user = User.find(params[:id])
-	@comms = @user.comms
+  	@title = "Communities"
+  	@user = User.find(params[:id])
+  	@comms = @user.comms
   end
   def members
   	@title = "Members"
   	@comm = Community.find(params[:id])
   	@members = @comm.members
-  end	 	
+  end
+  def about_comm
+    @title = "About Community"
+    @comm = Community.find(params[:id])
+  end
 
   private
   def comm_params
-  	params.require(:community).permit([:c_name])
+  	params.require(:community).permit([:c_name, :description])
   end
 end
