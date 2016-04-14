@@ -14,7 +14,7 @@
 			<div>
 				<h3><%= @title %></h3>
 				<% @comms.each do |comm| %>
-					<strong><%= link_to comm.c_name, disc_board_path(comm.id), class: "btn btn-default comm_names" %></strong>
+					<strong><%= link_to comm.c_name, disc_board_path(comm.id), class: "btn btn-comms comm_names" %></strong>
 				<% end %>
 			</div>
 		</div>

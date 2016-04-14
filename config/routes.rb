@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   get 'comm_memberships/destroy'
 
   resources :posts do
+    member do
+      put "like", to: "posts#upvote"
+    end
     resources :comments
   end
 
