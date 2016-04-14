@@ -3,6 +3,6 @@
 		<%= comment.content %>
 	</div>
 	<div class="comment_author">
-		<small>written by <%= "#{comment.user.first_name.titleize} #{time_ago_in_words(comment.created_at)}" %> ago</small>
+		<p class="text-muted">written by <%= link_to "#{comment.user.first_name.titleize} #{comment.user.last_name.titleize}", profile_path(comment.user) %> <%= time_ago_in_words(comment.created_at) %> ago</p>
 	</div>
 </div>

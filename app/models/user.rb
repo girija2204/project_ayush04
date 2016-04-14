@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+
+  acts_as_voter
   has_many :communities
   has_many :educational_details
 	has_many :employment_details

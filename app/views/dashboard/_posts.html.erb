@@ -9,10 +9,10 @@
 				<% end %>
 			</div>
 			<div class="show_post_title">
-				<%= link_to post.title, post %>
+				<%= link_to post.title, post, class: "post_title" %>
 			</div>
 			<div class="show_post_created_at">
-				<p class="text-muted"><small><%= time_ago_in_words(post.created_at) %> ago by <%= link_to "#{post.user.first_name.titleize} #{post.user.last_name.titleize}", profile_path(post.user)%></small></p>
+				<p class="text-muted"><%= time_ago_in_words(post.created_at) %> ago by <%= link_to "#{post.user.first_name.titleize} #{post.user.last_name.titleize}", profile_path(post.user)%></p>
 			</div>
 			<div class="show_post_description">
 				<%= post.content %>

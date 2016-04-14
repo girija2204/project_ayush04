@@ -5,6 +5,13 @@
 			$(this).next('.comments_section').fadeToggle();
 			$('.comment_body').focus();
 		});
+		<% if current_user.voted_up_on? @post %>
+			$('#upvote').css("background-color", "rgba(7, 104, 173, 0.62)");
+			$('#upvote').text("Upvoted");
+		<% elsif current_user.voted_down_on? @post %>
+			$('#downvote').css("background-color", "rgba(173, 45, 45, 0.72)");
+			$('#downvote').text("Downvoted");
+		<% end %>
 	});
 </script>
 <div class="dashboard">
@@ -21,25 +28,25 @@
 				<h4><%= @post.title %></h4>
 			</div>
 			<div class="show_post_created_at">
-				<p class="text-muted"><small><%= time_ago_in_words(@post.created_at) %> ago by <%= link_to "#{@post.user.first_name.titleize} #{@post.user.last_name.titleize}", profile_path(@post.user)%></small></p>
+				<p class="text-muted"><%= time_ago_in_words(@post.created_at) %> ago by <%= link_to "#{@post.user.first_name.titleize} #{@post.user.last_name.titleize}", profile_path(@post.user)%></p>
 			</div>
 			<div class="show_post_description">
 				<%= @post.content %>
 			</div>
 			<div class="like_post">
-				<%= link_to like_post_path(@post), method: :put, class: "btn btn-default" do %>
-					<span class="glyphicon glyphicon-heart" aria-hidden="true">
-						<%= @post.get_upvotes.size %>
-					</span>
-				<% end %>
+				<%# if current_user.voted_up_on? @post %>
+				<%# elsif current_user.voted_down_on? @post %>
+					<%= link_to "Upvote", like_post_path(@post), method: :put, class: "btn btn-default", id: "upvote" %>
+					<%= link_to "Downvote", unlike_post_path(@post), method: :put, class: "btn btn-default", id: "downvote" %>
+				<%# end %>
 			</div>
 			<div class="comments_link">
-				<p><%= link_to "#{@comments.count} #{ 'Comments'}", "#" %></p>
+				<p><%= link_to "Comments", "#", id: "link" %></p>
 			</div>
 			<div class="comments_section">
-				<ol id="show_comments">
+				<div id="show_comments">
 					<%= render @comments %>
-				</ol>
+				</div>
 				<div class="add_comment">
 					<%= form_for [@post, @post.comments.build], remote: true do |f| %>
 						<div class="form-group">
