@@ -5,7 +5,15 @@
 		<div class="create_post">
 			<%= render 'posts/form' %>
 		</div>
-		<%= render 'posts' %>
+		<% if @user.sign_in_count == 1 %>
+			<div class="first_loggin_links">
+				<%= link_to "Fill up your profile..", profile_path(@user), class: "btn btn-default profile_link" %>
+				<%= link_to "Analyze your health by logging your daily activities..", show_logger_path, class: "btn btn-default logger_link" %>
+				<%= link_to "Get to know your friends..", "#", class: "btn btn-default friends_link" %>
+			</div>
+		<% else %>
+			<%= render 'posts' %>
+		<% end %>
 	</div>
 </div>
 <% end %>

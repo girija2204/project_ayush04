@@ -2,8 +2,15 @@
 	$(document).ready(function(){
 		$('.comments_link').click(function(e){
 			e.preventDefault();
-			$(this).next('.comments_section').fadeToggle();
-			$('.comment_body').focus();
+			$('.comments_section').slideToggle("slow");
+			$('#view_link').toggleClass("active");
+			if ($('#view_link').hasClass('active')) {
+				$('#view_link').text('Hide all Comments...')
+			}
+			else {
+				$('#view_link').text('View all Comments...')
+			}
+			//$('.comment_body').focus();
 		});
 		<% if current_user.voted_up_on? @post %>
 			$('#upvote').css("background-color", "rgba(7, 104, 173, 0.62)");
@@ -41,7 +48,7 @@
 				<%# end %>
 			</div>
 			<div class="comments_link">
-				<p><%= link_to "Comments", "#", id: "link" %></p>
+				<p><%= link_to "View all Comments...", "#", id: "view_link" %></p>
 			</div>
 			<div class="comments_section">
 				<div id="show_comments">

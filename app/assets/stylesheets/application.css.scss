@@ -371,6 +371,19 @@ body {
 .dashboard, .profile {
     margin-top: 63px;
     margin-left: 50px;
+    .profile_link, .logger_link, .friends_link {
+        white-space: normal;
+        font-size: 22px;
+    }
+    .profile_link {
+        padding-top: 65px;
+    }
+    .logger_link {
+        padding-top: 50px;
+    }
+    .friends_link {
+        padding-top: 65px;
+    }
     
     .right-section {
         margin-left: 430px;

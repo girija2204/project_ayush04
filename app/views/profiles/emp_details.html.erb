@@ -2,10 +2,10 @@
 	$(document).ready(function(){
 		$("#add_form").hide();
 		$("#add_button").click(function(){
-			$("#add_form").show();
+			$("#add_form").slideDown("slow");
 		});
 		$("#cancel").click(function(){
-			$("#add_form").hide();
+			$("#add_form").slideUp("slow");
 		});
 	});
 </script>
@@ -45,7 +45,7 @@
 			<% end %>
 			<div class="details_section">
 				<h4>Employment Details</h4>
-				<%= @user.work_status %>
+				<%# @user.work_status %>
 				<% if @user.employment_details %>
 					<% @user.employment_details.each do |emp_detail| %>
 						<div class="emp_detail">
