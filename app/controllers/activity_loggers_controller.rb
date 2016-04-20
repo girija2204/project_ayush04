@@ -29,13 +29,58 @@ class ActivityLoggersController < ApplicationController
 			@activity.activity_measures = "status"
 		end
 		if @activity.save
-			redirect_to add_logger_path(current_user)
+			redirect_to add_logger_path#(current_user)
 		else
 			render new
 		end
 	end
-	def show
-		@activities = current_user.activity_loggers.order("created_at DESC").limit(10)
+	def day_logger
+		activity_type = params[:activity_type]
+		if activity_type == "all"
+			@activities = current_user.activity_loggers
+		elsif activity_type == "running"
+			@activities = current_user.activity_loggers.where(activity_type: "running")
+		elsif activity_type == "walking"
+			@activities = current_user.activity_loggers.where(activity_type: "walking")
+		elsif activity_type == "exercise"
+			@activities = current_user.activity_loggers.where(activity_type: "exercise")
+		end
+		
+		#@running = current_user.activity_loggers.where(activity_type: "running")
+		#@exercise = current_user.activity_loggers.where(activity_type: "exercise")
+		#@rice_intake = current_user.activity_loggers.where(activity_type: "rice intake")
+		#@cold_drinks = current_user.activity_loggers.where(activity_type: "cold drinks")
+		#@coffee_tea = current_user.activity_loggers.where(activity_type: "coffee or tea")
+		#@alchohol = current_user.activity_loggers.where(activity_type: "Alchohol Intake")
+		#@cigarettes = current_user.activity_loggers.where(activity_type: "Cigarettes Intake")
+		#@water = current_user.activity_loggers.where(activity_type: "Water Intake")
+		#@sleep = current_user.activity_loggers.where(activity_type: "Sleep Time")
+		#@day_active = current_user.activity_loggers.where(activity_type: "Day Active")
+		#@oil = current_user.activity_loggers.where(activity_type: "oil intake")
+	end
+	def week_logger
+		activity_type = params[:activity_type]
+		if activity_type == "all"
+			@activities = current_user.activity_loggers
+		elsif activity_type == "running"
+			@activities = current_user.activity_loggers.where(activity_type: "running")
+		elsif activity_type == "walking"
+			@activities = current_user.activity_loggers.where(activity_type: "walking")
+		elsif activity_type == "exercise"
+			@activities = current_user.activity_loggers.where(activity_type: "exercise")
+		end
+	end
+	def month_logger
+		activity_type = params[:activity_type]
+		if activity_type == "all"
+			@activities = current_user.activity_loggers
+		elsif activity_type == "running"
+			@activities = current_user.activity_loggers.where(activity_type: "running")
+		elsif activity_type == "walking"
+			@activities = current_user.activity_loggers.where(activity_type: "walking")
+		elsif activity_type == "exercise"
+			@activities = current_user.activity_loggers.where(activity_type: "exercise")
+		end
 	end
 
 	private

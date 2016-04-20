@@ -1,0 +1,36 @@
+<div class="show_activities">
+<div class="dropdown">
+	<a data-toggle="dropdown" href="#">Select View</a>
+	<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+		<li><%= link_to 'Day View', day_logger_path(:all) %></li>
+		<li><%= link_to 'Week View', week_logger_path(:all) %></li>
+		<li><%= link_to 'Month View', month_logger_path(:all) %></li>
+	</ul>
+</div>
+
+<div class="dropdown">
+	<a data-toggle="dropdown" href="#">Select Activities</a>
+	<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+		<li><%= link_to 'All Activities', month_logger_path(:all) %></li>
+		<li><%= link_to 'Running', month_logger_path(:running) %></li>
+		<li><%= link_to 'Walking', month_logger_path(:walking) %></li>
+		<li><%= link_to 'Exercise', month_logger_path(:exercise) %></li>
+	</ul>
+</div>
+
+<div id="month_view">
+	<% @activities.group_by(&:month).sort.each do |month, month_activity| %>
+		<div class="month_activity">
+			<h4>
+				<%= month %>
+			</h4>
+			<% quantity = 0 %>
+			<% month_activity.each do |activity| %>
+
+				<%# quantity = quantity +  %>
+				<p><%= "#{activity.activity_type.titleize} of #{activity.quantities} #{activity.activity_measures}" %></p>
+			<% end %>
+		</div>
+	<% end %>
+</div>
+</div>

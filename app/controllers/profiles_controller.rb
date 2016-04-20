@@ -40,7 +40,7 @@ class ProfilesController < ApplicationController
 
 	private
 	def save_attr_params
-		params.require(:profile).permit(:first_name, :last_name, :gender, :bio)
+		params.require(:profile).permit(:first_name, :last_name, :gender, :dob, :bio)
 	end
 	def final_save_attr_params
 		params.require(:profile).permit(:education_status, :work_status, :smoking, :drinking, :diabetes_status)

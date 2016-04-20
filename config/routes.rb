@@ -56,14 +56,26 @@ Rails.application.routes.draw do
   get 'community/:id/discussions' => 'communities#show', as: :disc_board
   get 'community/:id/about_comm' => 'communities#about_comm', as: :about_comm
   
-  get 'dashboard/:id/activity_logger' => 'activity_loggers#show', as: :show_logger
-  get 'dashboard/:id/activity_logger/add' => 'activity_loggers#new', as: :add_logger
-  get 'dashboard/:id/activity_logger/new_physical' => 'activity_loggers#new_physical', as: :physical_logger
-  post 'dashboard/:id/activity_logger/new_physical' => 'activity_loggers#create'
+  #get 'dashboard/:id/activity_logger' => 'activity_loggers#show', as: :show_logger
+  #get 'dashboard/:id/activity_logger/add' => 'activity_loggers#new', as: :add_logger
+  #get 'dashboard/:id/activity_logger/new_physical' => 'activity_loggers#new_physical', as: :physical_logger
+  #post 'dashboard/:id/activity_logger/new_physical' => 'activity_loggers#create'
 
-  get 'dashboard/:id/activity_logger/new_food' => 'activity_loggers#new_food', as: :food_logger
-  post 'dashboard/:id/activity_logger/new_food' => 'activity_loggers#food_create'
+  #get 'dashboard/:id/activity_logger/new_food' => 'activity_loggers#new_food', as: :food_logger
+  #post 'dashboard/:id/activity_logger/new_food' => 'activity_loggers#food_create'
 
+  get 'activity_logger/day_activities/:activity_type' => 'activity_loggers#day_logger', as: :day_logger
+  get 'activity_logger/week_activities/:activity_type' => 'activity_loggers#week_logger', as: :week_logger
+  get 'activity_logger/month_activities/:activity_type' => 'activity_loggers#month_logger', as: :month_logger
+
+  #get 'activity_logger/:activity_type' => 'activity_loggers#show', as: :show_logger
+  
+  get 'activity_logger/add' => 'activity_loggers#new', as: :add_logger
+  get 'activity_logger/new_physical' => 'activity_loggers#new_physical', as: :physical_logger
+  post 'activity_logger/new_physical' => 'activity_loggers#create'
+
+  get 'activity_logger/new_food' => 'activity_loggers#new_food', as: :food_logger
+  post 'activity_logger/new_food' => 'activity_loggers#food_create'
 
   #resources :dashboard do
   #  member do
