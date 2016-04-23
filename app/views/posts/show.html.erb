@@ -1,6 +1,6 @@
 <script type="text/javascript">
 	$(document).ready(function(){
-		$('.comments_link').click(function(e){
+		$('#view_link').click(function(e){
 			e.preventDefault();
 			$('.comments_section').slideToggle("slow");
 			$('#view_link').toggleClass("active");
@@ -21,7 +21,7 @@
 		<% end %>
 	});
 </script>
-<div class="dashboard">
+<div class="show_post_page">
 	<div class="right-section">
 		<div class="show_posts">
 			<div class="btn-group pull-right">

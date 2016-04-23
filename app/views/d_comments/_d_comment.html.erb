@@ -1,0 +1,6 @@
+<div class="comment_content">
+	<%= d_comment.content %>
+</div>
+<div class="comment_created_at">
+	<p class="text-muted">written <%= time_ago_in_words(d_comment.created_at) %> ago by <%= "#{d_comment.user.first_name} #{d_comment.user.last_name}" %></p>
+</div>

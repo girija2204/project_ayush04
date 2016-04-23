@@ -1,5 +1,5 @@
 <script type="text/javascript">
-	$(document).ready(function(){
+	$("document").ready(function(){
 		$("#add_form").hide();
 		$("#add_button").click(function(){
 			$("#add_form").slideDown("slow");
@@ -11,56 +11,58 @@
 </script>
 
 <div class="profile">
-	<%= render 'shared/left_section' %>
+	<%= render 'profiles/left_section' %>
 	<div class="right-section">
-		<div class="all_tabs">
-			<% if @user == current_user %>
-			<div class="new_edu_entry">
-				<button class="btn btn-default" type="button" id="add_button">Add Class</button>
-				<div id="add_form">
-					<%= form_for(:educational_details, :url => {:controller => :edu_emp_details, :action => :create_edu}) do |f| %>
-						<div class="form-group">
-							<%= f.label "School" %>
-							<%= f.text_field :school, class: "form-control" %>
+		<div id="edu_detail">
+			<div class="all_sections">
+				<% if @user == current_user %>
+					<div class="new_edu_entry">
+						<button class="btn btn-default" type="button" id="add_button">Add Class</button>
+						<div id="add_form">
+							<%= form_for(:educational_details, :url => {:controller => :edu_emp_details, :action => :create_edu}) do |f| %>
+								<div class="form-group">
+									<%= f.label "School" %>
+									<%= f.text_field :school, class: "form-control" %>
+								</div>
+								<div class="form-group">
+									<%= f.label "Degree" %>
+									<%= f.text_field :degree, class: "form-control" %>
+								</div>
+								<div class="form-group">
+									<%= f.label "Field of Study" %>
+									<%= f.text_field :field_of_study, class: "form-control" %>
+								</div>
+								<div class="form-group">
+									<%= f.label "Grade" %>
+									<%= f.number_field :grade, class: "form-control" %>
+								</div>
+								<div class="form-group">
+									<%= f.label "Description" %>
+									<%= f.text_area :description, class: "form-control" %>
+								</div>
+								<div class="form-group">
+									<%= f.submit "Save", class: "btn btn-default" %>
+								</div>
+							<% end %>
+							<button id="cancel" class="btn btn-default">Cancel</button>
 						</div>
-						<div class="form-group">
-							<%= f.label "Degree" %>
-							<%= f.text_field :degree, class: "form-control" %>
-						</div>
-						<div class="form-group">
-							<%= f.label "Field of Study" %>
-							<%= f.text_field :field_of_study, class: "form-control" %>
-						</div>
-						<div class="form-group">
-							<%= f.label "Grade" %>
-							<%= f.number_field :grade, class: "form-control" %>
-						</div>
-						<div class="form-group">
-							<%= f.label "Description" %>
-							<%= f.text_area :description, class: "form-control" %>
-						</div>
-						<div class="form-group">
-							<%= f.submit "Save", class: "btn btn-default" %>
-						</div>
-					<% end %>
-					<button id="cancel" class="btn btn-default">Cancel</button>
-				</div>
-			</div>
-			<% end %>
-			<div class="details_section">
-				<h4>Educational Details</h4>
-				<%# @user.education_status %>
-				<% if @user.educational_details %>
-					<% @user.educational_details.each do |edu_detail| %>
-						<div class="edu_detail">
-							<h3><%= edu_detail.school %></h3>
-							<% if edu_detail.degree %><strong><%= edu_detail.degree %></strong><br><% end %>
-							<% if edu_detail.field_of_study %><small><p class="text-muted"><%= edu_detail.field_of_study %></p></small><% end %>
-							<%# edu_detail.grade %>
-							<%= edu_detail.description %><br>
-						</div>
-					<% end %>
+					</div>
 				<% end %>
+				<div class="details_section">
+					<h4>Educational Details</h4>
+					<%# @user.education_status %>
+					<% if @user.educational_details %>
+						<% @user.educational_details.each do |edu_detail| %>
+							<div class="detailed">
+								<h3><%= edu_detail.school %></h3>
+								<% if edu_detail.degree %><strong><%= edu_detail.degree %></strong><br><% end %>
+								<% if edu_detail.field_of_study %><small><p class="text-muted"><%= edu_detail.field_of_study %></p></small><% end %>
+								<%# edu_detail.grade %>
+								<%= edu_detail.description %><br>
+							</div>
+						<% end %>
+					<% end %>
+				</div>
 			</div>
 		</div>
 	</div>

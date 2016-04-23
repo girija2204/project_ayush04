@@ -1,7 +1,10 @@
 <div class="profile">
-	<%= render 'shared/left_section' %>
+	<%= render 'profiles/left_section' %>
 	<div class="right-section">
-		<%= "#{@user.first_name.titleize} #{@user.last_name.titleize}" %>
-		<%= "#{@user.gender}" %>
+		<%= render 'profiles/about_me' %>
+		<%= render 'profiles/all_posts' %>
+		<%= render 'profiles/edu_details' %>
+		<%= render 'profiles/emp_details' %>
+		<%= render 'profiles/show_comms' %>
 	</div>
 </div>

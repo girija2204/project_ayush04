@@ -1,0 +1,47 @@
+<script type="text/javascript">
+	$("document").ready(function(){
+		<% if params[:action] == "about_me" && params[:controller] == "profiles" %>
+			$("#first").addClass("active");
+		<% end %>
+		<% if params[:action] == "all_posts" && params[:controller] == "profiles" %>
+			$("#second").addClass("active");
+		<% end %>
+		<% if params[:action] == "edu_details" && params[:controller] == "profiles" %>
+			$("#third").addClass("active");
+		<% end %>
+		<% if params[:action] == "emp_details" && params[:controller] == "profiles" %>
+			$("#fourth").addClass("active");
+		<% end %>
+		<% if params[:action] == "show_comms" && params[:controller] == "profiles" %>
+			$("#fifth").addClass("active");
+		<% end %>
+	});
+</script>
+
+<div class="left-section">
+	<div class="sub-header">
+		<div class="details">
+			<div class="dashboard_image"></div>
+			<div class="dashboard_info">
+				<%= "#{@user.first_name.titleize} #{@user.last_name.titleize}" %>
+			</div>
+		</div>
+	</div>
+	<div class="stats">
+		<%= render 'shared/stats' %>
+	</div>
+
+	<div class="sub-navigation">
+	
+		<% if (params[:action] == "show" || params[:action] == "about_me" || params[:action] == "all_posts" || params[:action] == "edu_details" || params[:action] == "emp_details" || params[:action] == "show_comms") && params[:controller] == "profiles" %>
+			<%= render 'shared/follow_form' if signed_in? %>
+			<ul class="nav nav-pills nav-stacked">
+				<li id="first"><%= link_to 'About Me', profile_path(@user), class: "btn btn-default" %></li>
+				<li id="second"><%= link_to 'Posts', all_posts_path(@user), class: "btn btn-default" %></li>
+				<li id="third"><%= link_to 'Educational', edu_details_path(@user), class: "btn btn-default" %></li>
+				<li id="fourth"><%= link_to 'Employment', emp_details_path(@user), class: "btn btn-default" %></li>
+				<li id="fifth"><%= link_to 'Communities', prof_comms_path(@user), class: "btn btn-default" %></li>
+			</ul>
+		<% end %>
+	</div>
+</div>

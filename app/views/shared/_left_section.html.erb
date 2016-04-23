@@ -36,15 +36,6 @@
 
 	<div class="sub-navigation">
 	
-		<% if (params[:action] == "about_me" || params[:action] == "all_posts" || params[:action] == "edu_details" || params[:action] == "emp_details" || params[:action] == "show_comms") && params[:controller] == "profiles" %>
-			<%= render 'shared/follow_form' if signed_in? %>
-			<li><%= link_to 'About Me', profile_path(@user), class: "btn btn-default" %></li>
-			<li><%= link_to 'Posts', all_posts_path(@user), class: "btn btn-default" %></li>
-			<li><%= link_to 'Educational', edu_details_path(@user), class: "btn btn-default" %></li>
-			<li><%= link_to 'Employment', emp_details_path(@user), class: "btn btn-default" %></li>
-			<li><%= link_to 'Communities', prof_comms_path, class: "btn btn-default" %></li>
-		<% end %>
-	
 		<% if (params[:action] == 'show' || params[:action] == 'show_comms') && params[:controller] == 'dashboard' %>
 			<li><%= link_to 'Activity Logger', day_logger_path(:all), class: "btn btn-default", id: "park" %></li>
 			<li><%= link_to 'Create a Community', new_community_path, class: "btn btn-default" %></li>

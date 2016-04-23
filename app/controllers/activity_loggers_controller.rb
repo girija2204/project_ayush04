@@ -36,6 +36,7 @@ class ActivityLoggersController < ApplicationController
 	end
 	def day_logger
 		activity_type = params[:activity_type]
+		@current_activity = activity_type
 		if activity_type == "all"
 			@activities = current_user.activity_loggers
 		elsif activity_type == "running"
@@ -44,19 +45,25 @@ class ActivityLoggersController < ApplicationController
 			@activities = current_user.activity_loggers.where(activity_type: "walking")
 		elsif activity_type == "exercise"
 			@activities = current_user.activity_loggers.where(activity_type: "exercise")
+		elsif activity_type == "rice"
+			@activities = current_user.activity_loggers.where(activity_type: "rice intake")
+		elsif activity_type == "cold_drinks"
+			@activities = current_user.activity_loggers.where(activity_type: "cold drinks")
+		elsif activity_type == "coffee_or_tea"
+			@activities = current_user.activity_loggers.where(activity_type: "coffee or tea")
+		elsif activity_type == "alchohol"
+			@activities = current_user.activity_loggers.where(activity_type: "Alchohol Intake")
+		elsif activity_type == "cigarettes"
+			@activities = current_user.activity_loggers.where(activity_type: "Cigarettes Intake")
+		elsif activity_type == "water"
+			@activities = current_user.activity_loggers.where(activity_type: "Water Intake")
+		elsif activity_type == "sleep"
+			@activities = current_user.activity_loggers.where(activity_type: "Sleep Time")
+		elsif activity_type == "day_active"
+			@activities = current_user.activity_loggers.where(activity_type: "Day Active")
+		elsif activity_type == "oil"
+			@activities = current_user.activity_loggers.where(activity_type: "oil intake")
 		end
-		
-		#@running = current_user.activity_loggers.where(activity_type: "running")
-		#@exercise = current_user.activity_loggers.where(activity_type: "exercise")
-		#@rice_intake = current_user.activity_loggers.where(activity_type: "rice intake")
-		#@cold_drinks = current_user.activity_loggers.where(activity_type: "cold drinks")
-		#@coffee_tea = current_user.activity_loggers.where(activity_type: "coffee or tea")
-		#@alchohol = current_user.activity_loggers.where(activity_type: "Alchohol Intake")
-		#@cigarettes = current_user.activity_loggers.where(activity_type: "Cigarettes Intake")
-		#@water = current_user.activity_loggers.where(activity_type: "Water Intake")
-		#@sleep = current_user.activity_loggers.where(activity_type: "Sleep Time")
-		#@day_active = current_user.activity_loggers.where(activity_type: "Day Active")
-		#@oil = current_user.activity_loggers.where(activity_type: "oil intake")
 	end
 	def week_logger
 		activity_type = params[:activity_type]
@@ -68,6 +75,24 @@ class ActivityLoggersController < ApplicationController
 			@activities = current_user.activity_loggers.where(activity_type: "walking")
 		elsif activity_type == "exercise"
 			@activities = current_user.activity_loggers.where(activity_type: "exercise")
+		elsif activity_type == "rice"
+			@activities = current_user.activity_loggers.where(activity_type: "rice intake")
+		elsif activity_type == "cold_drinks"
+			@activities = current_user.activity_loggers.where(activity_type: "cold drinks")
+		elsif activity_type == "coffee_or_tea"
+			@activities = current_user.activity_loggers.where(activity_type: "coffee or tea")
+		elsif activity_type == "alchohol"
+			@activities = current_user.activity_loggers.where(activity_type: "Alchohol Intake")
+		elsif activity_type == "cigarettes"
+			@activities = current_user.activity_loggers.where(activity_type: "Cigarettes Intake")
+		elsif activity_type == "water"
+			@activities = current_user.activity_loggers.where(activity_type: "Water Intake")
+		elsif activity_type == "sleep"
+			@activities = current_user.activity_loggers.where(activity_type: "Sleep Time")
+		elsif activity_type == "day_active"
+			@activities = current_user.activity_loggers.where(activity_type: "Day Active")
+		elsif activity_type == "oil"
+			@activities = current_user.activity_loggers.where(activity_type: "oil intake")
 		end
 	end
 	def month_logger
@@ -80,7 +105,57 @@ class ActivityLoggersController < ApplicationController
 			@activities = current_user.activity_loggers.where(activity_type: "walking")
 		elsif activity_type == "exercise"
 			@activities = current_user.activity_loggers.where(activity_type: "exercise")
+		elsif activity_type == "rice"
+			@activities = current_user.activity_loggers.where(activity_type: "rice intake")
+		elsif activity_type == "cold_drinks"
+			@activities = current_user.activity_loggers.where(activity_type: "cold drinks")
+		elsif activity_type == "coffee_or_tea"
+			@activities = current_user.activity_loggers.where(activity_type: "coffee or tea")
+		elsif activity_type == "alchohol"
+			@activities = current_user.activity_loggers.where(activity_type: "Alchohol Intake")
+		elsif activity_type == "cigarettes"
+			@activities = current_user.activity_loggers.where(activity_type: "Cigarettes Intake")
+		elsif activity_type == "water"
+			@activities = current_user.activity_loggers.where(activity_type: "Water Intake")
+		elsif activity_type == "sleep"
+			@activities = current_user.activity_loggers.where(activity_type: "Sleep Time")
+		elsif activity_type == "day_active"
+			@activities = current_user.activity_loggers.where(activity_type: "Day Active")
+		elsif activity_type == "oil"
+			@activities = current_user.activity_loggers.where(activity_type: "oil intake")
 		end
+	end
+	def calendar_logger
+		activity_type = params[:activity_type]
+		if activity_type == "all"
+			@activities = current_user.activity_loggers
+		elsif activity_type == "running"
+			@activities = current_user.activity_loggers.where(activity_type: "running")
+		elsif activity_type == "walking"
+			@activities = current_user.activity_loggers.where(activity_type: "walking")
+		elsif activity_type == "exercise"
+			@activities = current_user.activity_loggers.where(activity_type: "exercise")
+		elsif activity_type == "rice"
+			@activities = current_user.activity_loggers.where(activity_type: "rice intake")
+		elsif activity_type == "cold_drinks"
+			@activities = current_user.activity_loggers.where(activity_type: "cold drinks")
+		elsif activity_type == "coffee_or_tea"
+			@activities = current_user.activity_loggers.where(activity_type: "coffee or tea")
+		elsif activity_type == "alchohol"
+			@activities = current_user.activity_loggers.where(activity_type: "Alchohol Intake")
+		elsif activity_type == "cigarettes"
+			@activities = current_user.activity_loggers.where(activity_type: "Cigarettes Intake")
+		elsif activity_type == "water"
+			@activities = current_user.activity_loggers.where(activity_type: "Water Intake")
+		elsif activity_type == "sleep"
+			@activities = current_user.activity_loggers.where(activity_type: "Sleep Time")
+		elsif activity_type == "day_active"
+			@activities = current_user.activity_loggers.where(activity_type: "Day Active")
+		elsif activity_type == "oil"
+			@activities = current_user.activity_loggers.where(activity_type: "oil intake")
+		end
+		@activities_by_date = @activities.group_by(&:activity_date)
+		@date = params[:date] ? Date.parse(params[:date]) : Date.today
 	end
 
 	private

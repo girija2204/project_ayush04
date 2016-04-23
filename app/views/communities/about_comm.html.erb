@@ -1,11 +1,50 @@
-<div class="dashboard">
+<script type="text/javascript">
+	$("document").ready(function(){
+		$("#add_description_btn").click(function(){
+			$(this).hide();
+			$(".add_comm_details").show();
+			$("#cancel_btn").show();
+		});
+		$("#cancel_btn").click(function(){
+			$(".add_comm_details").hide();
+			$(this).hide();
+			$("#add_description_btn").show();
+		});
+	});
+</script>
+
+<div class="discussion_board">
 	<%= render 'shared/left_section' %>
 	<div class="right-section">
 		<div>
 			<% provide(:title, @title) %>
 			<div class="about_comm">
 				<h3><%= @title %></h3>
-				<% if @comm.description %>
+				<% if @comm.description == "" || @comm.description == nil %>
+					<% if current_user == @comm.user %>
+						<%= link_to "Add Description", "#", class: "btn btn-primary", id: "add_description_btn" %>
+						<div class="add_comm_details">
+							<%= form_for(@comm) do |f| %>
+								<div class="form-group">
+									<%= f.label :c_name, "Edit the Name of the Community" %>
+									<%= f.text_field :c_name, class: "form-control" %>
+								</div>
+								<div class="form-group">
+									<%= f.label :description, "Edit the description" %>
+									<%= f.text_area :description, class: "form-control" %>
+								</div>
+								<div class="form-group">
+									<%= f.submit "Save the details", class: "btn btn-primary" %>
+								</div>
+							<% end %>
+						</div>
+						<div>
+							<button class="btn btn-primary" id="cancel_btn">Cancel</button>
+						</div>
+					<% else %>
+						<p>Nothing to show..</p>
+					<% end %>
+				<% else %>
 					<p><%= @comm.description %></p>
 				<% end %>
 			</div>

@@ -1,0 +1,45 @@
+<script type="text/javascript">
+	$("document").ready(function(){
+		$(".d_comments_link").click(function(e){
+			e.preventDefault();
+			$(".comments_section").slideToggle("slow");
+		});
+	});
+</script>
+
+<div class="show_discussion_page">
+	<div class="right-section">
+		<div class="show_discs">
+	<div class="show_disc_content">
+		<%= @disc.content %>
+	</div>
+	<div class="show_disc_created_at">
+		<p class="text-muted"><%= time_ago_in_words(@disc.created_at) %> ago by <%= link_to "#{@disc.user.first_name.titleize} #{@disc.user.last_name.titleize}", profile_path(@disc.user) %></p>
+	</div>
+	<div class="count_d_comments">
+		<% if @disc.d_comments.any? %>
+			<p><%= link_to "#{@disc.d_comments.count} #{'Comments'}", "#", class: "d_comments_link" %></p>
+		<% else %>
+			<p><%= link_to "No comments yet..", "#", class: "d_comments_link" %></p>
+		<% end %>				
+	</div>
+	<div class="comments_section">
+		<div id="show_d_comments">
+			<%= render @dcomments %>
+		</div>
+		<div class="add_comment">
+			<%= form_for [@disc, @disc.d_comments.build], remote: true do |f| %>
+				<div class="form-group">
+					<%= f.text_field :content, placeholder: "Enter a comment", class: "form-control comment_body" %>
+				</div>
+				<div><%= hidden_field_tag(:comm_id, @comm.id) %></div>
+				<div><%= hidden_field_tag(:disc_id, @disc.id) %></div>
+				<div class="form-group">
+					<%= f.submit "Comment", class: "btn btn-primary" %>
+				</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+	</div>
+</div>

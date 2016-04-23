@@ -1,0 +1,12 @@
+<div class="add_activity_btn">
+	<%= link_to "Add your Activities", add_logger_path, class: "btn btn-primary" %>
+</div>
+<div class="dropdown" id="view_select">
+	<a data-toggle="dropdown" href="#">Select View</a>
+	<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+		<li><%= link_to 'Day View', day_logger_path(:all) %></li>
+		<li><%= link_to 'Week View', week_logger_path(:all) %></li>
+		<li><%= link_to 'Month View', month_logger_path(:all) %></li>
+		<li><%= link_to 'Calendar View', calendar_logger_path(:all) %></li>
+	</ul>
+</div>

@@ -30,15 +30,16 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: "registrations"}
   
+  get 'profile/:id/about_me' => 'profiles#about_me', as: :profile
   get 'profile/:id/all_posts' => 'profiles#all_posts', as: :all_posts
   get 'profile/:id/educational' => 'profiles#edu_details', as: :edu_details
   get 'profile/:id/employment' => 'profiles#emp_details', as: :emp_details
+  get 'profile/:id/communities' => 'profiles#show_comms', as: :prof_comms
   #post 'profile/:id' => 'profiles#update', as: :profile_update
   get 'profile/:id/first' => 'profiles#first_step', as: :first_step
   post 'profile/:id/first' => 'profiles#save_attributes'
   get 'profile/:id/second' => 'profiles#second_step', as: :second_step
   post 'profile/:id/second' => 'profiles#final_save_attributes'
-  get 'profile/:id' => 'profiles#about_me', as: :profile
 
   post 'profile/:id/educational' => 'edu_emp_details#create_edu'
   post 'profile/:id/employment' => 'edu_emp_details#create_emp'
@@ -49,7 +50,6 @@ Rails.application.routes.draw do
   get ':id/following' => 'relationships#following', as: :following
   get ':id/followers' => 'relationships#followers', as: :followers
   
-  get ':id/communities' => 'profiles#show_comms', as: :prof_comms
   get 'dashboard/:id/communities' => 'dashboard#show_comms', as: :dash_comms
   get 'community/:id/members' => 'communities#members', as: :members
   get 'community/:id' => 'communities#discussion_form', as: :comm
@@ -67,6 +67,7 @@ Rails.application.routes.draw do
   get 'activity_logger/day_activities/:activity_type' => 'activity_loggers#day_logger', as: :day_logger
   get 'activity_logger/week_activities/:activity_type' => 'activity_loggers#week_logger', as: :week_logger
   get 'activity_logger/month_activities/:activity_type' => 'activity_loggers#month_logger', as: :month_logger
+  get 'activity_logger/calendar_activities/:activity_type' => 'activity_loggers#calendar_logger', as: :calendar_logger
 
   #get 'activity_logger/:activity_type' => 'activity_loggers#show', as: :show_logger
   

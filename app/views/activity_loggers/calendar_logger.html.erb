@@ -1,0 +1,105 @@
+<div class="show_activities">
+	<%= render 'view_select' %>
+
+	<div class="dropdown" id="activities_select">
+		<a data-toggle="dropdown" href="#">Select Activities</a>
+		<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+			<li><%= link_to 'All Activities', calendar_logger_path(:all) %></li>
+			<li><%= link_to 'Running', calendar_logger_path(:running) %></li>
+			<li><%= link_to 'Walking', calendar_logger_path(:walking) %></li>
+			<li><%= link_to 'Exercise', calendar_logger_path(:exercise) %></li>
+			<li><%= link_to 'Rice Intake', calendar_logger_path(:rice) %></li>
+			<li><%= link_to 'Cold Drinks', calendar_logger_path(:cold_drinks) %></li>
+			<li><%= link_to 'Coffee or Tea', calendar_logger_path(:coffee_or_tea) %></li>
+			<li><%= link_to 'Alchohol Intake', calendar_logger_path(:alchohol) %></li>
+			<li><%= link_to 'Cigarettes Intake', calendar_logger_path(:cigarettes) %></li>
+			<li><%= link_to 'Water Intake', calendar_logger_path(:water) %></li>
+			<li><%= link_to 'Sleep Time', calendar_logger_path(:sleep) %></li>
+			<li><%= link_to 'Day ACtive', calendar_logger_path(:day_active) %></li>
+			<li><%= link_to 'Oil Intake', calendar_logger_path(:oil) %></li>
+		</ul>
+	</div>
+	<div id="calendar_view">
+		<h2 id="month">
+			<%= link_to "<", date: @date.prev_month %>
+			<%= @date.strftime("%B %Y") %>
+			<%= link_to ">", date: @date.next_month %>
+		</h2>
+		<%= calendar @date do |date| %>
+			<%= link_to date.day, "#" %>
+			<% if @activities_by_date[date] %>
+				<% quantity = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] %>
+				<% activity_types = ["walking", "running", "exercise", "rice intake", "cold drinks", "coffee or tea", "Alchohol Intake", "Cigarettes Intake", "Water Intake", "Sleep Time", "Day Active", "oil intake"] %>
+				<% @activities_by_date[date].each do |activity| %>
+						<% if activity.activity_type == "walking" %>
+							<% quantity[0] = quantity[0] + activity.quantities %>
+						<% elsif activity.activity_type == "running" %>
+							<% quantity[1] = quantity[1] + activity.quantities %>
+						<%# elsif activity.activity_type == "exercise" %>
+							<%# quantity[2] = quantity[2] + activity.quantities %>
+						<% elsif activity.activity_type == "rice intake" %>
+							<% quantity[3] = quantity[3] + activity.quantities %>
+						<% elsif activity.activity_type == "cold drinks" %>
+							<% quantity[4] = quantity[4] + activity.quantities %>
+						<% elsif activity.activity_type == "coffee or tea" %>
+							<% quantity[5] = quantity[5] + activity.quantities %>
+						<% elsif activity.activity_type == "Alchohol Intake" %>
+							<% quantity[6] = quantity[6] + activity.quantities %>
+						<% elsif activity.activity_type == "Cigarettes Intake" %>
+							<% quantity[7] = quantity[7] + activity.quantities %>
+						<% elsif activity.activity_type == "Water Intake" %>
+							<% quantity[8] = quantity[8] + activity.quantities %>
+						<%# elsif activity.activity_type == "Sleep Time" %>
+							<%# quantity[9] = quantity[9] + activity.quantities %>
+						<% elsif activity.activity_type == "Day Active" %>
+							<% quantity[10] = quantity[10] + activity.quantities %>
+						<% elsif activity.activity_type == "oil intake" %>
+							<% quantity[11] = quantity[11] + activity.quantities %>
+						<% end %>
+				<% end %>
+				<ul>
+
+						<% if quantity[0] != 0 %>
+							<li>Walking of <%= quantity[0] %> kms </li>
+						<% end %>
+						<% if quantity[1] != 0 %>
+							<li>Running of <%= quantity[1] %> kms </li>
+						<% end %>
+						<%# if quantity[2] != 0 
+							<p>Exercise of <%= quantity[2]  minutes </p> %>
+						<%# end %>
+						<% if quantity[3] != 0 %>
+							<li>Rice Intake of <%= quantity[3] %> Grams </li>
+						<% end %>
+						<% if quantity[4] != 0 %>
+							<li>Cold Drinks of <%= quantity[4] %> ml </li>
+						<% end %>
+						<% if quantity[5] != 0 %>
+							<li>Coffee or Tea of <%= quantity[5] %> ml </li>
+						<% end %>
+						<% if quantity[6] != 0 %>
+							<li>Alchohol of <%= quantity[6] %> ml </li>
+						<% end %>
+						<% if quantity[7] != 0 %>
+							<li>Cigarettes of <%= quantity[7] %> number </li>
+						<% end %>
+						<% if quantity[8] != 0 %>
+							<li>Water of <%= quantity[8] %> ml </li>
+						<% end %>
+						<%# if quantity[9] != 0 
+							<p>Sleep Time of <%= quantity[9]  minutes </p> %>
+						<%# end %>
+						<% if quantity[10] != 0 %>
+							<li>Day was active of <%= quantity[10] %> Rating </li>
+						<% end %>
+						<% if quantity[11] != 0 %>
+							<li>Oil of <%= quantity[11] %> ml </li>
+						<% end %>
+				</ul>
+			<% end %>
+		<% end %>
+	</div>
+	<div class="calendar_data">
+		h s;aohfoshoghofsho
+	</div>
+</div>

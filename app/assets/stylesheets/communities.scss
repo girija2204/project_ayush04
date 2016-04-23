@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.dashboard {
+.discussion_board {
     margin-top: 63px;
     margin-left: 75px;
     
@@ -34,10 +34,17 @@
             background-color: cornsilk;
             h3 {
                 margin-top: 0px;
+                width: 200px;
+                border-bottom: 1px solid #DED7D7;
                 margin-bottom: 0px;
+                padding-left: 5px;
+                padding-bottom: 4px;
             }
             p {
                 padding-top: 10px;
+            }
+            .add_comm_details, #cancel_btn {
+                display: none;
             }
         }
         
@@ -71,4 +78,14 @@
 
 .rocky {
     background-color: #8E5B5B;
+}
+
+.no_discs {
+    background-color: white;
+    padding: 30px;
+    border-radius: 4px;
+    text-align: center;
+    p {
+        font-size: 16px;
+    }
 }

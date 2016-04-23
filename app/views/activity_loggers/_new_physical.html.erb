@@ -27,6 +27,13 @@
       $('#form-walking').hide();
       $('#walking_btn').removeClass("active");
     });
+
+
+
+    $("#hours").on('change', function(){
+      var x = $("#hours").value;
+      $("#hidden_quantity").value(x);
+    });
   });
 </script>
 
@@ -56,7 +63,7 @@
             </div>
 
             <div class="form-group">
-              <%= f.number_field :quantities, class: "form-control", placeholder: "00" %>
+              <%= f.number_field :quantities, class: "form-control", placeholder: "00" %> <%= "kms" %>
             </div>
 
             <div class="form-group">
@@ -97,13 +104,17 @@
               <%= f.hidden_field :activity_type, value: "exercise" %>
             </div>
 
-            <div>
-              <%= f.number_field :hours, class: "form-control", placeholder: "00" %>hours
+            <div class="form-group">
+              <input type="number" class="form-control" placeholder="00" id="hours">hours
             </div>
             
-            <div>
-              <%= f.number_field :min, class: "form-control", placeholder: "00" %>min
-            </div>          
+            <div class="form-group">
+              <input type="number" class="form-control" placeholder="00" id="min">min
+            </div>
+
+            <div class="form-group">
+              <%= f.hidden_field :quantities, value: "", id: "hidden_quantity" %>
+            </div>
             
 
             <div class="form-group">

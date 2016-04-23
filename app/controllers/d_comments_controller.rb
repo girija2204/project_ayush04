@@ -5,9 +5,10 @@ class DCommentsController < ApplicationController
 		@dcomment.community = @comm
 		@dcomment.user = current_user
 		if @dcomment.save
-			redirect_to @disc
-		else
-			render 'new'
+			respond_to do |format|
+				format.html { redirect_to @disc }
+				format.js
+			end
 		end
 	end
 

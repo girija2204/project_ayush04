@@ -27,7 +27,7 @@ class CommunitiesController < ApplicationController
   end
   def show
   	@comm = Community.find(params[:id])
-  	@discs = Discussion.all
+  	@discs = @comm.discussions
   end
   def discussion_form
   	@comm = Community.find(params[:id])
@@ -45,6 +45,11 @@ class CommunitiesController < ApplicationController
   def about_comm
     @title = "About Community"
     @comm = Community.find(params[:id])
+  end
+  def update
+    @comm = Community.find(params[:id])
+    @comm.update(comm_params)
+    redirect_to about_comm_path
   end
 
   private

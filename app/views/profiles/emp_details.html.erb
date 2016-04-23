@@ -1,5 +1,5 @@
 <script type="text/javascript">
-	$(document).ready(function(){
+	$("document").ready(function(){
 		$("#add_form").hide();
 		$("#add_button").click(function(){
 			$("#add_form").slideDown("slow");
@@ -11,51 +11,53 @@
 </script>
 
 <div class="profile">
-	<%= render 'shared/left_section' %>
+	<%= render 'profiles/left_section' %>
 	<div class="right-section">
-		<div class="all_tabs">
-			<% if @user == current_user %>
-			<div class="new_emp_entry">
-				<button class="btn btn-default" type="button" id="add_button">Add a Job</button>
-				<div id="add_form">
-					<%= form_for(:employment_details, :url => {:controller => :edu_emp_details, :action => :create_emp}) do |f| %>
-						<div class="form-group">
-							<%= f.label "Organisation" %>
-							<%= f.text_field :organisation, class: "form-control" %>
+		<div id="emp_detail">
+			<div class="all_sections">
+				<% if @user == current_user %>
+					<div class="new_emp_entry">
+						<button class="btn btn-default" type="button" id="add_button">Add a Job</button>
+						<div id="add_form">
+							<%= form_for(:employment_details, :url => {:controller => :edu_emp_details, :action => :create_emp}) do |f| %>
+								<div class="form-group">
+									<%= f.label "Organisation" %>
+									<%= f.text_field :organisation, class: "form-control" %>
+								</div>
+								<div class="form-group">
+									<%= f.label "Position Held" %>
+									<%= f.text_field :position_held, class: "form-control" %>
+								</div>
+								<div class="form-group">
+									<%= f.label "Location" %>
+									<%= f.text_field :location, class: "form-control" %>
+								</div>
+								<div class="form-group">
+									<%= f.label "Description" %>
+									<%= f.text_area :description, class: "form-control" %>
+								</div>
+								<div class="form-group">
+									<%= f.submit "Save", class: "btn btn-default" %>
+								</div>
+							<% end %>
+							<button id="cancel" class="btn btn-default">Cancel</button>
 						</div>
-						<div class="form-group">
-							<%= f.label "Position Held" %>
-							<%= f.text_field :position_held, class: "form-control" %>
-						</div>
-						<div class="form-group">
-							<%= f.label "Location" %>
-							<%= f.text_field :location, class: "form-control" %>
-						</div>
-						<div class="form-group">
-							<%= f.label "Description" %>
-							<%= f.text_area :description, class: "form-control" %>
-						</div>
-						<div class="form-group">
-							<%= f.submit "Save", class: "btn btn-default" %>
-						</div>
-					<% end %>
-					<button id="cancel" class="btn btn-default">Cancel</button>
-				</div>
-			</div>
-			<% end %>
-			<div class="details_section">
-				<h4>Employment Details</h4>
-				<%# @user.work_status %>
-				<% if @user.employment_details %>
-					<% @user.employment_details.each do |emp_detail| %>
-						<div class="emp_detail">
-							<h3><%= emp_detail.organisation %></h3>
-							<strong><%= emp_detail.position_held %></strong>
-							<small><p class="text-mute"><%= emp_detail.location %></p></small>
-							<%= emp_detail.description %><br>
-						</div>
-					<% end %>
+					</div>
 				<% end %>
+				<div class="details_section">
+					<h4>Employment Details</h4>
+					<%# @user.work_status %>
+					<% if @user.employment_details %>
+						<% @user.employment_details.each do |emp_detail| %>
+							<div class="detailed">
+								<h3><%= emp_detail.organisation %></h3>
+								<strong><%= emp_detail.position_held %></strong>
+								<small><p class="text-mute"><%= emp_detail.location %></p></small>
+								<%= emp_detail.description %><br>
+							</div>
+						<% end %>
+					<% end %>
+				</div>
 			</div>
 		</div>
 	</div>

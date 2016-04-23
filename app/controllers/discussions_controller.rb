@@ -10,6 +10,12 @@ class DiscussionsController < ApplicationController
 			render 'new'
 		end
 	end
+	def show
+		@disc = Discussion.find(params[:id])
+		@comm = @disc.community
+		@dcomments = @disc.d_comments
+		#puts @disc
+	end
 
 	private
 	def disc_params

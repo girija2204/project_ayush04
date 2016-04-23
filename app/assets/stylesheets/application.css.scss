@@ -368,7 +368,7 @@ body {
     }
 }
 
-.dashboard, .profile {
+.dashboard, .profile, .show_post_page, .show_discussion_page {
     margin-top: 63px;
     margin-left: 50px;
     .profile_link, .logger_link, .friends_link {
@@ -393,7 +393,7 @@ body {
         /* height: 1500px; */
         
         
-        .show_posts {
+        .show_posts, .show_discs {
             /* border-top: 1px solid #D4D2D2; */
             /* border-bottom: 1px solid #D4D2D2; */
             width: 97%;

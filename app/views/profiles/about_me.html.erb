@@ -1,14 +1,16 @@
 <div class="profile">
-	<%= render 'shared/left_section' %>
+	<%= render 'profiles/left_section' %>
 	<div class="right-section">
-		<div class="all_tabs">
-			<div class="details_section">
-				<h4>Date Of Birth</h4>
-				<%= @user.dob if @user.dob %>
-			</div>
-			<div class="details_section">
-				<h4>Bio</h4>
-				<%= @user.bio if @user.bio %>
+		<div id="about_me">
+			<div class="all_sections">
+				<div class="details_section">
+					<h4>Date Of Birth</h4>
+					<%= @user.dob if @user.dob %>
+				</div>
+				<div class="details_section">
+					<h4>Bio</h4>
+					<%= @user.bio if @user.bio %>
+				</div>
 			</div>
 		</div>
 	</div>

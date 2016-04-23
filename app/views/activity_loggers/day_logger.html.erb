@@ -1,34 +1,98 @@
 <div class="show_activities">
-	<div class="dropdown">
-		<a data-toggle="dropdown" href="#">Select View</a>
-		<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-			<li><%= link_to 'Day View', day_logger_path(:all) %></li>
-			<li><%= link_to 'Week View', week_logger_path(:all) %></li>
-			<li><%= link_to 'Month View', month_logger_path(:all) %></li>
-		</ul>
-	</div>
+	<%= render 'view_select' %>
 
-	<div class="dropdown">
+	<div class="dropdown" id="activities_select">
 		<a data-toggle="dropdown" href="#">Select Activities</a>
 		<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 			<li><%= link_to 'All Activities', day_logger_path(:all) %></li>
 			<li><%= link_to 'Running', day_logger_path(:running) %></li>
 			<li><%= link_to 'Walking', day_logger_path(:walking) %></li>
 			<li><%= link_to 'Exercise', day_logger_path(:exercise) %></li>
+			<li><%= link_to 'Rice Intake', day_logger_path(:rice) %></li>
+			<li><%= link_to 'Cold Drinks', day_logger_path(:cold_drinks) %></li>
+			<li><%= link_to 'Coffee or Tea', day_logger_path(:coffee_or_tea) %></li>
+			<li><%= link_to 'Alchohol Intake', day_logger_path(:alchohol) %></li>
+			<li><%= link_to 'Cigarettes Intake', day_logger_path(:cigarettes) %></li>
+			<li><%= link_to 'Water Intake', day_logger_path(:water) %></li>
+			<li><%= link_to 'Sleep Time', day_logger_path(:sleep) %></li>
+			<li><%= link_to 'Day ACtive', day_logger_path(:day_active) %></li>
+			<li><%= link_to 'Oil Intake', day_logger_path(:oil) %></li>
 		</ul>
 	</div>
 
 	<div id="day_view">
 		<div id="all_activities">
-			<% @activities.group_by(&:date).sort.each do |date, date_activity| %>
+			<% @activities.group_by(&:date).sort.each do |date, activities| %>
 				<div class="date_activity">
 					<h4><%= date %></h4>
-					<% date_activity.each do |activity| %>
-						<p><%= "#{activity.activity_type.titleize} of #{activity.quantities} #{activity.activity_measures}" %></p>
+					<% walking_q = running_q = exercise_q = rice_q = cold_q = coffee_q = alchohol_q = cigarettes_q = water_q = sleep_q = day_active_q = oil_q = 0 %>
+					<% activities.each do |activity| %>
+						<% if activity.activity_type == "walking" %>
+							<% walking_q = walking_q + activity.quantities %>
+						<% elsif activity.activity_type == "running" %>
+							<% running_q = running_q + activity.quantities %>
+						<%# elsif activity.activity_type == "exercise" %>
+							<%# exercise_q = exercise_q + activity.quantities %>
+						<% elsif activity.activity_type == "rice intake" %>
+							<% rice_q = rice_q + activity.quantities %>
+						<% elsif activity.activity_type == "cold drinks" %>
+							<% cold_q = cold_q + activity.quantities %>
+						<% elsif activity.activity_type == "coffee or tea" %>
+							<% coffee_q = coffee_q + activity.quantities %>
+						<% elsif activity.activity_type == "Alchohol Intake" %>
+							<% alchohol_q = alchohol_q + activity.quantities %>
+						<% elsif activity.activity_type == "Cigarettes Intake" %>
+							<% cigarettes_q = cigarettes_q + activity.quantities %>
+						<% elsif activity.activity_type == "Water Intake" %>
+							<% water_q = water_q + activity.quantities %>
+						<%# elsif activity.activity_type == "Sleep Time" %>
+							<%# sleep_q = sleep_q + activity.quantities %>
+						<% elsif activity.activity_type == "Day Active" %>
+							<% day_active_q = day_active_q + activity.quantities %>
+						<% elsif activity.activity_type == "oil intake" %>
+							<% oil_q = oil_q + activity.quantities %>
+						<% end %>
+						<p><%# "#{activity.activity_type.titleize} of #{activity.quantities} #{activity.activity_measures}" %></p>
 					<% end %>
-				</div>
-			<% end %>
-		</div>
+					<% if walking_q != 0 %>
+						<p>Walking of <%= walking_q %> kms </p>
+					<% end %>
+					<% if running_q != 0 %>
+						<p>Running of <%= running_q %> kms </p>
+					<% end %>
+					<%# if exercise_q != 0 
+						<p>Exercise of <%= exercise_q  minutes </p> %>
+					<%# end %>
+					<% if rice_q != 0 %>
+						<p>Rice Intake of <%= rice_q %> Grams </p>
+					<% end %>
+					<% if cold_q != 0 %>
+						<p>Cold Drinks of <%= cold_q %> ml </p>
+					<% end %>
+					<% if coffee_q != 0 %>
+						<p>Coffee or Tea of <%= coffee_q %> ml </p>
+					<% end %>
+					<% if alchohol_q != 0 %>
+						<p>Alchohol of <%= alchohol_q %> ml </p>
+					<% end %>
+					<% if cigarettes_q != 0 %>
+						<p>Cigarettes of <%= cigarettes_q %> number </p>
+					<% end %>
+					<% if water_q != 0 %>
+						<p>Water of <%= water_q %> ml </p>
+					<% end %>
+					<%# if sleep_q != 0 
+						<p>Sleep Time of <%= sleep_q  minutes </p> %>
+					<%# end %>
+					<% if day_active_q != 0 %>
+						<p>Day was active of <%= day_active_q %> Rating </p>
+					<% end %>
+					<% if oil_q != 0 %>
+						<p>Oil of <%= oil_q %> ml </p>
+					<% end %>
+			</div>
+		<% end %>
+		
 	</div>
 
 </div>
