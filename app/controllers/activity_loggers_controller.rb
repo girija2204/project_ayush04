@@ -133,8 +133,8 @@ class ActivityLoggersController < ApplicationController
 			@activities = current_user.activity_loggers.where(activity_type: "running")
 		elsif activity_type == "walking"
 			@activities = current_user.activity_loggers.where(activity_type: "walking")
-		elsif activity_type == "exercise"
-			@activities = current_user.activity_loggers.where(activity_type: "exercise")
+		#elsif activity_type == "exercise"
+			#@activities = current_user.activity_loggers.where(activity_type: "exercise")
 		elsif activity_type == "rice"
 			@activities = current_user.activity_loggers.where(activity_type: "rice intake")
 		elsif activity_type == "cold_drinks"
@@ -147,12 +147,12 @@ class ActivityLoggersController < ApplicationController
 			@activities = current_user.activity_loggers.where(activity_type: "Cigarettes Intake")
 		elsif activity_type == "water"
 			@activities = current_user.activity_loggers.where(activity_type: "Water Intake")
-		elsif activity_type == "sleep"
-			@activities = current_user.activity_loggers.where(activity_type: "Sleep Time")
+		#elsif activity_type == "sleep"
+			#@activities = current_user.activity_loggers.where(activity_type: "Sleep Time")
 		elsif activity_type == "day_active"
 			@activities = current_user.activity_loggers.where(activity_type: "Day Active")
-		elsif activity_type == "oil"
-			@activities = current_user.activity_loggers.where(activity_type: "oil intake")
+		#elsif activity_type == "oil"
+			#@activities = current_user.activity_loggers.where(activity_type: "oil intake")
 		end
 		@activities_by_date = @activities.group_by(&:activity_date)
 		@date = params[:date] ? Date.parse(params[:date]) : Date.today
