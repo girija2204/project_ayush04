@@ -30,6 +30,10 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { registrations: "registrations"}
   
+  get 'profile/:id/about_me/dob_update' => 'profiles#dob_update', as: :dob_update
+  post 'profile/:id/about_me/dob_update' => 'profiles#dob_update'
+  get 'profile/:id/about_me/bio_update' => 'profiles#bio_update', as: :bio_update
+  post 'profile/:id/about_me/bio_update' => 'profiles#bio_update'
   get 'profile/:id/about_me' => 'profiles#about_me', as: :profile
   get 'profile/:id/all_posts' => 'profiles#all_posts', as: :all_posts
   get 'profile/:id/educational' => 'profiles#edu_details', as: :edu_details

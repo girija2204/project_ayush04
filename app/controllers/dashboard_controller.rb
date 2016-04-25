@@ -7,7 +7,6 @@ class DashboardController < ApplicationController
 			#puts @followed_user_posts
 			@user_posts = @followed_user_posts + @user_posts
 		end
-		puts @user_posts
 		@posts = @user_posts.reverse
 	end
 		#puts @posts

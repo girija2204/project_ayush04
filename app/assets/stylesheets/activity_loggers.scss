@@ -179,6 +179,9 @@ input[type="date"].form-control {
         height: 80px;
         vertical-align: top;
         font-size: 13px;
+        li{
+            display: none;
+        }
     }
 
     .notmonth { color: #CCC; }

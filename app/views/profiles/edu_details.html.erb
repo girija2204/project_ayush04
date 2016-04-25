@@ -2,10 +2,16 @@
 	$("document").ready(function(){
 		$("#add_form").hide();
 		$("#add_button").click(function(){
-			$("#add_form").slideDown("slow");
+			$(this).hide();
+			$("#add_form").show();
+			$("p").hide();
+			$(".detailed").hide();
 		});
 		$("#cancel").click(function(){
-			$("#add_form").slideUp("slow");
+			$("#add_button").show();
+			$("#add_form").hide();
+			$("p").show();
+			$(".detailed").show();
 		});
 	});
 </script>
@@ -15,43 +21,11 @@
 	<div class="right-section">
 		<div id="edu_detail">
 			<div class="all_sections">
-				<% if @user == current_user %>
-					<div class="new_edu_entry">
-						<button class="btn btn-default" type="button" id="add_button">Add Class</button>
-						<div id="add_form">
-							<%= form_for(:educational_details, :url => {:controller => :edu_emp_details, :action => :create_edu}) do |f| %>
-								<div class="form-group">
-									<%= f.label "School" %>
-									<%= f.text_field :school, class: "form-control" %>
-								</div>
-								<div class="form-group">
-									<%= f.label "Degree" %>
-									<%= f.text_field :degree, class: "form-control" %>
-								</div>
-								<div class="form-group">
-									<%= f.label "Field of Study" %>
-									<%= f.text_field :field_of_study, class: "form-control" %>
-								</div>
-								<div class="form-group">
-									<%= f.label "Grade" %>
-									<%= f.number_field :grade, class: "form-control" %>
-								</div>
-								<div class="form-group">
-									<%= f.label "Description" %>
-									<%= f.text_area :description, class: "form-control" %>
-								</div>
-								<div class="form-group">
-									<%= f.submit "Save", class: "btn btn-default" %>
-								</div>
-							<% end %>
-							<button id="cancel" class="btn btn-default">Cancel</button>
-						</div>
-					</div>
-				<% end %>
 				<div class="details_section">
 					<h4>Educational Details</h4>
 					<%# @user.education_status %>
-					<% if @user.educational_details %>
+					<%= link_to "Add School", "#", class: "btn btn-primary add", id: "add_button" %>
+					<% if @user.educational_details.exists? %>
 						<% @user.educational_details.each do |edu_detail| %>
 							<div class="detailed">
 								<h3><%= edu_detail.school %></h3>
@@ -61,7 +35,41 @@
 								<%= edu_detail.description %><br>
 							</div>
 						<% end %>
+					<% else %>
+						<% if @user == current_user %>
+							<p class="text-muted no_record">You have no educational records..</p>
+						<% else %>
+							<%= @user.first_name %> has no educational records..
+						<% end %>
 					<% end %>
+					<div id="add_form">
+						<%= form_for(:educational_details, :url => {:controller => :edu_emp_details, :action => :create_edu}) do |f| %>
+							<div class="form-group">
+								<%= f.label "School" %>
+								<%= f.text_field :school, class: "form-control" %>
+							</div>
+							<div class="form-group">
+								<%= f.label "Degree" %>
+								<%= f.text_field :degree, class: "form-control" %>
+							</div>
+							<div class="form-group">
+								<%= f.label "Field of Study" %>
+								<%= f.text_field :field_of_study, class: "form-control" %>
+							</div>
+							<div class="form-group">
+								<%= f.label "Grade" %>
+								<%= f.number_field :grade, class: "form-control" %>
+							</div>
+							<div class="form-group">
+								<%= f.label "Description" %>
+								<%= f.text_area :description, class: "form-control" %>
+							</div>
+							<div class="form-group">
+								<%= f.submit "Save", class: "btn btn-primary" %>
+							</div>
+						<% end %>
+						<button id="cancel" class="btn btn-primary">Cancel</button>
+					</div>
 				</div>
 			</div>
 		</div>

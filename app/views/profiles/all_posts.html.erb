@@ -5,9 +5,38 @@
 			<div class="all_sections">
 				<div class="details_section">
 					<h4>All Posts</h4>
-					<% @user.posts.each do |post| %>
-						<h5><strong><%= link_to post.title, post %></strong></h5>
-						<%= post.content %>
+					<% if @user.posts.exists? %>
+						<% @user.posts.each do |post| %>
+						<div class="show_posts">
+							<div class="btn-group pull-right">
+								<% if post.user == current_user %>
+									<%= link_to post, method: :delete do %>
+										<small><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></small>
+									<% end %>
+								<% end %>
+							</div>
+							<div class="show_post_title">
+								<%= link_to post.title, post, class: "post_title" %>
+							</div>
+
+							<div class="show_post_created_at">
+								<p class="text-muted"><%= time_ago_in_words(post.created_at) %> ago by <%= link_to "#{post.user.first_name.titleize} #{post.user.last_name.titleize}", profile_path(post.user)%></p>
+							</div>
+							<div class="show_post_description">
+								<%= truncate(post.content, length: 200) { link_to "read more", post} %>
+							</div>
+							<%= link_to "View Post", post, class: "btn btn-primary" %>
+						</div>
+						
+						<% end %>
+					<% else %>
+						<p class="text-muted no_record">
+							<% if @user == current_user %>
+								You have no Posts to show..
+							<% else %>
+								<%= @user.first_name %> has no posts to show..
+							<% end %>
+						</p>
 					<% end %>
 				</div>
 			</div>

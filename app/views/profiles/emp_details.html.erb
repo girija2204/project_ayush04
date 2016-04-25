@@ -2,10 +2,16 @@
 	$("document").ready(function(){
 		$("#add_form").hide();
 		$("#add_button").click(function(){
-			$("#add_form").slideDown("slow");
+			$(this).hide();
+			$("#add_form").show();
+			$("p").hide();
+			$(".detailed").hide();
 		});
 		$("#cancel").click(function(){
-			$("#add_form").slideUp("slow");
+			$("#add_button").show();
+			$("#add_form").hide();
+			$("p").show();
+			$(".detailed").show();
 		});
 	});
 </script>
@@ -15,9 +21,27 @@
 	<div class="right-section">
 		<div id="emp_detail">
 			<div class="all_sections">
-				<% if @user == current_user %>
-					<div class="new_emp_entry">
-						<button class="btn btn-default" type="button" id="add_button">Add a Job</button>
+				<div class="details_section">
+					<h4>Employment Details</h4>
+					<%# @user.work_status %>
+					<%= link_to "Add a Job", "#", class: "btn btn-primary add", id: "add_button" %>
+					<% if @user.employment_details.exists? %>
+						<% @user.employment_details.each do |emp_detail| %>
+							<div class="detailed">
+								<h3><%= emp_detail.organisation %></h3>
+								<strong><%= emp_detail.position_held %></strong>
+								<small><p class="text-mute"><%= emp_detail.location %></p></small>
+								<%= emp_detail.description %><br>
+							</div>
+						<% end %>
+					<% else %>
+							<% if @user == current_user %>
+								<p class="text-muted no_record">You have no employment records..</p>
+							<% else %>
+								<%= @user.first_name %> has no employment records..
+							<% end %>
+					<% end %>
+					<% if @user == current_user %>
 						<div id="add_form">
 							<%= form_for(:employment_details, :url => {:controller => :edu_emp_details, :action => :create_emp}) do |f| %>
 								<div class="form-group">
@@ -37,25 +61,11 @@
 									<%= f.text_area :description, class: "form-control" %>
 								</div>
 								<div class="form-group">
-									<%= f.submit "Save", class: "btn btn-default" %>
+									<%= f.submit "Save", class: "btn btn-primary" %>
 								</div>
 							<% end %>
-							<button id="cancel" class="btn btn-default">Cancel</button>
+							<button id="cancel" class="btn btn-primary">Cancel</button>
 						</div>
-					</div>
-				<% end %>
-				<div class="details_section">
-					<h4>Employment Details</h4>
-					<%# @user.work_status %>
-					<% if @user.employment_details %>
-						<% @user.employment_details.each do |emp_detail| %>
-							<div class="detailed">
-								<h3><%= emp_detail.organisation %></h3>
-								<strong><%= emp_detail.position_held %></strong>
-								<small><p class="text-mute"><%= emp_detail.location %></p></small>
-								<%= emp_detail.description %><br>
-							</div>
-						<% end %>
 					<% end %>
 				</div>
 			</div>

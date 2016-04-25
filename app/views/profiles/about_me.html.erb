@@ -1,3 +1,35 @@
+<script type="text/javascript">
+	$("document").ready(function(){
+		$(".add_dob_form").hide();
+		$(".add_bio_form").hide();
+		$(".add_dob_btn").click(function(e){
+			e.preventDefault();
+			$("#no_dob").hide();
+			$(".add_dob_btn").hide();
+			$(".add_dob_form").show();
+		});
+		$("#cancel_dob_btn").click(function(e){
+			e.preventDefault();
+			$("#no_dob").show();
+			$(".add_dob_btn").show();
+			$(".add_dob_form").hide();
+		});
+
+		$(".add_bio_btn").click(function(e){
+			e.preventDefault();
+			$("#no_bio").hide();
+			$(".add_bio_btn").hide();
+			$(".add_bio_form").show();
+		});
+		$("#cancel_bio_btn").click(function(e){
+			e.preventDefault();
+			$("#no_bio").show();
+			$(".add_bio_btn").show();
+			$(".add_bio_form").hide();
+		});
+	});
+</script>
+
 <div class="profile">
 	<%= render 'profiles/left_section' %>
 	<div class="right-section">
@@ -5,11 +37,52 @@
 			<div class="all_sections">
 				<div class="details_section">
 					<h4>Date Of Birth</h4>
-					<%= @user.dob if @user.dob %>
+					<% if @user.dob != nil %>
+						<%= @user.dob %>
+					<% else %>
+						<% if @user == current_user %>
+							<div class="add_dob_form">
+								<%= form_for(:profile, :url => {:controller => "profiles", :action => "dob_update"}) do |f| %>
+									<div class="form-group">
+										<%= f.label :dob, "Enter your Date of Birth" %>
+										<%= f.date_field :dob, class: "form-control" %>
+									</div>
+									<div class="form-group">
+										<%= f.submit "Submit", class: "btn btn-primary" %>
+									</div>
+								<% end %>
+								<%= link_to "Cancel", "#", class: "btn btn-primary cancel_btn", id: "cancel_dob_btn"  %>
+							</div>
+							<p id="no_dob">---</p>
+							<%= link_to "Add your Date of Birth", "#", class: "btn btn-primary add add_dob_btn" %>
+						<% end %>
+						
+						
+					<% end %>
 				</div>
 				<div class="details_section">
 					<h4>Bio</h4>
-					<%= @user.bio if @user.bio %>
+					<% if @user.bio != "" %>
+						<%= @user.bio %>
+					<% else %>
+						<% if @user == current_user %>
+							<div class="add_bio_form">
+								<%= form_for(:profile, :url => {:controller => "profiles", :action => "bio_update"}) do |f| %>
+									<div class="form-group">
+										<%= f.label :bio, "Enter bio to your profile" %>
+										<%= f.text_area :bio, class: "form-control" %>
+									</div>
+									<div class="form-group">
+										<%= f.submit "Submit", class: "btn btn-primary" %>
+									</div>
+								<% end %>
+								<%= link_to "Cancel", "#", class: "btn btn-primary cancel_btn", id: "cancel_bio_btn" %>
+							</div>
+							<p id="no_bio">---</p>
+							<%= link_to "Add Bio to your profile", "#", class: "btn btn-primary add add_bio_btn" %>
+						<% end %>
+						
+					<% end %>
 				</div>
 			</div>
 		</div>

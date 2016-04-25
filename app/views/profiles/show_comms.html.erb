@@ -6,8 +6,18 @@
 				<% provide(:title, @title) %>
 				<div class="details_section">
 					<h4>Communities</h4>
-					<% @user.comms.each do |comm| %>
-						<p><strong><%= link_to comm.c_name, disc_board_path(comm.id) %></strong></p>
+					<% if @user.comms.exists? %>
+						<% @user.comms.each do |comm| %>
+							<p><strong><%= link_to comm.c_name, disc_board_path(comm.id) %></strong></p>
+						<% end %>
+					<% else %>
+						<p class="text-muted no_record">
+							<% if @user == current_user %>
+								You have not joined in any communities..
+							<% else %>
+								<%= @user.first_name %> has not joined in any communities..
+							<% end %>
+						</p>
 					<% end %>
 				</div>
 			</div>

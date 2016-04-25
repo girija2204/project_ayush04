@@ -7,10 +7,10 @@
     padding: 30px;
     border-radius: 4px;
     #add_button {
-        float: right;
+        /* float: right; */
     }
     #add_form {
-        padding-top: 42px;
+        padding-top: 0px;
         display: none;
     }
     .details_section {
@@ -18,7 +18,7 @@
         h4 {
             border-bottom: 1px solid rgba(171, 171, 171, 0.23);
             padding-bottom: 5px;
-            width: 256px;
+            width: 300px;
             margin-bottom: 25px;
             font-size: 25px;
         }
@@ -27,6 +27,37 @@
             padding: 10px;
             border-radius: 2px;
             margin-bottom: 10px;
+        }
+        .no_record{
+            font-size: 15px;
+            font-style: italic;
+        }
+        .add {
+            margin-left: 260px;
+            border-top-left-radius: 0px;
+            font-style: italic;
+            font-size: 13px;
+            margin-top: -106px;
+            border: 1px solid rgb(195, 195, 195);
+            height: 24px;
+            padding-top: 2px;
+            color: #848282;
+            border-top-right-radius: 0px;
+            display: inline-block;
+            background-color: rgb(212, 212, 212);
+        }
+        .btn-primary {
+            color: #7B7B7B;
+            background-color: #B5B5B5;
+            font-size: 14px;
+            border-color: #C3C3C3;
+            padding-left: 7px;
+            padding-top: 1px;
+            padding-bottom: 1px;
+            padding-right: 7px;
+        }
+        #add_button {
+            margin-top: -52px;
         }
     }
 }

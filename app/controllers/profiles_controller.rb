@@ -37,6 +37,18 @@ class ProfilesController < ApplicationController
 	def emp_details
 		@user = User.find(params[:id])
 	end
+	def dob_update
+		@user = User.find(params[:id])
+		if @user.update(dob_params)
+			redirect_to profile_path(@user)			
+		end
+	end
+	def bio_update
+		@user = User.find(params[:id])
+		if @user.update(bio_params)
+			redirect_to profile_path(@user)			
+		end
+	end
 
 	private
 	def save_attr_params
@@ -44,5 +56,11 @@ class ProfilesController < ApplicationController
 	end
 	def final_save_attr_params
 		params.require(:profile).permit(:education_status, :work_status, :smoking, :drinking, :diabetes_status)
+	end
+	def dob_params()
+		params.require(:profile).permit(:dob)
+	end
+	def bio_params()
+		params.require(:profile).permit(:bio)
 	end
 end

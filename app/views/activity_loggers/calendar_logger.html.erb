@@ -1,11 +1,13 @@
 <script type="text/javascript">
 	$("document").ready(function(){
 		$("td").mouseover(function(){
+			$(this).children("li").show();
 			$(this).addClass("active");
 			$(this).css("color", "#462F2F");
 			$(this).css("font-weight", "bold");
 		});
 		$("td").mouseout(function(){
+			$(this).children("li").hide();
 			$(this).removeClass("active");
 			$(this).css("color", "#777");
 			$(this).css("font-weight", "normal");
@@ -43,12 +45,12 @@
 			<%= link_to ">", date: @date.next_month %>
 		</h2>
 		<%= calendar @date do |date| %>
-			<%= link_to date.day, "#" %>
+			<%= date.day %>
 			<% if @activities_by_date[date] %>
 				<% quantity = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] %>
 				<% activity_types = ["walking", "running", "exercise", "rice intake", "cold drinks", "coffee or tea", "Alchohol Intake","Cigarettes Intake", "Water Intake", "Sleep Time", "Day Active", "oil intake"] %>
 				<% @activities_by_date[date].each do |activity| %>
-					<% i = 0 %>
+					<% i = 0 %><% x = false %>
 					<% while i < 12 do %>
 						<% if activity_types[i] == activity.activity_type %>
 							<% break %>
@@ -64,9 +66,13 @@
 				<% i = 0 %>
 				<% while(i < 12) %>
 					<% if quantity[i] != 0 %>
+						<% x = true %>
 						<li><%= activity_types[i] %> of <%= quantity[i] %></li>
 					<% end %>
 					<% i = i + 1 %>
+				<% end %>
+				<% if x == true %>
+				<p>exists...</p>
 				<% end %>
 				
 				<% if false %>	
