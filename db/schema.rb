@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160414073922) do
+ActiveRecord::Schema.define(version: 20160425182511) do
 
   create_table "activity_loggers", force: :cascade do |t|
     t.date     "activity_date"
@@ -166,6 +166,10 @@ ActiveRecord::Schema.define(version: 20160414073922) do
     t.string   "drinking"
     t.string   "diabetes_status"
     t.text     "bio"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

@@ -35,7 +35,7 @@
 	<div class="right-section">
 		<div id="about_me">
 			<div class="all_sections">
-				<div class="details_section">
+				<div class="details_section dob">
 					<h4>Date Of Birth</h4>
 					<% if @user.dob != nil %>
 						<%= @user.dob %>
@@ -60,7 +60,36 @@
 						
 					<% end %>
 				</div>
-				<div class="details_section">
+
+				<div class="details_section avatar">
+					<% if @user.avatar_file_name %>
+						<div>
+							<%= image_tag @user.avatar.url(:thumb), class: "prof_avatar" %>
+						</div>
+					<% else %>
+						<% if @user.gender == "Male" %>
+							<p><%= image_tag 'men' , class: "prof_avatar" %></p>
+						<% elsif @user.gender == "Female" %>
+							<p><%= image_tag 'women', class: "prof_avatar" %></p>
+						<% else %>
+							<p>Enter a profile pic..</p>
+						<% end %>
+					<% end %>
+					<% if @user == current_user %>
+						<div id="form_avatar">
+							<%= form_for(:profile, :url => {:controller => :profiles, :action => :avatar_upload}, :html => {multipart: true}) do |f| %>
+								<div class="form-group" id="user_avatar">
+									<%= f.file_field :avatar, as: :file %>
+								</div>
+								<div class="form-group">
+									<%= f.submit "Submit", class: "btn btn-primary" %>
+								</div>
+							<% end %>
+						</div>
+					<% end %>
+				</div>
+
+				<div class="details_section bio">
 					<h4>Bio</h4>
 					<% if @user.bio != "" %>
 						<%= @user.bio %>
@@ -84,6 +113,7 @@
 						
 					<% end %>
 				</div>
+
 			</div>
 		</div>
 	</div>

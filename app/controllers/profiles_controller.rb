@@ -49,10 +49,16 @@ class ProfilesController < ApplicationController
 			redirect_to profile_path(@user)			
 		end
 	end
+	def avatar_upload
+		@user = User.find(params[:id])
+		if @user.update(avatar_params)
+			redirect_to profile_path(@user)
+		end
+	end
 
 	private
 	def save_attr_params
-		params.require(:profile).permit(:first_name, :last_name, :gender, :dob, :bio)
+		params.require(:profile).permit(:first_name, :last_name, :avatar, :gender, :dob, :bio)
 	end
 	def final_save_attr_params
 		params.require(:profile).permit(:education_status, :work_status, :smoking, :drinking, :diabetes_status)
@@ -62,5 +68,8 @@ class ProfilesController < ApplicationController
 	end
 	def bio_params()
 		params.require(:profile).permit(:bio)
+	end
+	def avatar_params()
+		params.require(:profile).permit(:avatar)
 	end
 end

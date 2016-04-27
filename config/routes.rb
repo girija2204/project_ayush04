@@ -35,6 +35,8 @@ Rails.application.routes.draw do
   get 'profile/:id/about_me/bio_update' => 'profiles#bio_update', as: :bio_update
   post 'profile/:id/about_me/bio_update' => 'profiles#bio_update'
   get 'profile/:id/about_me' => 'profiles#about_me', as: :profile
+  get 'profile/:id/about_me/avatar' => 'profiles#avatar_upload', as: :avatar_upload
+  post 'profile/:id/about_me/avatar' => 'profiles#avatar_upload'
   get 'profile/:id/all_posts' => 'profiles#all_posts', as: :all_posts
   get 'profile/:id/educational' => 'profiles#edu_details', as: :edu_details
   get 'profile/:id/employment' => 'profiles#emp_details', as: :emp_details

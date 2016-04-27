@@ -27,3 +27,4 @@ gem 'faker'
 gem 'wicked'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'jquery-ui-rails'
+gem "paperclip", "~> 5.0.0.beta1"

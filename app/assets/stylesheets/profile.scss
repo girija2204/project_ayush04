@@ -14,6 +14,10 @@
         display: none;
     }
     .details_section {
+        #form_avatar {
+            margin-top: 14px;
+            padding-left: 28px;
+        }
         padding: 10px;
         h4 {
             border-bottom: 1px solid rgba(171, 171, 171, 0.23);
@@ -59,5 +63,20 @@
         #add_button {
             margin-top: -52px;
         }
+    }
+    .dob {
+        float: left;
+        margin-top: 20px;
+    }
+    .avatar {
+        float: right;
+    }
+    .bio {
+        margin-top: 180px;
+    }
+    .prof_avatar{
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
     }
 }
