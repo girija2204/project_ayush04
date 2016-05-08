@@ -3,12 +3,13 @@
 	<div class="right-section">
 		<div id="show_comms">
 			<div class="all_sections">
-				<% provide(:title, @title) %>
+				<h1>COMMUNITIES
+				<span class="glyphicon glyphicon-king"></span>
+				</h1>
 				<div class="details_section">
-					<h4>Communities</h4>
 					<% if @user.comms.exists? %>
 						<% @user.comms.each do |comm| %>
-							<p><strong><%= link_to comm.c_name, disc_board_path(comm.id) %></strong></p>
+							<p class="p_comm"><strong><%= link_to comm.c_name, disc_board_path(comm.id), class: "comms" %></strong></p>
 						<% end %>
 					<% else %>
 						<p class="text-muted no_record">

@@ -1,0 +1,58 @@
+<script type="text/javascript">
+	$("document").ready(function(){
+		<% if params[:action] == "calendar_logger" && params[:controller] == "activity_loggers" %>
+			$("#first").addClass("come_black");
+		<% end %>
+		<% if params[:controller] == "communities" %>
+			$("#second").addClass("come_black");
+		<% end %>
+		<% if params[:action] == "show_comms" && params[:controller] == "dashboard" %>
+			$("#third").addClass("come_black");
+		<% end %>
+	});
+</script>
+<div class="left-section">
+	<div class="sub-header">
+		<div class="details">
+			<div class="dashboard_image">
+				<div class="image_tag">
+				<% if @user.avatar_file_name %>
+					
+						<%= image_tag @user.avatar.url(:thumb), class: "user_avatar" %>
+					
+				<% else %>
+					<% if @user.gender == "Male" %>
+						<p><%= image_tag 'men_thumb' , class: "user_avatar" %></p>
+					<% elsif @user.gender == "Female" %>
+						<p><%= image_tag 'women_thumb', class: "user_avatar" %></p>
+					<% else %>
+						<p>Enter a profile pic..</p>
+					<% end %>
+				<% end %>
+				</div>
+			</div>
+			<div class="dashboard_info">
+				<p id="show_name"><%= "#{@user.first_name.titleize} #{@user.last_name.titleize}" %></p>
+				<p>
+					<% if (params[:action] == 'show' || params[:action] == 'show_comms') && params[:controller] == 'dashboard' %>
+						<small><%= link_to 'View My Profile', profile_path(@user), id: "profile_view" %></small>
+					<% end %>
+				</p>
+			</div>
+		</div>
+	</div>
+	<div class="stats">
+		<%= render 'dashboard/stats' %>
+	</div>
+
+	<div class="sub-navigation">
+	
+		<% if (params[:action] == 'show' || params[:action] == 'show_comms' || params[:action] == 'following' || params[:action] == 'followers') && params[:controller] == 'dashboard' %>
+			<ul class="nav nav-pills nav-stacked">
+				<li id="first"><span class="glyphicon glyphicon-list-alt grey"></span><%= link_to 'Activity Logger', calendar_logger_path(:all), class: "btn btn-default", id: "park" %></li>
+				<li id="second"><span class="glyphicon glyphicon-modal-window grey"></span><%= link_to 'Create a Community', new_community_path, class: "btn btn-default" %></li>
+				<li id="third"><span class="glyphicon glyphicon-grain grey"></span><%= link_to 'Communities', dash_comms_path, class: "btn btn-default" %></li>
+			</ul>
+		<% end %>
+	</div>
+</div>

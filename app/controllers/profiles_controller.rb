@@ -55,6 +55,16 @@ class ProfilesController < ApplicationController
 			redirect_to profile_path(@user)
 		end
 	end
+	def following
+		@title = "Following"
+		@user = User.find(params[:id])
+		@users = @user.followed_users
+	end
+	def followers
+		@title = "Followers"
+		@user = User.find(params[:id])
+		@users = @user.followers
+	end
 
 	private
 	def save_attr_params

@@ -1,11 +1,11 @@
 <% if @user == current_user %>
 <div class="dashboard">
-	<%= render 'shared/left_section' %>
+	<%= render 'dashboard/left_section' %>
 	<div class="right-section">
 		<div class="create_post">
 			<%= render 'posts/form' %>
 		</div>
-		<% if @user.sign_in_count == 1 %>
+		<% if @user.sign_in_count == 1 && @user.posts.count == 0 %>
 			<div class="first_loggin_links">
 				<%= link_to "Fill up your profile..", profile_path(@user), class: "btn btn-default profile_link" %>
 				<%= link_to "Analyze your health by logging your daily activities..", day_logger_path(:all), class: "btn btn-default logger_link" %>

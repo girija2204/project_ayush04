@@ -21,8 +21,10 @@
 	<div class="right-section">
 		<div id="edu_detail">
 			<div class="all_sections">
+				<h1>EDUCATIONAL DETAIL
+				<span class="glyphicon glyphicon-book"></span>
+				</h1>
 				<div class="details_section">
-					<h4>Educational Details</h4>
 					<%# @user.education_status %>
 					<%= link_to "Add School", "#", class: "btn btn-primary add", id: "add_button" %>
 					<% if @user.educational_details.exists? %>

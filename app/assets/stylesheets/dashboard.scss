@@ -3,8 +3,22 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .create_post {
-	width: 95%;
-    margin-left: 17px;
+	/* width: 95%; */
+    background-color: white;
+    margin-left: 0px;
+    padding-left: 20px;
+    /* border-radius: 7px; */
+    height: 153px;
+    padding-top: 11px;
+    padding-bottom: 1px;
+    margin-bottom: 45px;
+    padding-right: 20px;
+    .form-group {
+        margin-bottom: 7px;
+    }
+    #submit_post {
+        float: right;
+    }
 }
 
 .btn {
@@ -27,4 +41,74 @@
 	margin-top: 15px;
     width: 97%;
 }
+.btn-post {
+    width: 156px;
+    text-transform: uppercase;
+    font-size: large;
+    padding-top: 10px;
+    border-radius: 2px;
+    background-color: #313131;
+    color: #FFF;
+    &:hover {
+        background-color: #0A0A0A;
+    }
+}
 
+.dashboard_posts {
+    background-color: #FFFFFF;
+    padding: 10px;
+    margin-left: 96px;
+    padding-top: 40px;
+    border-radius: 4px;
+    width: 81%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 6px;
+    /* border-radius: 4px; */
+    border-right: 5px #BDBDBD solid;
+    .circle {
+        float: right;
+        margin-top: 26px;
+        width: 20px;
+        background-color: rgba(255, 255, 255, 0.41);
+        border-radius: 50%;
+        height: 20px;
+        border: 1px solid #76AAF9;
+        box-shadow: 0px 0px 2px;
+        margin-right: -23px;
+    }
+
+}
+
+
+.show_posts {
+    box-shadow: 0px 0px 5px #989898;
+    .glyphicon-triangle-right {
+        float: right;
+        margin-right: -46px;
+        /* border: 1px solid #000; */
+        color: rgba(152, 152, 152, 0.23);
+        font-size: -webkit-xxx-large;
+    }
+    .glyphicon-chevron-right {
+        float: right;
+        margin-top: -27px;
+        padding-left: -29px;
+        font-size: xx-large;
+        /* border: 1px solid #EAEAEA; */
+        padding: 5px;
+    }
+    .glyphicon-user, .glyphicon-comment {
+        margin-left: 20px;
+        margin-right: 5px;
+    }
+    .show_post_created_at a {
+        color: #777777;
+        &:hover{
+            color: #616060;
+        }
+    }
+}
+
+#followers, #following {
+    padding-top: 45px;
+}

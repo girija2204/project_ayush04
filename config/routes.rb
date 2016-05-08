@@ -53,8 +53,10 @@ Rails.application.routes.draw do
   resources :educational_details
   resources :employment_details
 
-  get ':id/following' => 'relationships#following', as: :following
-  get ':id/followers' => 'relationships#followers', as: :followers
+  get 'dashboard/:id/following' => 'dashboard#following', as: :dash_following
+  get 'dashboard/:id/followers' => 'dashboard#followers', as: :dash_followers
+  get 'profile/:id/following' => 'profiles#following', as: :prof_following
+  get 'profile/:id/followers' => 'profiles#followers', as: :prof_followers
   
   get 'dashboard/:id/communities' => 'dashboard#show_comms', as: :dash_comms
   get 'community/:id/members' => 'communities#members', as: :members

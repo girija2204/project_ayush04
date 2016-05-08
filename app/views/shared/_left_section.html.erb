@@ -12,53 +12,11 @@
 			<li><%= link_to "Members (#{@comm.members.count})", members_path, class: "btn btn-default" %></li>
 		</div>
 	</div>
-<% else %>
+<%# else %>
 
-<% @user ||= current_user %>
+<%# @user ||= current_user %>
 
-<div class="left-section">
-	<div class="sub-header">
-		<div class="details">
-			<div class="dashboard_image">
-				<div class="image_tag">
-				<% if @user.avatar_file_name %>
-					
-						<%= image_tag @user.avatar.url(:thumb), class: "user_avatar" %>
-					
-				<% else %>
-					<% if @user.gender == "Male" %>
-						<p><%= image_tag 'men_thumb' , class: "user_avatar" %></p>
-					<% elsif @user.gender == "Female" %>
-						<p><%= image_tag 'women_thumb', class: "user_avatar" %></p>
-					<% else %>
-						<p>Enter a profile pic..</p>
-					<% end %>
-				<% end %>
-				</div>
-			</div>
-			<div class="dashboard_info">
-				<p id="show_name"><%= "#{@user.first_name.titleize} #{@user.last_name.titleize}" %></p>
-				<p>
-					<% if (params[:action] == 'show' || params[:action] == 'show_comms') && params[:controller] == 'dashboard' %>
-						<small><%= link_to 'View My Profile', profile_path(@user), id: "profile_view" %></small>
-					<% end %>
-				</p>
-			</div>
-		</div>
-	</div>
-	<div class="stats">
-		<%= render 'shared/stats' %>
-	</div>
 
-	<div class="sub-navigation">
-	
-		<% if (params[:action] == 'show' || params[:action] == 'show_comms') && params[:controller] == 'dashboard' %>
-			<li><%= image_tag 'activity', class: "side_icons" %><%= link_to 'Activity Logger', day_logger_path(:all), class: "btn btn-default", id: "park" %></li>
-			<li><%= image_tag 'create_comm', class: "side_icons" %><%= link_to 'Create a Community', new_community_path, class: "btn btn-default" %></li>
-			<li><%= image_tag 'comm', class: "side_icons" %><%= link_to 'Communities', dash_comms_path, class: "btn btn-default" %></li>
-		<% end %>
-	</div>
-</div>
 
 
 <% end %>

@@ -21,7 +21,7 @@
 	<%= render 'view_select' %>
 
 	<div class="dropdown" id="activities_select">
-		<a data-toggle="dropdown" href="#">Select Activities</a>
+		<a data-toggle="dropdown" href="#"></a>
 		<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
 			<li><%= link_to 'All Activities', calendar_logger_path(:all) %></li>
 			<li><%= link_to 'Running', calendar_logger_path(:running) %></li>
@@ -72,7 +72,7 @@
 					<% i = i + 1 %>
 				<% end %>
 				<% if x == true %>
-				<p>exists...</p>
+				<p><span class="glyphicon glyphicon-flag"></span></p>
 				<% end %>
 				
 				<% if false %>	

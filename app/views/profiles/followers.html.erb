@@ -1,0 +1,19 @@
+<div class="dashboard">
+	<%= render 'profiles/left_section' %>
+	<div class="right-section">
+	<div id="followers">
+		<div class="all_sections">
+			<h1>FOLLOWERS
+				<span class="glyphicon glyphicon-hand-right"></span>
+			</h1>
+			<div class="details_section">
+				<% if @users.any? %>
+					<% @users.each do |user| %>
+						<%= link_to "#{user.first_name} #{user.last_name}", profile_path(user), class: "name-style" %>
+					<% end %>
+				<% end %>
+			</div>
+		</div>
+	</div>
+	</div>
+</div>

@@ -15,8 +15,13 @@
 }
 
 .post_title {
-	font-size: 15px;
+	font-size: 17px;
 	font-weight: bold;
+	text-transform: capitalize;
+	color: #5A5A5A;
+	&:hover {
+		color: #313131;
+	}
 }
 
 .upvoted {

@@ -7,15 +7,28 @@
 </script>
 
 <div class="dashboard">
-	<%= render 'shared/left_section' %>
+	<%= render 'dashboard/left_section' %>
 	<div class="right-section">
-		<div>
-			<% provide(:title, @title) %>
-			<div>
-				<h3><%= @title %></h3>
-				<% @comms.each do |comm| %>
-					<strong><%= link_to comm.c_name, disc_board_path(comm.id), class: "btn btn-comms comm_names" %></strong>
-				<% end %>
+		<div id="show_comms">
+			<div class="all_sections">
+				<h1>COMMUNITIES
+				<span class="glyphicon glyphicon-king"></span>
+				</h1>
+				<div class="details_section">
+					<% if @comms.exists? %>
+						<% @comms.each do |comm| %>
+							<p class="p_comm"><strong><%= link_to comm.c_name, disc_board_path(comm.id), class: "comms" %></strong></p>
+						<% end %>
+					<% else %>
+						<p class="text-muted no_record">
+							<% if @user == current_user %>
+								You have not joined in any communities..
+							<% else %>
+								<%= @user.first_name %> has not joined in any communities..
+							<% end %>
+						</p>
+					<% end %>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -21,4 +21,14 @@ class DashboardController < ApplicationController
   		@comm = Community.find(params[:id])
   		@members = @comm.members
   	end
+  	def following
+		@title = "Following"
+		@user = User.find(params[:id])
+		@users = @user.followed_users
+	end
+	def followers
+		@title = "Followers"
+		@user = User.find(params[:id])
+		@users = @user.followers
+	end
 end

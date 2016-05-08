@@ -35,32 +35,76 @@
 	<div class="right-section">
 		<div id="about_me">
 			<div class="all_sections">
-				<div class="details_section dob">
-					<h4>Date Of Birth</h4>
-					<% if @user.dob != nil %>
-						<%= @user.dob %>
+			<%= render 'shared/follow_form' if signed_in? %>
+			<h1>PROFILE
+			<span class="glyphicon glyphicon-user"></span>
+			</h1>
+				<div class="details_section bio">
+					<h4>Hello, I am <%= "#{@user.first_name.titleize}  #{@user.last_name.titleize}" %></h4>
+					<% if @user.bio != "" %>
+						<%= @user.bio %>
 					<% else %>
 						<% if @user == current_user %>
-							<div class="add_dob_form">
-								<%= form_for(:profile, :url => {:controller => "profiles", :action => "dob_update"}) do |f| %>
+							<div class="add_bio_form">
+								<%= form_for(:profile, :url => {:controller => "profiles", :action => "bio_update"}) do |f| %>
 									<div class="form-group">
-										<%= f.label :dob, "Enter your Date of Birth" %>
-										<%= f.date_field :dob, class: "form-control" %>
+										<%= f.label :bio, "Enter bio to your profile" %>
+										<%= f.text_area :bio, class: "form-control" %>
 									</div>
 									<div class="form-group">
 										<%= f.submit "Submit", class: "btn btn-primary" %>
 									</div>
 								<% end %>
-								<%= link_to "Cancel", "#", class: "btn btn-primary cancel_btn", id: "cancel_dob_btn"  %>
+								<%= link_to "Cancel", "#", class: "btn btn-primary cancel_btn", id: "cancel_bio_btn" %>
 							</div>
-							<p id="no_dob">---</p>
-							<%= link_to "Add your Date of Birth", "#", class: "btn btn-primary add add_dob_btn" %>
+							<p id="no_bio">---</p>
+							<%= link_to "Add Bio to your profile", "#", class: "btn btn-primary add add_bio_btn" %>
 						<% end %>
-						
 						
 					<% end %>
 				</div>
 
+				<div class="details_section all">
+					<div id="dob">
+						<h3>Date Of Birth</h3>
+						<label>
+							<% if @user.dob != nil %>
+								<%= @user.dob %>
+							<% else %>
+								<% if @user == current_user %>
+									<div class="add_dob_form">
+										<%= form_for(:profile, :url => {:controller => "profiles", :action => "dob_update"}) do |f| %>
+											<div class="form-group">
+												<%= f.label :dob, "Enter your Date of Birth" %>
+												<%= f.date_field :dob, class: "form-control" %>
+											</div>
+											<div class="form-group">
+												<%= f.submit "Submit", class: "btn btn-primary" %>
+											</div>
+										<% end %>
+										<%= link_to "Cancel", "#", class: "btn btn-primary cancel_btn", id: "cancel_dob_btn"  %>
+									</div>
+									<p id="no_dob">---</p>
+									<%= link_to "Add your Date of Birth", "#", class: "btn btn-primary add add_dob_btn" %>
+								<% end %>
+							<% end %>
+						</label>
+					</div>
+					<div id="name">
+						<h3>Name</h3>
+						<label>
+							<%= "#{@user.first_name}  #{@user.last_name}" %>
+						</label>
+					</div>
+					<div id="email">
+						<h3>Email ID</h3>
+						<label>
+							<%= @user.email %>
+						</label>
+					</div>
+				</div>
+
+				<% if false %>
 				<div class="details_section avatar">
 					<% if @user.avatar_file_name %>
 						<div>
@@ -88,31 +132,7 @@
 						</div>
 					<% end %>
 				</div>
-
-				<div class="details_section bio">
-					<h4>Bio</h4>
-					<% if @user.bio != "" %>
-						<%= @user.bio %>
-					<% else %>
-						<% if @user == current_user %>
-							<div class="add_bio_form">
-								<%= form_for(:profile, :url => {:controller => "profiles", :action => "bio_update"}) do |f| %>
-									<div class="form-group">
-										<%= f.label :bio, "Enter bio to your profile" %>
-										<%= f.text_area :bio, class: "form-control" %>
-									</div>
-									<div class="form-group">
-										<%= f.submit "Submit", class: "btn btn-primary" %>
-									</div>
-								<% end %>
-								<%= link_to "Cancel", "#", class: "btn btn-primary cancel_btn", id: "cancel_bio_btn" %>
-							</div>
-							<p id="no_bio">---</p>
-							<%= link_to "Add Bio to your profile", "#", class: "btn btn-primary add add_bio_btn" %>
-						<% end %>
-						
-					<% end %>
-				</div>
+				<% end %>
 
 			</div>
 		</div>

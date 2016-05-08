@@ -21,8 +21,10 @@
 	<div class="right-section">
 		<div id="emp_detail">
 			<div class="all_sections">
+				<h1>EMPLOYMENT DETAIL
+				<span class="glyphicon glyphicon-briefcase"></span>
+				</h1>
 				<div class="details_section">
-					<h4>Employment Details</h4>
 					<%# @user.work_status %>
 					<%= link_to "Add a Job", "#", class: "btn btn-primary add", id: "add_button" %>
 					<% if @user.employment_details.exists? %>
