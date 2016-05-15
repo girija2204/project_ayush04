@@ -1,138 +1,145 @@
 <script type="text/javascript">
-  $(document).ready(function(){
-    $('#food-select').on('change', function(){
-      if (this.value == '0') {
-        $('#rice_intake').show();
-        $('#cold_drinks').hide();
-        $('#coffee_or_tea').hide();
-        $('#oil_intake').hide();
+  $("document").ready(function(){
+    $("#choose_food_activity").click(function(){
+      var x = $(this).val() 
+
+      if (x == 1) {
+        $("#rice_intake").show();
+        $("#cold_drinks").hide();
+        $("#coffee_or_tea").hide();
+        $("#oil_intake").hide();
       }
-      else if (this.value == '1') {
-        $('#cold_drinks').show();
-        $('#rice_intake').hide();
-        $('#coffee_or_tea').hide();
-        $('#oil_intake').hide();
+      else if (x == 2) {
+        $("#rice_intake").hide();
+        $("#cold_drinks").show();
+        $("#coffee_or_tea").hide();
+        $("#oil_intake").hide();
       }
-      else if (this.value == '2') {
-        $('#coffee_or_tea').show();
-        $('#cold_drinks').hide();
-        $('#rice_intake').hide();
-        $('#oil_intake').hide();
+      else if (x == 3) {
+        $("#rice_intake").hide();
+        $("#cold_drinks").hide();
+        $("#coffee_or_tea").show();
+        $("#oil_intake").hide();
       }
-      else {
-        $('#oil_intake').show();
-        $('#cold_drinks').hide();
-        $('#rice_intake').hide();
-        $('#coffee_or_tea').hide();
+      else if (x == 4) {
+        $("#rice_intake").hide();
+        $("#cold_drinks").hide();
+        $("#coffee_or_tea").hide();
+        $("#oil_intake").show();
       }
     });
   });
 </script>
 
-<div class="modal fade" id="myModal-11" tabindex="-1" role="dialog" 
-      aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;
-        </button>
-        <div class="form-group">
-          
-        <select id="food-select" class="form-control">
-          <option value>Choose an Option</option>
-          <option value="0">Rice Intake</option>
-          <option value="1">Cold Drinks</option>
-          <option value="2">Coffee or Tea</option>
-          <option value="3">Oil Intake</option>
-        </select>
-        </div>
-      </div>
-      <div class="modal-body">
-      	
-        <div id="rice_intake" style="display: none;">
-          <%= form_for(current_user.activity_loggers.new) do |f| %>
+<div class="food_act">
 
-            <div class="form-group">
-              <%= f.date_field :activity_date, class: "form-control" %>
-            </div>
-            
-            <div class="form-group">
-              <%= f.label :activity_type, "Rice Intake" %>
-              <%= f.hidden_field :activity_type, value: "rice intake" %>
-              <%= f.number_field :quantities, class: "form-control", placeholder: "00" %>grams
-            </div>
-            <div class="form-group">
-              <%= f.submit "Submit", class: "btn btn-primary" %>
-            </div>
+<%= form_for(current_user.activity_loggers.new) do |f| %>
+<select class="control-forms" id="choose_food_activity">
+      <option value="1">Rice</option>
+      <option value="2">ColdDrinks</option>
+      <option value="3">CoffeeTea</option>
+      <option value="4">OilIntake</option>
+    </select>
+  <div id="rice_intake">
 
-          <% end %>
-        </div>
-
-        <div id="cold_drinks" style="display: none;">
-          <%= form_for(current_user.activity_loggers.new) do |f| %>
-              
-              <div class="form-group">
-                <%= f.date_field :activity_date, class: "form-control" %>
-              </div>
-
-              <div class="form-group">
-                <%= f.label "Cold Drinks" %>
-                <%= f.hidden_field :activity_type, value: "cold drinks" %>
-                <%= f.number_field :quantities, class: "form-control" %>ml
-              </div>
-              
-              <div class="form-group">
-                <%= f.submit "Submit", class: "btn btn-primary" %>
-              </div>
-
-          <% end %>
-        </div>
-
-        <div id="coffee_or_tea" style="display: none;">
-          <%= form_for(current_user.activity_loggers.new) do |f| %>
-
-            <div class="form-group">
-              <%= f.date_field :activity_date, class: "form-control" %>
-            </div>
-
-            <div class="form-group">
-              <%= f.label :activity_type, "Coffee or Tea" %>
-              <%= f.hidden_field :activity_type, value: "coffee or tea" %>
-              <%= f.number_field :quantities, class: "form-control" %>no. of cups
-            </div>
-            <div class="form-group">
-              <%= f.submit "Submit", class: "btn btn-primary" %>
-            </div>
-
-          <% end %>
-        </div>
-
-        <div id="oil_intake" style="display: none;">
-          <%= form_for(current_user.activity_loggers.new) do |f| %>
-
-            <div class="form-group">
-              <%= f.date_field :activity_date, class: "form-control" %>
-            </div>
-
-            <div class="form-group">
-              <%= f.label :activity_type, "Oil Intake" %>
-              <%= f.hidden_field :activity_type, value: "oil intake" %>
-              <%= f.radio_button :quantities, '0', id: "low", checked: true %>
-              <%= f.label "Low" %>
-              <%= f.radio_button :quantities, '2', id: "high" %>
-              <%= f.label "High" %>
-              <%= f.radio_button :quantities, '1', id: "medium" %>
-              <%= f.label "Medium" %>
-            </div>
-            <div class="form-group">
-              <%= f.submit "Submit", class: "btn btn-primary" %>
-            </div>
-          <% end %>
-        </div>
-      	</div>
-      </div>
-      </div>
+    <div class="form-group">
+      <%= f.label :activity_type, "Rice Intake" %>
     </div>
-  </div>
-</div>
 
+    <div class="form-group">
+      <%= f.number_field :quantities, class: "control-forms", placeholder: "00" %>grams
+    </div>
+
+    <div class="form-group">
+      <%= f.date_field :activity_date, class: "control-forms" %>
+    </div>
+            
+    <div class="form-group">
+      <%= f.hidden_field :activity_type, value: "rice intake" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit "Submit", class: "btn btn-primary form-control" %>
+    </div>
+
+  </div>
+
+  <div id="cold_drinks">
+
+    <div class="form-group">
+      <%= f.label :activity_type, "Cold Drinks" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.number_field :quantities, class: "control-forms" %>ml
+    </div>
+
+    <div class="form-group">
+      <%= f.date_field :activity_date, class: "control-forms" %>
+    </div>
+            
+    <div class="form-group">
+      <%= f.hidden_field :activity_type, value: "cold drinks" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit "Submit", class: "btn btn-primary form-control" %>
+    </div>
+
+  </div>
+
+  <div id="coffee_or_tea">
+
+    <div class="form-group">
+      <%= f.label :activity_type, "Coffee or Tea" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.number_field :quantities, class: "control-forms" %>no. of cups
+    </div>
+
+    <div class="form-group">
+      <%= f.date_field :activity_date, class: "control-forms" %>
+    </div>
+            
+    <div class="form-group">
+      <%= f.hidden_field :activity_type, value: "coffee or tea" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit "Submit", class: "btn btn-primary form-control" %>
+    </div>
+
+  </div>
+
+<div id="oil_intake">
+  
+  <div class="form-group">
+    <%= f.label :activity_type, "Oil Intake" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.radio_button :quantities, '0', id: "low", checked: true %>
+    <%= f.label "Low" %>
+    <%= f.radio_button :quantities, '2', id: "high" %>
+    <%= f.label "High" %>
+    <%= f.radio_button :quantities, '1', id: "medium" %>
+    <%= f.label "Medium" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.date_field :activity_date, class: "control-forms" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.hidden_field :activity_type, value: "oil intake" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.submit "Submit", class: "btn btn-primary form-control" %>
+  </div>
+
+</div>
+<% end %>
+
+</div>

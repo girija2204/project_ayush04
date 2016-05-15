@@ -1,19 +1,51 @@
-<div class="activity-forms">
-	<div class="back_link"><%= link_to "Show Activities", day_logger_path(:all), class: "btn btn-default" %></div>
-	<h2 style="margin-left: 517px; margin-bottom: 40px; font-weight: bold;">
-		Add your activities
-	</h2>
-	<div class="physical">
-		<%= link_to "Physical", physical_logger_path, class: "btn-physical", data: { toggle: "modal", target: "#myModal-10", remote: true } %>
-		
-	</div>
-	<div class="food">
-		<%= link_to "Food", food_logger_path, class: "btn-food", data: { toggle: "modal", target: "#myModal-11", remote: true } %>
-	</div>
-	<div class="other">
-		<h2>Other Details...</h2>
-		<%= render 'other_activities' %>
-	</div>
-</div>
+<script type="text/javascript">
+	$("document").ready(function(){
+		$("body").css("background-color", "#FFF");
+		$("#activity_dp").css("background-color", "rgb(255, 114, 44)");
+		$("#first").addClass("activated_tab");
+		$(".header").css("background-color", "rgb(255, 114, 44)");
+		$("#activity_logger_header").css("color", "#FF8A50");
+
+		$("#first").click(function(){
+			$(".physical_act").show();
+			$(this).addClass("activated_tab");
+			$("#second").removeClass("activated_tab");
+			$("#third").removeClass("activated_tab");
+			$(".food_act").hide();
+			$("#activity_dp").css("background-color", "rgb(255, 114, 44)");
+			$(".other_activities_act").hide();
+			$(".header").css("background-color", "rgb(255, 138, 80)");
+			$("#activity_logger_header").css("color", "#FF8A50");
+		});
+		$("#second").click(function(){
+			$(".physical_act").hide();
+			
+			$(this).addClass("activated_tab");
+			$("#first").removeClass("activated_tab");
+			$("#third").removeClass("activated_tab");
+			$("#activity_dp").css("background-color", "rgb(23, 198, 199)");
+			$(".food_act").show();
+			$(".other_activities_act").hide();
+    		$(".header").css("background-color", "rgb(23, 198, 199)");
+			$("#activity_logger_header").css("color", "#17C6C7");
+		});
+		$("#third").click(function(){
+			$(".physical_act").hide();
+			$("#first").removeClass("activated_tab");
+			$("#second").removeClass("activated_tab");
+			$(this).addClass("activated_tab");
+			$("#activity_dp").css("background-color", "#47C172");
+			$(".food_act").hide();
+			$(".other_activities_act").show();
+    		$(".header").css("background-color", "#47C172");
+			$("#activity_logger_header").css("color", "#47C172");
+		});
+	});
+</script>
+
+<h1 id="activity_logger_header">Log your activities</h1>
+<%= render 'left_links' %>
+
 <%= render 'new_physical' %>
 <%= render 'new_food' %>
+<%= render 'other_activities' %>

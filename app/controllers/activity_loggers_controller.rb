@@ -1,13 +1,22 @@
 class ActivityLoggersController < ApplicationController
-	def new
+	#def new
 		
-	end
+	#end
+	#def new_physical
+		
+	#end
 	def create
 		@user = current_user
 		@activity = @user.activity_loggers.new(activity_params)
 		if @activity.activity_type == "walking" || @activity.activity_type == "running"
 			@activity.activity_measures = "distance"
 		elsif @activity.activity_type == "exercise"
+			puts @activity.hours
+			puts @activity.min
+
+			time_quantity = (@activity.hours * 60) + @activity.min
+			puts time_quantity
+			@activity.quantities = time_quantity
 			@activity.activity_measures = "time"
 		elsif @activity.activity_type == "rice intake"
 			@activity.activity_measures = "grams"

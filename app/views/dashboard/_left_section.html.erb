@@ -33,25 +33,25 @@
 			</div>
 			<div class="dashboard_info">
 				<p id="show_name"><%= "#{@user.first_name.titleize} #{@user.last_name.titleize}" %></p>
-				<p>
-					<% if (params[:action] == 'show' || params[:action] == 'show_comms') && params[:controller] == 'dashboard' %>
-						<small><%= link_to 'View My Profile', profile_path(@user), id: "profile_view" %></small>
-					<% end %>
-				</p>
+				<% if (params[:action] == 'show' || params[:action] == 'show_comms') && params[:controller] == 'dashboard' %>
+					<small><p><%= link_to 'View My Profile', profile_path(@user), id: "profile_view", class: "text-muted" %></p></small>
+				<% end %>
 			</div>
 		</div>
 	</div>
+	<% if false %>
 	<div class="stats">
 		<%= render 'dashboard/stats' %>
 	</div>
+	<% end %>
 
 	<div class="sub-navigation">
 	
 		<% if (params[:action] == 'show' || params[:action] == 'show_comms' || params[:action] == 'following' || params[:action] == 'followers') && params[:controller] == 'dashboard' %>
 			<ul class="nav nav-pills nav-stacked">
-				<li id="first"><span class="glyphicon glyphicon-list-alt grey"></span><%= link_to 'Activity Logger', calendar_logger_path(:all), class: "btn btn-default", id: "park" %></li>
-				<li id="second"><span class="glyphicon glyphicon-modal-window grey"></span><%= link_to 'Create a Community', new_community_path, class: "btn btn-default" %></li>
-				<li id="third"><span class="glyphicon glyphicon-grain grey"></span><%= link_to 'Communities', dash_comms_path, class: "btn btn-default" %></li>
+				<li id="first"><a href="<%= calendar_logger_path(:all) %>"><span class="glyphicon glyphicon-list-alt grey"></span><p>Activity Logger</p></a></li>
+				<li id="second"><a href="<%= new_community_path %>"><span class="glyphicon glyphicon-modal-window grey"></span><p>Create a Community</p></a></li>
+				<li id="third"><a href="<%= dash_comms_path %>"><span class="glyphicon glyphicon-grain grey"></span><p>Communities</p></a></li>
 			</ul>
 		<% end %>
 	</div>

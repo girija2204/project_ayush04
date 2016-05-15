@@ -62,9 +62,9 @@
     }
 }
 
-input[type="date"].form-control {
+/* input[type="date"].form-control {
     width: 200px;
-}
+} */
 .new_activity_logger .form-control {
     width: 200px;
 }
@@ -209,9 +209,251 @@ input[type="date"].form-control {
     display: none;
 }
 .active {
-    background-color: #EAEAEA;
+    background-color: #FFF;
 }
 .glyphicon-flag {
     color: #FF5656;
     font-size: 22px;
+}
+
+
+
+.activity_forms_tabs {
+    width: 201px;
+    float: left;
+    margin-top: 59px;
+    margin-left: 20px;
+    margin-right: 25px;
+    ul{
+        padding-left: 0px;
+    }
+    li{
+        list-style-type: none;
+        margin-left: 22px;
+        margin-bottom: 10px;
+    }
+    #first{
+        background-color: rgb(255, 138, 80);
+        &:hover{
+            background-color: #F75200;
+            border-left: 5px solid rgba(0, 0, 0, 0.27);
+        }
+    }
+    #second{
+        background-color: #17C6C7;
+        &:hover{
+            background-color: #00A6A7;
+            border-left: 5px solid rgba(0, 0, 0, 0.27);
+        }
+    }
+    #third{
+        background-color: #47C172;
+        &:hover{
+            background-color: rgb(1, 80, 29);
+            border-left: 5px solid rgba(0, 0, 0, 0.27);
+        }
+    }
+    ul > li{
+        border-bottom: 20px solid #FFF;
+        /* background-color: white; */
+        /* float: left; */
+        border-top-left-radius: 0px;
+        margin-left: 0px;
+        padding-bottom: 10px;
+        padding-left: 20px;
+        margin-bottom: 0px;
+        padding-top: 10px;
+    }
+    
+    ul > a{
+        height: 50px;
+        /* text-align: center; */
+        border-bottom: 1px solid rgba(195, 195, 195, 0.28);
+        display: block;
+        
+        padding-left: 10px;
+        padding-top: 18px;
+        font-size: 14px;
+        &:hover, &:focus {
+            color: #0056A2;
+            font-weight: 900;
+            
+            text-decoration: none;
+        }
+    }
+    
+}
+
+.activity_logger_forms {
+    padding: 120px;
+    .form-group {
+        float: left;
+    }
+}
+
+#activity_form_table {
+    margin-top: 150px;
+    width: 80%;
+    border-radius: 4px;
+    margin-left: 130px;
+    background-color: #FF8973;
+}
+
+.user_avatar_alogger {
+    border-radius: 50%;
+    display: inline-block;
+    /* border-radius: 14%; */
+    width: 60px;
+    margin-right: 20px;
+    /* border: 7px solid #FFF; */
+    height: 60px;
+    /* border: 1px solid #DEDEDE; */
+    border-radius: 8;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.new_activity_logger:first-of-type {
+    margin-top: 58px;
+}
+.new_activity_logger {
+    background-color: antiquewhite;
+    width: 370px;
+    margin-left: 425px;
+    box-shadow: 0px 5px 2px #C1B6A6;
+    padding: 20px;
+    border-radius: 5px;
+    
+    .form-group:first-of-type{
+        margin-top: 30px;
+    }
+    .form-control{
+        width: 100%;
+    }
+    div:nth-of-type(2){
+        /* float: left; */
+    }
+    div:nth-of-type(5){
+        
+    }
+}
+
+.food_act, .other_activities_act {
+    display: none;
+}
+
+.physical_act {
+    form:nth-of-type(3){
+        div:nth-of-type(4){
+            margin-left: 15px;
+            float: left;
+        }
+        div:nth-of-type(5){
+            margin-left: 1px;
+        }
+        div:nth-of-type(6){
+            display: inline-block;
+            margin-left: 144px;
+        }
+    }
+}
+
+#choose_activity {
+    /* margin-top: 135px; */
+    width: 100%;
+}
+
+#running-form, #exercise-form, #cold_drinks, #coffee_or_tea, #oil_intake, #cigarettes, #water, #sleep, #day_active {
+    display: none;
+}
+
+#exercise-form{
+    div:nth-of-type(2){
+        width: 48%;
+        float: left;
+        display: inline-block;
+    }
+    div:nth-of-type(3){
+        width: 48%;
+        margin-left: 13px;
+        display: inline-block;
+    }
+}
+
+.activated_tab {
+    background-color: #FFF;
+    border-left: 5px solid rgba(0, 0, 0, 0.27);
+    font-weight: 900;
+}
+
+.control-forms{
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    border-radius: 4px;
+    color: #FFF;
+    background-color: rgba(0, 0, 0, 0.2);
+    &:focus{
+        outline: 0;
+    }
+}
+
+.other_activities_act{
+    form{
+        background-color: #DADADA;
+        input[type="submit"]{
+            background-color: #47C172;
+        }
+    }
+}
+
+.food_act{
+    form{
+        background-color: #DADADA;
+        input[type="submit"]{
+            background-color: rgb(23, 198, 199);
+        }
+    }
+}
+
+.physical_act{
+    form{
+        background-color: #DADADA;
+        input[type="submit"]{
+            background-color: rgb(255, 114, 44);
+        }
+    }
+}
+
+#activity_logger_header{
+    margin-top: 100px;
+    margin-left: 90px;
+    text-transform: uppercase;
+    /* font-family: -webkit-body; */
+    font-weight: 900;
+    display: table;
+    font-size: 45px;
+    border-bottom: 1px solid;
+}
+
+input[type="date"], input[type="number"]{
+    border: none;
+}
+
+
+#choose_physical_activity{
+    border: none;
+    &:hover{
+        border: 1px solid #A74D4D;
+    }
+    .select-option{
+        background-color: #CC6F40;
+    }
+    .select-option-highlight{
+        background-color: #CCC;
+    }
 }

@@ -1,20 +1,15 @@
 <div class="header">
 	<div class="wrapper">
+		<a href="<%= root_path %>">
 		<div class="logo">
-			<h3><%= link_to 'Ayush', root_path, class: 'brand_logo' %> </h3>
-			
+			<h3>Ayush</h3>			
 		</div>
+		</a>
 		<div class="right_buttons">
 			<% if user_signed_in? %>
-				<%= link_to dashboard_path(current_user.id), class: " btn btn-primary" do %>
-					<span class="glyphicon glyphicon-home"></span>
-				<% end %>
-				<%= link_to "#", class: "btn btn-primary" do %>
-					<span class="glyphicon glyphicon-bell"></span>
-				<% end %>
-				<%= link_to "#", class: "btn btn-primary" do %>
-					<span class="glyphicon glyphicon-envelope"></span>
-				<% end %>
+				<%= link_to "Home", dashboard_path(current_user.id), class: " btn btn-primary" %>
+				<%= link_to "Notifications", "#", class: "btn btn-primary" %>					
+				<%= link_to "Messages", "#", class: "btn btn-primary" %>
 				<%= link_to 'Log Out', destroy_user_session_path, method: "delete", class: "btn btn-primary" %>
 			<% else %>
 				<%# link_to 'Log In', new_user_session_path, class: "btn btn-primary" %>

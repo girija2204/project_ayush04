@@ -4,12 +4,13 @@
 
 .create_post {
 	/* width: 95%; */
-    background-color: white;
-    margin-left: 0px;
+    background-color: #424141;
+    margin-left: 2px;
     padding-left: 20px;
     /* border-radius: 7px; */
-    height: 153px;
-    padding-top: 11px;
+    height: 190px;
+    /* margin-top: 86px; */
+    padding-top: 21px;
     padding-bottom: 1px;
     margin-bottom: 45px;
     padding-right: 20px;
@@ -47,10 +48,10 @@
     font-size: large;
     padding-top: 10px;
     border-radius: 2px;
-    background-color: #313131;
+    background-color: #D05151;
     color: #FFF;
-    &:hover {
-        background-color: #0A0A0A;
+    &:hover, &:focus {
+        background-color: #F57676;
     }
 }
 
@@ -110,5 +111,5 @@
 }
 
 #followers, #following {
-    padding-top: 45px;
+    padding-top: 5px;
 }

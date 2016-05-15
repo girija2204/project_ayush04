@@ -1,0 +1,8 @@
+<div class="activity_forms_tabs">
+	<ul>
+		<li id="activity_dp"><%= image_tag current_user.avatar.url(:thumb), class: "user_avatar_alogger" %><%= link_to "#{current_user.first_name} #{current_user.last_name}", profile_path(current_user) %></li>
+		<a id="first" href="#"><li>Physical</li></a>
+		<a id="second" href="#"><li>Food</li></a>
+		<a id="third" href="#"><li>Others</li></a>
+	</ul>
+</div>

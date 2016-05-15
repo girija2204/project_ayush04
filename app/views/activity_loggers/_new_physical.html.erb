@@ -1,129 +1,112 @@
 <script type="text/javascript">
-  $(document).ready(function(){
-    $('#form-running').hide();
-    $('#form-exercise').hide();
-    $('#walking_btn').addClass("active");
-    $('#walking_btn').click(function(){
-      $('#form-walking').show();
-      $('#walking_btn').addClass("active");
-      $('#form-running').hide();
-      $('#running_btn').removeClass("active");
-      $('#form-exercise').hide();
-      $('#exercise_btn').removeClass("active");
-    });
-    $('#running_btn').click(function(){
-      $('#form-running').show();
-      $('#running_btn').addClass("active");
-      $('#form-walking').hide();
-      $('#walking_btn').removeClass("active");
-      $('#form-exercise').hide();
-      $('#exercise_btn').removeClass("active");
-    });
-    $('#exercise_btn').click(function(){
-      $('#form-exercise').show();
-      $('#exercise_btn').addClass("active");
-      $('#form-running').hide();
-      $('#running_btn').removeClass("active");
-      $('#form-walking').hide();
-      $('#walking_btn').removeClass("active");
-    });
+  $("document").ready(function(){
+    $("#choose_physical_activity").click(function(){
+      var x = $(this).val() 
 
-
-
-    $("#hours").on('change', function(){
-      var x = $("#hours").value;
-      $("#hidden_quantity").value(x);
+      if (x == 1) {
+        $("#walking-form").show();
+        $("#running-form").hide();
+        $("#exercise-form").hide();
+      }
+      else if (x == 2) {
+        $("#walking-form").hide();
+        $("#running-form").show();
+        $("#exercise-form").hide();
+      }
+      else if (x == 3) {
+        $("#walking-form").hide();
+        $("#running-form").hide();
+        $("#exercise-form").show();
+      }
+    });
+    $(".select-option").on('mouseup',function(){
+      $(this).addClass("select-option-highlight");
     });
   });
 </script>
 
-<div class="modal fade" id="myModal-10" tabindex="-1" role="dialog" 
-      aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;
-        </button>
-        <ul class="nav nav-tabs">
-        	<li id="walking_btn"><%= link_to "Walking", "#form-walking" %></li>
-        	<li id="running_btn"><%= link_to "Running", "#form-running" %></li>
-        	<li id="exercise_btn"><%= link_to "Exercise", "#form-exercise" %></li>
-        </ul>
-      </div>
-      <div class="modal-body">
-      	<div id="form-walking">
-          <%= form_for(current_user.activity_loggers.new) do |f| %>
+<div class="physical_act">
 
-            <div class="form-group">
-              <%= f.date_field :activity_date, class: "form-control" %>
-            </div>
+  <%= form_for(current_user.activity_loggers.new) do |f| %>
+    <select class="control-forms" id="choose_physical_activity">
+      <option class="select-option" value="1">Walking</option>
+      <option class="select-option" value="2">Running</option>
+      <option class="select-option" value="3">Exercise</option>
+    </select>
 
-            <div class="form-group">
-              <%= f.hidden_field :activity_type, value: "walking" %>
-            </div>
+    <div id="walking-form">
+        <div class="form-group">
+          <%= f.label :activity_type, "Walking" %>
+        </div>
 
-            <div class="form-group">
-              <%= f.number_field :quantities, class: "form-control", placeholder: "00" %> <%= "kms" %>
-            </div>
+        <div class="form-group">
+          <%= f.date_field :activity_date, class: "control-forms" %>
+        </div>
 
-            <div class="form-group">
-              <%= f.submit "Submit", class: "btn btn-primary" %>
-            </div>
-          <% end %>
-      	</div>
+        <div class="form-group">
+          <%= f.number_field :quantities, class: "control-forms", placeholder: "00" %> <%= "kms" %>
+        </div>
+        
       
-        <div id="form-running">
-          <%= form_for(current_user.activity_loggers.new) do |f| %>
-
-            <div class="form-group">
-              <%= f.date_field :activity_date, class: "form-control" %>
-            </div>
-
-            <div class="form-group">
-              <%= f.hidden_field :activity_type, value: "running" %>
-            </div>
-
-            <div class="form-group">
-              <%= f.number_field :quantities, class: "form-control", placeholder: "00" %>
-            </div>
-
-            <div class="form-group">
-              <%= f.submit "Submit", class: "btn btn-primary" %>
-            </div>
-          <% end %>
+        <div class="form-group">
+          <%= f.hidden_field :activity_type, value: "walking" %>
         </div>
-    
-        <div id="form-exercise">
-          <%= form_for(current_user.activity_loggers.new) do |f| %>
+        <div class="form-group">
+          <%= f.submit "Submit", class: "btn btn-primary form-control" %>
+        </div>
+    </div>
+  
 
-            <div class="form-group">
-              <%= f.date_field :activity_date, class: "form-control" %>
-            </div>
+      
 
-            <div class="form-group">
-              <%= f.hidden_field :activity_type, value: "exercise" %>
-            </div>
+      <div id="running-form">
+        <div class="form-group">
+          <%= f.label :activity_type, "Running" %>
+        </div>
 
-            <div class="form-group">
-              <input type="number" class="form-control" placeholder="00" id="hours">hours
-            </div>
-            
-            <div class="form-group">
-              <input type="number" class="form-control" placeholder="00" id="min">min
-            </div>
 
-            <div class="form-group">
-              <%= f.hidden_field :quantities, value: "", id: "hidden_quantity" %>
-            </div>
-            
-
-            <div class="form-group">
-              <%= f.submit "Submit", class: "btn btn-primary" %>
-            </div>
-          <% end %>
+        <div class="form-group">
+          <%= f.date_field :activity_date, class: "control-forms" %>
+        </div>
+        <div class="form-group">
+          <%= f.number_field :quantities, class: "control-forms", placeholder: "00" %> <%= "kms" %>
+        </div>
+      
+        <div class="form-group">
+          <%= f.hidden_field :activity_type, value: "running" %>
+        </div>
+      
+        <div class="form-group">
+          <%= f.submit "Submit", class: "btn btn-primary form-control" %>
         </div>
       </div>
-    </div>
-  </div>
-</div>
 
+      
+      
+<div id="exercise-form">
+        <div class="form-group">
+          <%= f.label :activity_type, "Exercise Form" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.date_field :activity_date, class: "control-forms" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.number_field :hours, class: "control-forms", placeholder: "00" %> <%= "hrs" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.number_field :min, class: "control-forms", placeholder: "00" %> <%= "min" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.hidden_field :activity_type, value: "exercise" %>
+        </div>
+
+        <div class="form-group">
+          <%= f.submit "Submit", class: "btn btn-primary form-control" %>
+        </div>
+</div>
+    <% end %>
+</div>

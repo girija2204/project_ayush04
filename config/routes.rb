@@ -80,10 +80,11 @@ Rails.application.routes.draw do
   #get 'activity_logger/:activity_type' => 'activity_loggers#show', as: :show_logger
   
   get 'activity_logger/add' => 'activity_loggers#new', as: :add_logger
-  get 'activity_logger/new_physical' => 'activity_loggers#new_physical', as: :physical_logger
+  #get 'activity_logger/new_physical' => 'activity_loggers#new_physical', as: :physical_logger
   post 'activity_logger/new_physical' => 'activity_loggers#create'
 
-  get 'activity_logger/new_food' => 'activity_loggers#new_food', as: :food_logger
+  #get 'activity_logger/new_food' => 'activity_loggers#new_food', as: :food_logger
+  #get 'activity_logger/other_activities' => 'activity_loggers#other_activities', as: :other_activities_logger
   post 'activity_logger/new_food' => 'activity_loggers#food_create'
 
   #resources :dashboard do

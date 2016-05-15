@@ -1,129 +1,170 @@
 <script type="text/javascript">
-	$(document).ready(function(){
-		$('#alchohol_intake').show();
-		$('#cigarettes_intake').hide();
-		$('#water_intake').hide();
-		$('#sleep_time').hide();
-		$('#day_active').hide();
-		$('#alchohol_btn').click(function(){
-			$('#alchohol_intake').show();
-			$('#cigarettes_intake').hide();
-			$('#water_intake').hide();
-			$('#sleep_time').hide();
-			$('#day_active').hide();
-		});
-		$('#cigarettes_btn').click(function(){
-			$('#alchohol_intake').hide();
-			$('#cigarettes_intake').show();
-			$('#water_intake').hide();
-			$('#sleep_time').hide();
-			$('#day_active').hide();
-		});
-		$('#water_btn').click(function(){
-			$('#alchohol_intake').hide();
-			$('#cigarettes_intake').hide();
-			$('#water_intake').show();
-			$('#sleep_time').hide();
-			$('#day_active').hide();
-		});
-		$('#sleep_btn').click(function(){
-			$('#alchohol_intake').hide();
-			$('#cigarettes_intake').hide();
-			$('#water_intake').hide();
-			$('#sleep_time').show();
-			$('#day_active').hide();
-		});
-		$('#active_btn').click(function(){
-			$('#alchohol_intake').hide();
-			$('#cigarettes_intake').hide();
-			$('#water_intake').hide();
-			$('#sleep_time').hide();
-			$('#day_active').show();
-		});
-	});
+  $("document").ready(function(){
+    $("#choose_other_activity").click(function(){
+      var x = $(this).val() 
+
+      if (x == 1) {
+        $("#alchohol").show();
+        $("#cigarettes").hide();
+        $("#water").hide();
+        $("#sleep").hide();
+        $("day_active").hide();
+      }
+      else if (x == 2) {
+        $("#alchohol").hide();
+        $("#cigarettes").show();
+        $("#water").hide();
+        $("#sleep").hide();
+        $("day_active").hide();
+      }
+      else if (x == 3) {
+        $("#alchohol").hide();
+        $("#cigarettes").hide();
+        $("#water").show();
+        $("#sleep").hide();
+        $("day_active").hide();
+      }
+      else if (x == 4) {
+        $("#alchohol").hide();
+        $("#cigarettes").hide();
+        $("#water").hide();
+        $("#sleep").show();
+        $("day_active").hide();
+      }
+      else if (x == 5) {
+        $("#alchohol").hide();
+        $("#cigarettes").hide();
+        $("#water").hide();
+        $("#sleep").hide();
+        $("day_active").show();
+      }
+    });
+  });
 </script>
-<div class="other_activities">
-	<ul class="nav nav-tabs">
-		<li id="alchohol_btn"><%= link_to "Alchohol Intake", "#alchohol_intake" %></li>
-		<li id="cigarettes_btn"><%= link_to "Cigarettes Intake", "#cigarettes_intake" %></li>
-		<li id="water_btn"><%= link_to "Water Intake", "#water_intake" %></li>
-		<li id="sleep_btn"><%= link_to "Sleep Time", "#sleep_time" %></li>
-		<li id="active_btn"><%= link_to "Day Active", "#day_active" %></li>
-	</ul>
 
-	<div id="alchohol_intake">
-		<%= form_for(current_user.activity_loggers.new) do |f| %>
-			<div class="form-group">
-				<%= f.label "Activity Date" %>
-				<%= f.date_field :activity_date, class: "form-control" %>
-				<%= f.hidden_field :activity_type, value: "Alchohol Intake" %>
-				<%= f.label "Amount of Alchohol in ml" %>
-				<div class="activity_field">
-					<%= f.number_field :quantities, class: "form-control", placeholder: "00" %>
-					<%= f.submit "Save", class: "btn btn-primary" %>
-				</div>
-			</div>
-		<% end %>
-	</div>
+<div class="other_activities_act">
+  
+<%= form_for(current_user.activity_loggers.new) do |f| %>
+<select class="control-forms" id="choose_other_activity">
+      <option value="1">Alchohol</option>
+      <option value="2">Cigarettes</option>
+      <option value="3">Water</option>
+      <option value="4">Sleep</option>
+      <option value="5">Day active</option>
+    </select>
+<div id="alchohol">
+  <div class="form-group">
+    <%= f.label :activity_type, "Amount of Alchohol in ml" %>
+  </div>
 
-	<div id="cigarettes_intake">
-		<%= form_for(current_user.activity_loggers.new) do |f| %>
-			<div class="form-group">
-				<%= f.label "Activity Date" %>
-				<%= f.date_field :activity_date, class: "form-control" %>
-				<%= f.hidden_field :activity_type, value: "Cigarettes Intake" %>
-				<%= f.label "Number of Cigarettes" %>
-				<div class="activity_field">
-					<%= f.number_field :quantities, class: "form-control", placeholder: "00" %>
-					<%= f.submit "Save", class: "btn btn-primary" %>
-				</div>
-			</div>
-		<% end %>
-	</div>
+  <div class="form-group">
+    <%= f.number_field :quantities, class: "control-forms", placeholder: "00" %>
+  </div>
 
-	<div id="water_intake">
-		<%= form_for(current_user.activity_loggers.new) do |f| %>
-			<div class="form-group">
-				<%= f.label "Activity Date" %>
-				<%= f.date_field :activity_date, class: "form-control" %>
-				<%= f.hidden_field :activity_type, value: "Water Intake" %>
-				<%= f.label "Amount of Water in ml" %>
-				<div class="activity_field">
-					<%= f.number_field :quantities, class: "form-control", placeholder: "00" %>
-					<%= f.submit "Save", class: "btn btn-primary" %>
-				</div>
-			</div>
-		<% end %>
-	</div>
+  <div class="form-group">
+    <%= f.date_field :activity_date, class: "control-forms" %>
+  </div>
+          
+  <div class="form-group">
+    <%= f.hidden_field :activity_type, value: "Alchohol Intake" %>
+  </div>
 
-	<div id="sleep_time">
-		<%= form_for(current_user.activity_loggers.new) do |f| %>
-			<div class="form-group">
-				<%= f.label "Activity Date" %>
-				<%= f.date_field :activity_date, class: "form-control" %>
-				<%= f.hidden_field :activity_type, value: "Sleep Time" %>
-				<%= f.label "Sleeping Time" %>
-				<div class="activity_field">
-					<%= f.number_field :hours, class: "form-control", placeholder: "00" %>
-					<%= f.number_field :min, class: "form-control", placeholder: "00" %>
-					<%= f.submit "Save", class: "btn btn-primary" %>
-				</div>
-			</div>
-		<% end %>
-	</div>
+  <div class="form-group">
+    <%= f.submit "Submit", class: "btn btn-primary form-control" %>
+  </div>
+</div>
+  
+<div id="cigarettes">
+  <div class="form-group">
+    <%= f.label :activity_type, "Number of Cigarettes" %>
+  </div>
 
-	<div id="day_active">
-		<%= form_for(current_user.activity_loggers.new) do |f| %>
-			<div class="form-group">
-				<%= f.label "Activity Date" %>
-				<%= f.date_field :activity_date, class: "form-control" %>
-				<%= f.hidden_field :activity_type, value: "Day Active" %>
-				<%= f.label "How active was your day" %>
-				<div class="activity_field">
-					<%= f.number_field :quantities, class: "form-control" %>
-					<%= f.submit "Save", class: "btn btn-primary" %>
-				</div>
-			</div>
-		<% end %>
-	</div>
+  <div class="form-group">
+    <%= f.number_field :quantities, class: "control-forms", placeholder: "00" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.date_field :activity_date, class: "control-forms" %>
+  </div>
+          
+  <div class="form-group">
+    <%= f.hidden_field :activity_type, value: "Cigarettes Intake" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Submit", class: "btn btn-primary form-control" %>
+  </div>
+</div>
+  
+<div id="water">
+  <div class="form-group">
+    <%= f.label :activity_type, "Amount of Water in ml" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.number_field :quantities, class: "control-forms", placeholder: "00" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.date_field :activity_date, class: "control-forms" %>
+  </div>
+          
+  <div class="form-group">
+    <%= f.hidden_field :activity_type, value: "Water Intake" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Submit", class: "btn btn-primary form-control" %>
+  </div>
+</div>
+  
+
+<div id="sleep">
+  <div class="form-group">
+    <%= f.label :activity_type, "Sleeping Time(in min)" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.number_field :min, class: "control-forms", placeholder: "00" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.date_field :activity_date, class: "control-forms" %>
+  </div>
+          
+  <div class="form-group">
+    <%= f.hidden_field :activity_type, value: "Sleep Time" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Submit", class: "btn btn-primary form-control" %>
+  </div>
+</div>
+  
+
+<div id="day_active">
+  <div class="form-group">
+    <%= f.label :activity_type, "How active was your day" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.number_field :quantities, class: "control-forms" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.date_field :activity_date, class: "control-forms" %>
+  </div>
+          
+  <div class="form-group">
+    <%= f.hidden_field :activity_type, value: "Day Active" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Submit", class: "btn btn-primary form-control" %>
+  </div>
+</div>
+  
+
+<% end %>
+
 </div>
