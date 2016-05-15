@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160425182511) do
+ActiveRecord::Schema.define(version: 20160515033754) do
 
   create_table "activity_loggers", force: :cascade do |t|
     t.date     "activity_date"
@@ -28,6 +28,17 @@ ActiveRecord::Schema.define(version: 20160425182511) do
   add_index "activity_loggers", ["activity_date", "user_id"], name: "index_activity_loggers_on_activity_date_and_user_id"
   add_index "activity_loggers", ["user_id", "activity_type"], name: "index_activity_loggers_on_user_id_and_activity_type"
   add_index "activity_loggers", ["user_id"], name: "index_activity_loggers_on_user_id"
+
+  create_table "activity_participations", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "activity_name"
+    t.integer  "goal"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "activity_participations", ["user_id", "activity_name"], name: "index_activity_participations_on_user_id_and_activity_name", unique: true
+  add_index "activity_participations", ["user_id"], name: "index_activity_participations_on_user_id"
 
   create_table "comm_memberships", force: :cascade do |t|
     t.integer  "comm_id"

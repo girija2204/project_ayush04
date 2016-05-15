@@ -43,6 +43,10 @@
 	});
 </script>
 
+
+<% if current_user.sign_in_count == 1 %>
+	<%= render 'activity_participations/activity_setup' %>
+<% end %>
 <h1 id="activity_logger_header">Log your activities</h1>
 <%= render 'left_links' %>
 

@@ -35,6 +35,8 @@ class User < ActiveRecord::Base
   has_many :activity_loggers
   has_many :other_activities
 
+  has_many :activity_participations
+
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

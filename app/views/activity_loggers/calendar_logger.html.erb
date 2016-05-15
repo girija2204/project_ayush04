@@ -18,77 +18,77 @@
 
 
 <div class="show_activities">
-	<%= render 'view_select' %>
+	
+		<%= render 'view_select' %>
 
-	<div class="dropdown" id="activities_select">
-		<a data-toggle="dropdown" href="#"></a>
-		<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-			<li><%= link_to 'All Activities', calendar_logger_path(:all) %></li>
-			<li><%= link_to 'Running', calendar_logger_path(:running) %></li>
-			<li><%= link_to 'Walking', calendar_logger_path(:walking) %></li>
-			<li><%= link_to 'Exercise', calendar_logger_path(:exercise) %></li>
-			<li><%= link_to 'Rice Intake', calendar_logger_path(:rice) %></li>
-			<li><%= link_to 'Cold Drinks', calendar_logger_path(:cold_drinks) %></li>
-			<li><%= link_to 'Coffee or Tea', calendar_logger_path(:coffee_or_tea) %></li>
-			<li><%= link_to 'Alchohol Intake', calendar_logger_path(:alchohol) %></li>
-			<li><%= link_to 'Cigarettes Intake', calendar_logger_path(:cigarettes) %></li>
-			<li><%= link_to 'Water Intake', calendar_logger_path(:water) %></li>
-			<li><%= link_to 'Sleep Time', calendar_logger_path(:sleep) %></li>
-			<li><%= link_to 'Day ACtive', calendar_logger_path(:day_active) %></li>
-			<li><%= link_to 'Oil Intake', calendar_logger_path(:oil) %></li>
-		</ul>
-	</div>
-	<div id="calendar_view">
-		<h2 id="month">
-			<%= link_to "<", date: @date.prev_month %>
-			<%= @date.strftime("%B %Y") %>
-			<%= link_to ">", date: @date.next_month %>
-		</h2>
-		<%= calendar @date do |date| %>
-			<%= date.day %>
-			<% if @activities_by_date[date] %>
-				<% quantity = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] %>
-				<% activity_types = ["walking", "running", "exercise", "rice intake", "cold drinks", "coffee or tea", "Alchohol Intake","Cigarettes Intake", "Water Intake", "Sleep Time", "Day Active", "oil intake"] %>
-				<% @activities_by_date[date].each do |activity| %>
-					<% i = 0 %><% x = false %>
-					<% while i < 12 do %>
-						<% if activity_types[i] == activity.activity_type %>
-							<% break %>
+		<div class="dropdown" id="activities_select">
+			<a data-toggle="dropdown" href="#"></a>
+			<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+				<li><%= link_to 'All Activities', calendar_logger_path(:all) %></li>
+				<li><%= link_to 'Running', calendar_logger_path(:running) %></li>
+				<li><%= link_to 'Walking', calendar_logger_path(:walking) %></li>
+				<li><%= link_to 'Exercise', calendar_logger_path(:exercise) %></li>
+				<li><%= link_to 'Rice Intake', calendar_logger_path(:rice) %></li>
+				<li><%= link_to 'Cold Drinks', calendar_logger_path(:cold_drinks) %></li>
+				<li><%= link_to 'Coffee or Tea', calendar_logger_path(:coffee_or_tea) %></li>
+				<li><%= link_to 'Alchohol Intake', calendar_logger_path(:alchohol) %></li>
+				<li><%= link_to 'Cigarettes Intake', calendar_logger_path(:cigarettes) %></li>
+				<li><%= link_to 'Water Intake', calendar_logger_path(:water) %></li>
+				<li><%= link_to 'Sleep Time', calendar_logger_path(:sleep) %></li>
+				<li><%= link_to 'Day ACtive', calendar_logger_path(:day_active) %></li>
+				<li><%= link_to 'Oil Intake', calendar_logger_path(:oil) %></li>
+			</ul>
+		</div>
+		<div id="calendar_view">
+			<h2 id="month">
+				<%= link_to "<", date: @date.prev_month %>
+				<%= @date.strftime("%B %Y") %>
+				<%= link_to ">", date: @date.next_month %>
+			</h2>
+			<%= calendar @date do |date| %>
+				<%= date.day %>
+				<% if @activities_by_date[date] %>
+					<% quantity = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0] %>
+					<% activity_types = ["walking", "running", "exercise", "rice intake", "cold drinks", "coffee or tea", "Alchohol Intake","Cigarettes Intake", "Water Intake", "Sleep Time", "Day Active", "oil intake"] %>
+					<% @activities_by_date[date].each do |activity| %>
+						<% i = 0 %><% x = false %>
+						<% while i < 12 do %>
+							<% if activity_types[i] == activity.activity_type %>
+								<% break %>
+							<% end %>
+							<% i = i + 1 %>
 						<% end %>
-						<% i = i + 1 %>
+						<% if activity.quantities && quantity[i] %>
+							<% quantity[i] = quantity[i] + activity.quantities %>
+						<% end %>
 					<% end %>
-					<% if activity.quantities && quantity[i] %>
-						<% quantity[i] = quantity[i] + activity.quantities %>
-					<% end %>
-				<% end %>
 
-				
-				<% i = 0 %>
-				<% while(i < 12) %>
-					<% if quantity[i] != 0 %>
-						<% x = true %>
-						<li><%= activity_types[i] %> of <%= quantity[i] %></li>
-					<% end %>
-					<% i = i + 1 %>
-				<% end %>
-				<% if x == true %>
-				<p><span class="glyphicon glyphicon-flag"></span></p>
-				<% end %>
-				
-				<% if false %>	
-				<div class="calendar_data">
+					
 					<% i = 0 %>
 					<% while(i < 12) %>
 						<% if quantity[i] != 0 %>
+							<% x = true %>
 							<li><%= activity_types[i] %> of <%= quantity[i] %></li>
 						<% end %>
 						<% i = i + 1 %>
 					<% end %>
-				</div>
-				<% end %>
+					<% if x == true %>
+					<p><span class="glyphicon glyphicon-flag"></span></p>
+					<% end %>
+					
+					<% if false %>	
+					<div class="calendar_data">
+						<% i = 0 %>
+						<% while(i < 12) %>
+							<% if quantity[i] != 0 %>
+								<li><%= activity_types[i] %> of <%= quantity[i] %></li>
+							<% end %>
+							<% i = i + 1 %>
+						<% end %>
+					</div>
+					<% end %>
 
+				<% end %>
 			<% end %>
-		<% end %>
-	</div>
-	
+		</div>	
 </div>
