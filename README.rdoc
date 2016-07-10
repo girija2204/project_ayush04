@@ -1,5 +1,5 @@
 "AYUSH" is a Medical Assist System that helps the patient to recover better and sooner from their diseases. This system will help the patients record their real time health data, analyze them and come up with results which will be used to optimize the recovery of their diseases, by providing them suggestions relevant to their health conditions. Also the activity logger will help them track their real time activities and their habits. The system composed of two parts:
-    -> First part consists of storing health related data, doctor prescriptions, all kinds of medication and treatment        details, and managing them. These data will be saved into our database and can be accessed by patients anywhere,       anytime. Access control of this data is given to the particular patient only. 
-    -> Second part is about analysing these data and find out interesting measures which will be used to educate them by      giving suggestions and timely notifications. 
+    -> First part consists of storing health related data, doctor prescriptions, all kinds of medication and treatment details, and managing them. These data will be saved into our database and can be accessed by patients anywhere, anytime. Access control of this data is given to the particular patient only. 
+    -> Second part is about analysing these data and find out interesting measures which will be used to educate them by giving suggestions and timely notifications. 
     
-This system will stay round the clock with him/her, making him more informed about their conditions, so that they can take better decisions about themselves.
+This system will stay round the clock with the patient, making them more informed about their conditions, so that they can take better decisions about themselves.
